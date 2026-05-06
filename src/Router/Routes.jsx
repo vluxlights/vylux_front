@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // -------- login/register --------
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Forgotpass from "../pages/Forgotpass/Forgotpass"
 
 // -------- admin --------
 import AdminHome from "../admin/AdminHome/AdimHome";
@@ -34,6 +35,7 @@ export default function Router() {
         {/* AUTH */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot" element={<Forgotpass />} />
 
         {/* USER */}
         <Route path="/home" element={<Home />} />
