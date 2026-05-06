@@ -290,69 +290,147 @@
 
 /* ================= MOBILE RESPONSIVE ================= */
 
-/* ===== MOBILE SPECS FIX (NO OVERFLOW) ===== */
+/* ================= MOBILE FULL FIX ================= */
 @media (max-width: 768px) {
 
-  .specs {
+  /* MAIN CONTAINER */
+  .productview {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    margin: 10px 0;
+    margin: 0;
     padding: 10px;
-    font-size: 11px;
+    gap: 12px;
   }
 
-  .spectable {
+  /* REMOVE DESKTOP WIDTHS */
+  .left,
+  .center,
+  .right {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  /* ===== IMAGE SECTION ===== */
+
+  /* MAIN IMAGE */
+  .center {
     display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .center img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* THUMBNAILS ROW */
+  .left {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+
+  .left .img {
+    min-width: 70px;
+  }
+
+  .left img {
+    width: 70px;
+    height: 60px;
+    object-fit: cover;
+  }
+
+  /* ===== RIGHT CONTENT ===== */
+
+  .right h2 {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+
+  .type {
+    font-size: 13px;
+    margin-left: 0;
+  }
+
+  /* PRICE */
+  .pricelist {
     flex-wrap: wrap;
     gap: 6px;
+    margin: 10px 0;
   }
 
-  /* 2 column layout */
-  .row {
-    width: calc(50% - 6px);
+  .price {
+    font-size: 20px;
+  }
+
+  .orprice {
+    font-size: 13px;
+  }
+
+  .discount {
+    font-size: 11px;
+    padding: 3px 5px;
+  }
+
+  /* DESC */
+  .desc {
+    flex-direction: column;
+    margin: 10px 0;
+    padding: 8px;
+  }
+
+  .descs {
+    width: 100%;
+    padding: 6px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .descs:last-child {
+    border-bottom: none;
+  }
+
+  /* QUANTITY */
+  .quantity {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;   /* 🔥 IMPORTANT */
-
-    gap: 6px;
-    padding: 6px;
-
-    border-radius: 6px;
-    background: #f9f9f9;
-
-    /* 🔥 PREVENT OVERFLOW */
-    overflow: hidden;
+    margin: 10px 0;
   }
 
-  .row:nth-child(even) {
-    background: #ffffff;
+  .controls button {
+    width: 28px;
+    height: 28px;
   }
 
-  /* KEY */
-  .key {
-    font-size: 11px;
-    font-weight: 600;
-    color: #333;
-
-    flex: 1;
-
-    /* 🔥 TEXT WRAP FIX */
-    word-break: break-word;
-    overflow-wrap: break-word;
+  /* BUTTONS */
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
-  /* VALUE */
-  .value {
-    font-size: 11px;
-    color: #555;
+  .buttons button {
+    width: 100%;
+    height: 45px;
+  }
 
-    flex: 1;
-    text-align: right;
+  /* ===== IMPORTANT GLOBAL FIX ===== */
+  * {
+    max-width: 100%;
+  }
 
-    /* 🔥 TEXT WRAP FIX */
-    word-break: break-word;
-    overflow-wrap: break-word;
+  body {
+    overflow-x: hidden;   /* 🔥 removes side scroll */
   }
 }
+
 
 /* ================= TABLET VIEW ================= */
 /* Medium devices like tablets */
