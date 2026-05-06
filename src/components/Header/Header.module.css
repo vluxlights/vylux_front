@@ -170,8 +170,9 @@
   /* ICONS RIGHT SIDE */
   .icons {
     display: flex;
-    gap: 15px;
-    padding-right: 10px;
+    gap: 25px;
+    
+    margin-right: 30px;
   }
 
   .cart,
