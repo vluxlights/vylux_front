@@ -153,12 +153,14 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 20px;
+    
   }
 
   /* NAV TEXT SMALL */
   .navList {
     display: flex;
-    gap: 20px;
+    gap: 25px;
+    padding-left: 20px;
   }
 
   .navList a {
