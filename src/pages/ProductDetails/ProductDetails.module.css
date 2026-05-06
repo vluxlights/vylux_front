@@ -387,35 +387,23 @@
 /* ================= UNIVERSAL MOBILE (ANDROID + IPHONE) ================= */
 @media (max-width: 768px) {
 
-    /* ===== MAIN LAYOUT ===== */
+    /* ===== MAIN STACK ===== */
     .productview {
-        display: flex;
         flex-direction: column;
         width: 100%;
         margin: 0;
         padding: 10px;
-        gap: 12px;
+        gap: 10px;
     }
 
-    .left,
-    .center,
-    .right {
+    .left, .center, .right {
         width: 100%;
         margin: 0;
         padding: 10px;
         border-radius: 8px;
-        box-sizing: border-box;
     }
 
-    /* ===== IMAGE SECTION ===== */
-
-    /* MAIN IMAGE */
-    .center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
+    /* ===== IMAGE ===== */
     .center img {
         width: 100%;
         max-height: 260px;
@@ -425,109 +413,87 @@
     /* THUMBNAILS */
     .left {
         display: flex;
-        gap: 8px;
+        gap: 10px;
         overflow-x: auto;
-        padding-bottom: 5px;
-    }
-
-    .left::-webkit-scrollbar {
-        display: none;
     }
 
     .left img {
-        width: 70px;
-        height: 60px;
+        width: 80px;
+        height: 70px;
         flex-shrink: 0;
-        border-radius: 6px;
     }
 
-    /* ===== TEXT SECTION ===== */
-
+    /* ===== TEXT ===== */
     .right h2 {
-        font-size: 18px;
+        font-size: 20px;
         margin: 5px 0;
     }
 
     .type {
-        font-size: 13px;
+        font-size: 14px;
         margin-left: 0;
     }
 
     /* ===== PRICE ===== */
-
     .pricelist {
         margin: 10px 0;
-        display: flex;
         flex-wrap: wrap;
-        gap: 6px;
-        align-items: center;
+        gap: 8px;
     }
 
-    .price {
-        font-size: 18px;
-    }
-
-    .orprice {
-        font-size: 13px;
-    }
+    .price { font-size: 20px; }
+    .orprice { font-size: 14px; }
 
     .discount {
-        font-size: 11px;
-        padding: 3px 6px;
+        font-size: 12px;
+        padding: 4px 6px;
     }
 
-    /* ===== FEATURES ===== */
-
+    /* ===== 🔥 KEEP ORIGINAL ASSURANCE DESIGN ===== */
     .desc {
-        display: flex;
-        flex-direction: column;
         margin: 10px 0;
+        display: flex;
+        align-items: center;   /* SAME AS DESKTOP */
         padding: 8px;
+        gap: 0;
     }
 
     .descs {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;  /* SAME */
+        align-items: center;
+        flex: 1;
+        padding: 5px;
         font-size: 12px;
-        padding: 6px 0;
-        border-bottom: 1px solid #ddd;
     }
 
-    .descs:last-child {
-        border-bottom: none;
+    .descs:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 10%;
+        bottom: 10%;
+        width: 1px;
+        background: #999;
     }
 
     /* ===== QUANTITY ===== */
-
     .quantity {
         display: flex;
         justify-content: space-between;
-        align-items: center;
         margin: 10px 0;
     }
 
-    .controls {
-        display: flex;
-        gap: 8px;
-    }
-
     .controls button {
-        width: 28px;
-        height: 28px;
-    }
-
-    .controls span {
-        font-size: 14px;
+        width: 30px;
+        height: 30px;
     }
 
     /* ===== BUTTONS ===== */
-
     .buttons {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        margin-top: 10px;
     }
 
     .buttons button {
@@ -536,8 +502,7 @@
         font-size: 15px;
     }
 
-    /* ===== SPECS (TABLE FIX — NO OVERLAP) ===== */
-
+    /* ===== 🔥 SPECS FIX (ONLY CHANGE) ===== */
     .specs {
         width: 100%;
         margin: 10px 0;
@@ -560,16 +525,14 @@
         border-radius: 6px;
         border: 1px solid #eee;
         background: #fafafa;
-
-        gap: 5px;
     }
 
     .key {
         font-size: 11px;
         font-weight: 600;
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
     }
 
     .value {
@@ -578,17 +541,11 @@
         word-break: break-word;
     }
 
-    /* ===== RELATED PRODUCTS ===== */
-
+    /* ===== RELATED ===== */
     .repr {
         display: flex;
         gap: 10px;
         overflow-x: auto;
-        padding-bottom: 5px;
-    }
-
-    .repr::-webkit-scrollbar {
-        display: none;
     }
 
     .reprs {
@@ -597,28 +554,17 @@
 
     .reprs img {
         width: 100%;
-        height: 100px;
-        object-fit: cover;
+        height: 110px;
     }
 
-    .rname {
-        font-size: 13px;
-    }
+    .rname { font-size: 13px; }
+    .rtype { font-size: 12px; }
+    .rprice { font-size: 13px; }
 
-    .rtype {
-        font-size: 11px;
-    }
-
-    .rprice {
-        font-size: 12px;
-    }
-
-    /* ===== GLOBAL FIX (IMPORTANT) ===== */
-
+    /* ===== NO SIDE SCROLL ===== */
     body {
         overflow-x: hidden;
     }
-
 }
 
 /* ================= TABLET VIEW ================= */
