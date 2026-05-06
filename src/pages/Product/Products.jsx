@@ -93,11 +93,11 @@ export default function Products() {
 
   // ================= PAGINATION =================
   const nextPage = () => {
-    if (page * limit < total) setPage(prev => prev + 1);
+    if (page * limit < total) setPage((prev) => prev + 1);
   };
 
   const prevPage = () => {
-    setPage(prev => Math.max(prev - 1, 1));
+    setPage((prev) => Math.max(prev - 1, 1));
   };
 
   const start = total === 0 ? 0 : (page - 1) * limit + 1;
@@ -124,14 +124,16 @@ export default function Products() {
 
           <div className={styles.top}>
             <p>
-              <FaBars className={styles.filter} /> Filter
+              <FaBars /> Filter
             </p>
 
-            <button onClick={() => {
-              setCategory("all");
-              setValue([0, 10000]);
-              setPage(1);
-            }}>
+            <button
+              onClick={() => {
+                setCategory("all");
+                setValue([0, 10000]);
+                setPage(1);
+              }}
+            >
               Clear All
             </button>
           </div>
@@ -156,13 +158,12 @@ export default function Products() {
               <label>All Categories</label>
             </div>
 
-            {/* DYNAMIC CATEGORIES */}
+            {/* DYNAMIC */}
             {categories.map((c) => {
               const catName = c.name || c.category || "Unknown";
 
               return (
                 <div className={styles.catItem} key={c._id}>
-
                   <input
                     type="radio"
                     name="cat"
@@ -172,13 +173,10 @@ export default function Products() {
                       setPage(1);
                     }}
                   />
-
                   <label>{catName}</label>
-
                 </div>
               );
             })}
-
           </div>
 
           <hr />
@@ -203,19 +201,27 @@ export default function Products() {
             <div className={styles.rangeBox}>
               <div>
                 <label>Min</label>
-                <input type="number" value={value[0]} onChange={handleMin} />
+                <input
+                  type="number"
+                  value={value[0]}
+                  onChange={handleMin}
+                />
               </div>
 
               <div>
                 <label>Max</label>
-                <input type="number" value={value[1]} onChange={handleMax} />
+                <input
+                  type="number"
+                  value={value[1]}
+                  onChange={handleMax}
+                />
               </div>
             </div>
           </div>
 
         </div>
 
-        {/* ================= PRODUCTS ================= */}
+        {/* ================= RIGHT ================= */}
         <div className={styles.right}>
 
           <h2>All Products</h2>
@@ -231,11 +237,10 @@ export default function Products() {
 
               {products.map((p) => (
                 <div
-                  className={styles.rcts}
                   key={p._id}
+                  className={styles.rcts}
                   onClick={() => openProduct(p._id)}
                 >
-
                   <img src={p.images?.[0]?.url} alt={p.name} />
 
                   <p className={styles.rchead}>{p.name}</p>
@@ -247,7 +252,6 @@ export default function Products() {
                   <button className={styles.rccart}>
                     Add to Cart
                   </button>
-
                 </div>
               ))}
 
@@ -275,6 +279,7 @@ export default function Products() {
             </div>
 
           </div>
+
         </div>
 
       </div>
