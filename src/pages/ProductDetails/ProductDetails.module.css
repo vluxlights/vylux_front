@@ -385,184 +385,140 @@
 /* ================= CLEAN MOBILE DESIGN ================= */
 /* ================= MOBILE - KEEP DESKTOP LOOK ================= */
 /* ================= UNIVERSAL MOBILE (ANDROID + IPHONE) ================= */
+/* ================= MOBILE VIEW (FINAL CLEAN) ================= */
 @media (max-width: 768px) {
 
-    /* main layout → stack */
-    .productview {
-        flex-direction: column;
-        width: 100%;
-        margin: 0;
-        padding: 10px;
-        gap: 10px;
-    }
+  /* ===== MAIN LAYOUT ===== */
+  .productview {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    gap: 10px;
+  }
 
-    /* remove fixed widths */
-    .left, .center, .right {
-        width: 100%;
-        margin: 0;
-        padding: 10px;
-        border-radius: 8px;
-    }
+  .left,
+  .center,
+  .right {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    border-radius: 8px;
+  }
 
-    /* ===== IMAGE SECTION ===== */
+  /* ===== IMAGE SECTION ===== */
 
-    /* main image on top */
-    .center img {
-        width: 100%;
-        height: auto;
-        max-height: 300px;
-        object-fit: contain;
-    }
+  /* MAIN IMAGE */
+  .center img {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: contain;
+  }
 
-    /* thumbnails below */
-    .left {
-        display: flex;
-        gap: 10px;
-        overflow-x: auto;
-    }
+  /* THUMBNAILS */
+  .left {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
 
-    .left img {
-        width: 80px;
-        height: 70px;
-        flex-shrink: 0;
-    }
+  .left img {
+    width: 75px;
+    height: 65px;
+    flex-shrink: 0;
+  }
 
-    /* ===== TEXT ===== */
+  /* ===== TEXT ===== */
 
-    .right h2 {
-        font-size: 20px;
-        margin: 5px 0;
-    }
+  .right h2 {
+    font-size: 20px;
+    margin: 5px 0;
+  }
 
-    .type {
-        font-size: 14px;
-        margin-left: 0;
-    }
+  .type {
+    font-size: 13px;
+    margin-left: 0;
+  }
 
-    /* ===== PRICE ===== */
+  /* ===== PRICE ===== */
 
-    .pricelist {
-        margin: 10px 0;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
+  .pricelist {
+    margin: 10px 0;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
 
-    .price {
-        font-size: 20px;
-    }
+  .price {
+    font-size: 20px;
+  }
 
-    .orprice {
-        font-size: 14px;
-    }
+  .orprice {
+    font-size: 14px;
+  }
 
-    .discount {
-        font-size: 12px;
-        padding: 4px 6px;
-    }
+  .discount {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
 
-    /* ===== DESCRIPTION ===== */
+  /* ===== DESCRIPTION ===== */
 
-    .desc {
-        flex-direction: column;
-        margin: 10px 0;
-        padding: 8px;
-    }
+  .desc {
+    flex-direction: column;
+    margin: 10px 0;
+    padding: 8px;
+  }
 
-    .descs {
-        width: 100%;
-        padding: 6px 0;
-        border-bottom: 1px solid #ddd;
-    }
+  .descs {
+    width: 100%;
+    padding: 6px 0;
+    border-bottom: 1px solid #ddd;
+  }
 
-    .descs:last-child {
-        border-bottom: none;
-    }
+  .descs:last-child {
+    border-bottom: none;
+  }
 
-    .desc p {
-        font-size: 13px;
-    }
+  .desc p {
+    font-size: 13px;
+  }
 
-    /* ===== QUANTITY ===== */
+  /* ===== QUANTITY ===== */
 
-    .quantity {
-        display: flex;
-        justify-content: space-between;
-        margin: 10px 0;
-    }
+  .quantity {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
 
-    .controls button {
-        width: 30px;
-        height: 30px;
-    }
+  .controls button {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
 
-    /* ===== BUTTONS ===== */
+  .controls span {
+    font-size: 16px;
+  }
 
-    .buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin: 10px 0;
-    }
+  /* ===== BUTTONS ===== */
 
-    .buttons button {
-        width: 100%;
-        height: 45px;
-        font-size: 16px;
-    }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0;
+  }
 
-    /* ===== SPECS ===== */
+  .buttons button {
+    width: 100%;
+    height: 45px;
+    font-size: 15px;
+  }
 
-    .specs {
-        width: 100%;
-        margin: 10px 0;
-        font-size: 13px;
-    }
-
-    .row {
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .value {
-        text-align: left;
-    }
-
-    /* ===== RELATED PRODUCTS ===== */
-
-    .repr {
-        display: flex;
-        gap: 10px;
-        overflow-x: auto;
-    }
-
-    .reprs {
-        min-width: 150px;
-    }
-
-    .reprs img {
-        width: 100%;
-        height: 110px;
-    }
-
-    .rname {
-        font-size: 14px;
-    }
-
-    .rtype {
-        font-size: 12px;
-    }
-
-    .rprice {
-        font-size: 13px;
-    }
-
-    /* prevent sideways scroll */
-    body {
-        overflow-x: hidden;
-    }
-}
-
-/@media (max-width: 768px) {
+  /* ===== SPECS (🔥 KEEP TABLE STYLE) ===== */
 
   .specs {
     width: 100%;
@@ -570,7 +526,6 @@
     font-size: 12px;
   }
 
-  /* KEEP 2-COLUMN TABLE */
   .spectable {
     display: flex;
     flex-wrap: wrap;
@@ -578,13 +533,18 @@
   }
 
   .row {
-    width: calc(50% - 8px);   /* ✅ 2 columns even in mobile */
+    width: calc(50% - 8px);   /* ✅ 2 columns */
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     padding: 8px;
     border-radius: 6px;
+    background: #f9f9f9;
+  }
+
+  .row:nth-child(even) {
+    background: #ffffff;
   }
 
   .key {
@@ -595,4 +555,89 @@
     font-size: 12px;
     text-align: right;
   }
+
+  /* ===== RELATED PRODUCTS ===== */
+
+  .relatedp {
+    margin: 10px;
+  }
+
+  .repr {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+  }
+
+  .reprs {
+    min-width: 150px;
+  }
+
+  .reprs img {
+    width: 100%;
+    height: 110px;
+  }
+
+  .rname {
+    font-size: 14px;
+  }
+
+  .rtype {
+    font-size: 12px;
+  }
+
+  .rprice {
+    font-size: 13px;
+  }
+
+  /* ===== GLOBAL FIX ===== */
+
+  body {
+    overflow-x: hidden; /* prevent sideways scroll */
+  }
+}
+
+/* ================= TABLET VIEW ================= */
+/* Medium devices like tablets */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    /* Allow wrapping instead of forcing one row */
+    .productview {
+        flex-wrap: wrap;
+    }
+
+    /* Adjust widths to fit better */
+    .left {
+        width: 20%;
+    }
+
+    .center {
+        width: 35%;
+    }
+
+    /* Make image flexible */
+    .center img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Move right section below */
+    .right {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    /* Specs wider */
+    .specs {
+        width: 90%;
+    }
+
+    /* Related products wrap into grid */
+    .repr {
+        flex-wrap: wrap;
+    }
+
+    .reprs {
+        width: 45%;   /* 2 per row */
+    }
 }
