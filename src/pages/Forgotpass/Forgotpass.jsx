@@ -9,6 +9,7 @@ export default function Forgotpass() {
   const navigate = useNavigate();
 
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -25,7 +26,9 @@ export default function Forgotpass() {
     }));
   };
 
-  // STEP 1 - SEND OTP
+  /* =========================
+     STEP 1 - SEND OTP
+  ========================= */
   const handleSendOtp = async (e) => {
     e.preventDefault();
 
@@ -35,18 +38,24 @@ export default function Forgotpass() {
     }
 
     try {
+      setLoading(true);
+
       await API.post("/forgot-password", {
         email: formData.email,
       });
 
-      alert("OTP sent to your email");
+      alert("✅ OTP sent to your email");
       setStep(2);
     } catch (err) {
       alert(err?.response?.data?.message || "Error sending OTP");
+    } finally {
+      setLoading(false);
     }
   };
 
-  // STEP 2 - RESET PASSWORD
+  /* =========================
+     STEP 2 - RESET PASSWORD
+  ========================= */
   const handleResetPassword = async (e) => {
     e.preventDefault();
 
@@ -57,23 +66,32 @@ export default function Forgotpass() {
       return;
     }
 
+    if (newPassword.length < 6) {
+      alert("Password must be at least 6 characters");
+      return;
+    }
+
     try {
+      setLoading(true);
+
       await API.post("/reset-password", {
         email,
         otp,
         newPassword,
       });
 
-      alert("Password reset successful!");
+      alert("✅ Password reset successful!");
       navigate("/login");
     } catch (err) {
       alert(err?.response?.data?.message || "Reset failed");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className={Styles.container}>
-
+      
       {/* HEADER */}
       <div className={Styles.header}>
         <img src={LOGO} alt="logo" />
@@ -81,7 +99,7 @@ export default function Forgotpass() {
 
       {/* MAIN */}
       <div className={Styles.main}>
-
+        
         {/* LEFT IMAGE */}
         <div className={Styles.left}>
           <img src={LoginImg} alt="forgot" />
@@ -105,7 +123,9 @@ export default function Forgotpass() {
                   placeholder="Enter your email"
                 />
 
-                <button type="submit">Send OTP</button>
+                <button type="submit" disabled={loading}>
+                  {loading ? "Sending..." : "Send OTP"}
+                </button>
               </form>
             </>
           ) : (
@@ -138,7 +158,9 @@ export default function Forgotpass() {
                   </span>
                 </div>
 
-                <button type="submit">Reset Password</button>
+                <button type="submit" disabled={loading}>
+                  {loading ? "Resetting..." : "Reset Password"}
+                </button>
               </form>
             </>
           )}
