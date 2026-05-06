@@ -106,10 +106,14 @@ export default function Home() {
               </div>
             ))}
 
-            <div className={styles.catitem}>
-              <BsThreeDots className={styles.more} />
-              <p>More</p>
-            </div>
+            <div
+  className={styles.catitem}
+  onClick={() => navigate("/products")}
+  style={{ cursor: "pointer" }}
+>
+  <BsThreeDots className={styles.more} />
+  <p>More</p>
+</div>
 
           </div>
         </div>
