@@ -7,17 +7,15 @@
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* -------- MAIN CONTAINER -------- */
 .cont {
- 
   padding-left: 30px;
   padding-right: 30px;
-  
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 80px;
   cursor: pointer;
- 
   background-color: #eadef5;
 }
 
@@ -25,145 +23,89 @@
 .logo img {
   width: 110px;
   height: 60px;
-  position: relative;
 }
 
-.logo p {
-  position: relative;
-  font-size: 15px;
-  bottom: 12px;
-  left: 19px;
-  text-transform: uppercase;
-  color: #c9a227; /* GOLD */
+/* -------- NAV ROW (NEW) -------- */
+.navRow {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 /* -------- nav ----------- */
-.nav ul {
+.navList {
   display: flex;
   gap: 60px;
 }
 
-.nav li {
+.navList li {
   list-style: none;
   position: relative;
 }
 
-.nav a {
+.navList a {
   text-decoration: none;
-  color: #082902; /* DARK BLACK */
+  color: #082902;
   font-size: 18px;
   position: relative;
   padding-bottom: 5px;
 }
 
 /* underline animation */
-.nav a::after {
+.navList a::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: -10px;
   width: 0%;
   height: 2px;
-  background-color: #1f0a41; 
+  background-color: #1f0a41;
   transition: 0.3s ease-in-out;
-  transform: scale(1.15); 
+  transform: scale(1.15);
 }
 
-.nav li:hover{
-
+.navList li:hover {
   border: 1px solid black;
   padding: 5px;
   border-radius: 5px;
   background-color: #0ed41e;
-  color: #f8f7f4;
 }
 
-.nav a:hover::after {
+.navList a:hover::after {
   width: 100%;
-  transform: scale(1.15);
-  border: 1px solid rgb(247, 237, 237); 
 }
 
-/* -------- right section -------- */
-.right {
-  margin-right: 100px;
+/* -------- ICONS (NEW) -------- */
+.icons {
   display: flex;
   align-items: center;
-}
-
-/* input box */
-.right input {
-  width: 200px;
-  height: 30px;
-  border-radius: 6px;
-  border: 1px solid #d6c9a8; /* warm light border */
-  padding-left: 12px;
-  outline: none;
-  font-size: 13px;
-  background-color: #fffdf7; /* soft warm white */
-  color: #111111;
-}
-
-/* focus effect */
-.right input:focus {
-  border: 1px solid #c9a227; /* GOLD */
-  box-shadow: 0 0 4px rgba(201, 162, 39, 0.3);
-}
-
-/* placeholder */
-.right input::placeholder {
-  font-size: 12px;
-  color: #8a8a8a;
-}
-
-/* search icon */
-.search {
-  margin-left: 5px;
-  font-size: 28px;
-  border: 1px solid #c9a227; /* GOLD */
-  border-radius: 5px;
-  padding: 4px;
-  position: relative;
-  background-color: #fff2c2; /* soft gold glow */
-  transition: 0.3s;
-  color: #111111;
-}
-
-.search:hover {
-  background-color: #c9a227; /* GOLD */
-  color: #ffffff;
+  gap: 30px;
 }
 
 /* cart icon */
 .cart {
-  margin-left: 40px;
   font-size: 20px;
-  position: relative;
-  color: #5a2d0c; /* warm brown */
+  color: #5a2d0c;
 }
 
-.cart:hover{
-
+.cart:hover {
   color: #47b91a;
-  transform: scale(1.15); 
+  transform: scale(1.15);
 }
 
 /* profile icon */
 .profile {
-  margin-left: 40px;
   font-size: 20px;
-  position: relative;
-  color: #5a2d0c; /* warm brown */
+  color: #5a2d0c;
 }
 
-.profile:hover{
-
+.profile:hover {
   color: #47b91a;
-  transform: scale(1.15); 
+  transform: scale(1.15);
 }
 
 /* =========================
-   TABLET (768px - 1024px)
+   TABLET (UNCHANGED STYLE)
 ========================= */
 @media (max-width: 1024px) {
 
@@ -180,99 +122,56 @@
     margin-bottom: 10px;
   }
 
-  .nav {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .nav ul {
-    justify-content: space-evenly;
-    width: 100%;
-  }
-
-  .right {
+  .navRow {
     width: 100%;
     justify-content: center;
-    margin-right: 0;
   }
 }
 
 /* =========================
-   MOBILE (REAL CLEAN APP HEADER)
+   MOBILE FIX (YOUR REQUIREMENT)
 ========================= */
 @media (max-width: 768px) {
 
   .cont {
     flex-direction: column;
-    height: auto;
-    padding: 10px 0;
+    align-items: center;
+    padding: 8px 10px;
+    gap: 6px;
   }
 
-  /* ===== SMALL LOGO TOP ===== */
-  .logo {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 8px;
-  }
-
+  /* LOGO TOP */
   .logo img {
-    width: 70px;   /* smaller logo */
+    width: 65px;
     height: auto;
   }
 
-  .logo p {
-    font-size: 12px;
-    bottom: 5px;
-    left: 0;
-  }
-
-  /* ===== NAV BELOW LOGO (HORIZONTAL EVEN SPACING) ===== */
-  .nav {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .nav ul {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    gap: 0;
-  }
-
-  .nav a {
-    font-size: 12px;
-  }
-
-  /* ===== SEARCH BAR ===== */
-  .right {
+  /* NAV + ICONS SAME LINE */
+  .navRow {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+  }
+
+  /* NAV TEXT SMALL */
+  .navList {
+    display: flex;
     gap: 10px;
-    margin-right: 0;
   }
 
-  .right input {
-    width: 90%;
-    max-width: 300px;
-    height: 28px;
+  .navList a {
+    font-size: 11px;
   }
 
-  /* ===== ICON ROW (SEARCH + CART + PROFILE) ===== */
-  .iconRow {
+  /* ICONS RIGHT SIDE */
+  .icons {
     display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    align-items: center;
+    gap: 12px;
   }
 
-  .search,
   .cart,
   .profile {
-    margin-left: 0;
     font-size: 18px;
   }
 }
