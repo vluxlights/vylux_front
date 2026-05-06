@@ -562,48 +562,37 @@
     }
 }
 
-/* ================= TABLET VIEW ================= */
-/* Medium devices like tablets */
+/@media (max-width: 768px) {
 
-@media (min-width: 769px) and (max-width: 1024px) {
+  .specs {
+    width: 100%;
+    margin: 10px 0;
+    font-size: 12px;
+  }
 
-    /* Allow wrapping instead of forcing one row */
-    .productview {
-        flex-wrap: wrap;
-    }
+  /* KEEP 2-COLUMN TABLE */
+  .spectable {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
 
-    /* Adjust widths to fit better */
-    .left {
-        width: 20%;
-    }
+  .row {
+    width: calc(50% - 8px);   /* ✅ 2 columns even in mobile */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    .center {
-        width: 35%;
-    }
+    padding: 8px;
+    border-radius: 6px;
+  }
 
-    /* Make image flexible */
-    .center img {
-        width: 100%;
-        height: auto;
-    }
+  .key {
+    font-size: 12px;
+  }
 
-    /* Move right section below */
-    .right {
-        width: 100%;
-        margin-top: 15px;
-    }
-
-    /* Specs wider */
-    .specs {
-        width: 90%;
-    }
-
-    /* Related products wrap into grid */
-    .repr {
-        flex-wrap: wrap;
-    }
-
-    .reprs {
-        width: 45%;   /* 2 per row */
-    }
+  .value {
+    font-size: 12px;
+    text-align: right;
+  }
 }
