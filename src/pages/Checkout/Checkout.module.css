@@ -1,0 +1,301 @@
+
+/* ================= MAIN LAYOUT ================= */
+.main {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 10px;
+}
+
+/* ================= LEFT SIDE ================= */
+.left {
+    margin-left: 20px;
+    padding: 20px;
+    width: 700px;
+}
+
+.lmain {
+    border: 1px solid rgb(221, 207, 207);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    width: 700px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.lhead {
+    color: rgb(12, 2, 20);
+    font-size: 25px;
+    text-transform: capitalize;
+}
+
+.lsub {
+    margin-top: 5px;
+    font-size: 13px;
+    margin-left: 5px;
+    color: rgb(83, 85, 85);
+}
+
+.loc {
+    font-size: 20px;
+    color: rgb(5, 5, 51);
+    padding-right: 5px;
+}
+
+.lmain p {
+    font-size: 20px;
+}
+
+/* ================= FORM SECTIONS ================= */
+.basic,
+.location,
+.landmark {
+    margin-top: 25px;
+    display: flex;
+    gap: 90px;
+}
+
+.name input,
+.phone input {
+    width: 250px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid wheat;
+    padding-left: 10px;
+}
+
+.name input::placeholder,
+.phone input::placeholder {
+    padding-left: 10px;
+}
+
+.name label {
+    color: rgb(5, 5, 32);
+    padding-bottom: 10px;
+}
+
+/* ================= ADDRESS ================= */
+.address {
+    margin-top: 20px;
+}
+
+.address textarea {
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+/* ================= RIGHT SIDE ================= */
+.right {
+    border: 1px solid rgb(212, 195, 195);
+    padding: 15px;
+    margin-top: 90px;
+    width: 400px;
+    
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ================= ORDER ITEMS ================= */
+.placepro {
+    border: 1px solid rgb(233, 224, 224);
+    border-radius: 5px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+}
+
+.pros {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+/* IMAGE */
+.pros img {
+    width: 60px;
+    height: 50px;
+    object-fit: cover;
+}
+
+/* CENTER TEXT */
+.proscen {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    left: 0;
+}
+
+/* PRODUCT NAME */
+.proshead {
+    font-weight: 900;
+    text-align: start;
+    color: rgb(1, 1, 10);
+}
+
+/* QUANTITY */
+.proquant {
+    font-weight: 200;
+    padding-top: 10px;
+    color: rgb(2, 2, 24);
+    font-size: 13px;
+}
+
+/* PRICE */
+.prosprice {
+    font-weight: 900;
+}
+
+/* ================= RIGHT SUMMARY ================= */
+.rhead {
+    font-size: 20px;
+    color: rgb(1, 1, 15);
+    padding-bottom: 20px;
+}
+
+.rmain {
+    margin-top: 30px;
+}
+
+.rsub {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.value {
+    font-weight: 600;
+}
+
+.subtotal {
+    font-weight: 900;
+}
+
+/* ================= BUTTON ================= */
+.checkout {
+    margin-top: 30px;
+}
+
+/* ================= REMOVE ITEM SECTION ================= */
+.llast {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 80px;
+}
+
+.cancel {
+    font-size: 13px;
+    font-weight: 700;
+    border: 1px solid rgb(224, 212, 212);
+    border-radius: 5px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.09);
+    text-align: center;
+    color: rgb(71, 2, 2);
+    cursor: pointer;
+    padding: 2px 5px;
+    margin-bottom: 40px;
+    margin-left: 30px;
+}
+
+.fprice {
+    font-weight: 900;
+    font-size: 20px;
+    color: rgb(2, 5, 39);
+    margin: 0;
+}
+
+
+/* ================= MOBILE VIEW (CHECKOUT PAGE ONLY) ================= */
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* MAIN LAYOUT STACK */
+    .main {
+        flex-direction: column;
+        gap: 20px;
+        margin: 10px;
+    }
+
+    /* LEFT SIDE FULL WIDTH */
+    .left {
+        width: 100%;
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .lmain {
+        width: 100%;
+        padding: 12px;
+    }
+
+    /* FORM STACK (IMPORTANT) */
+    .basic,
+    .location,
+    .landmark {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .name input,
+    .phone input {
+        width: 100%;
+    }
+
+    /* TEXTAREA FIX */
+    .address textarea {
+        width: 100%;
+        resize: none;
+    }
+
+    /* RIGHT SIDE FULL WIDTH */
+    .right {
+        width: 100%;
+        margin-top: 0;
+        height: auto;
+    }
+
+    /* ORDER ITEM FIX */
+    .pros {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .pros img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .proscen {
+        flex: 1;
+    }
+
+    .proshead {
+        font-size: 14px;
+    }
+
+    .proquant {
+        font-size: 12px;
+    }
+
+    .prosprice {
+        font-size: 14px;
+    }
+
+    /* SUMMARY FIX */
+    .rsub {
+        gap: 20px;
+    }
+
+    .checkout {
+        width: 100%;
+        height: 45px;
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,272 @@
+/* ================= MAIN LAYOUT ================= */
+.container {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+/* RIGHT PANEL */
+.right {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  height: 100vh;
+  box-sizing: border-box;
+  margin-top: 130px;
+  margin-left: 290px;
+  margin-right: 20px;
+}
+
+.mbtn{
+
+  width: 200px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  
+}
+
+/* ================= TITLE ================= */
+.title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* ================= FILTER ================= */
+.filterBox {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.filterBox button {
+  padding: 6px 12px;
+  border: none;
+  background: #2196f3;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ================= CARDS ================= */
+.cardRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.card {
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  text-align: center;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.36);
+  transition: 0.2s ease;
+}
+
+/* ================= CHARTS ================= */
+.chartRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.chartBox {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.36);
+  transition: 0.2s ease;
+
+  /* IMPORTANT FIX */
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Recharts fix */
+.chartBox .recharts-wrapper {
+  flex: 1;
+}
+
+/* ================= TABLES ================= */
+.tableRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+  
+}
+
+.tableBox {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.36);
+  transition: 0.2s ease;
+}
+
+/* TABLE SCROLL FIX */
+.tableScroll {
+  max-height: 320px;
+  overflow: auto;
+}
+
+/* TABLE STYLE */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* LEFT ALIGN FIRST COLUMN */
+.table th:first-child,
+.table td:first-child {
+  text-align: left;
+}
+@media (max-width: 1024px) {
+
+  .cardRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  
+.mbtn{
+
+  width: 200px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  
+}
+
+  .chartRow {
+    grid-template-columns: 1fr;
+  }
+
+  .tableRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= MOBILE FIX (IMPORTANT) ================= */
+@media (max-width: 768px) {
+
+  .container {
+    flex-direction: column;
+  }
+  
+.mbtn{
+
+  width: 200px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  
+}
+
+  .right {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 80px; /* adjust header space */
+    height: auto;
+    padding: 10px;
+  }
+
+  /* FILTER */
+  .filterBox {
+    flex-direction: column;
+  }
+
+  .filterBox button {
+    width: 100%;
+  }
+
+  /* CARDS */
+  .cardRow {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* CHARTS */
+  .chartRow {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .chartBox {
+    height: 260px;
+    padding: 10px;
+  }
+
+  /* TABLES */
+  .tableRow {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .tableBox {
+    overflow-x: auto;
+    padding: 10px;
+  }
+
+  .tableScroll {
+    max-height: 300px;
+    overflow-x: auto;
+  }
+
+  .table {
+    min-width: 100%;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+/* ================= SMALL MOBILE FIX ================= */
+@media (max-width: 480px) {
+
+  
+.mbtn{
+
+  width: 200px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  
+}
+
+  .right {
+    margin-top: 70px;
+    padding: 8px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .chartBox {
+    height: 230px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+    padding: 6px;
+  }
+}

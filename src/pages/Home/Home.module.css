@@ -1,0 +1,339 @@
+/* =====================================================
+   🌍 GLOBAL RESET
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* =====================================================
+   🖼️ BANNER
+===================================================== */
+.banner img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.shopbycat{
+
+  padding-top: 30px;
+}
+
+/* =====================================================
+   ✅ ASSURANCE SECTION
+===================================================== */
+.assu {
+  width: 75%;
+  margin: 20px auto;
+
+  display: flex;
+  flex-wrap: wrap; /* allows wrapping */
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
+
+  padding: 15px;
+  border-radius: 10px;
+  background: #f8f7f4;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+
+  position: relative;
+  top: -40px;
+}
+
+.assurance {
+  flex: 1 1 120px; /* flexible width */
+  text-align: center;
+}
+
+.assurance p{
+
+  padding-top: 10px;
+  font-size: 15px;
+  color: #333
+}
+
+.logo {
+  
+  font-size: 22px;
+  color: #2e7d32;
+}
+
+.divider {
+  width: 1px;
+  height: 40px;
+  background: #d6c9a8;
+}
+
+/* =====================================================
+   🛍️ CATEGORY SECTION
+===================================================== */
+.category p {
+  text-align: center;
+  font-size: 20px;
+  color: #17ad17;
+}
+
+/* container */
+.cats {
+  display: flex;
+  flex-wrap: wrap; /* KEY FIX */
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* card */
+.catitem {
+  width: 160px;
+  padding: 10px;
+  text-align: center;
+
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  transition: 0.3s;
+}
+
+.catText {
+  margin-top: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.line {
+  width: 90%;
+  height: 1px;
+  background: #ddd;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.catitem:hover {
+  transform: scale(1.05);
+}
+
+.catitem img {
+  width: 100%;
+  height: 130px;
+  object-fit: contain;
+}
+
+.catitem p {
+  color: brown;
+  font-size: 14px;
+}
+
+/* center line */
+.hr {
+  width: 20%;
+  margin: 10px auto;
+}
+
+/* =====================================================
+   🆕 NEW ARRIVALS
+===================================================== */
+.new p {
+  text-align: center;
+  font-size: 20px;
+  color: #17ad17;
+  margin-top: 30px;
+}
+
+.news {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* product card */
+.newitem {
+  width: 200px;
+  padding: 10px;
+
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.newitem:hover {
+  transform: scale(1.05);
+}
+
+.newitem img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+}
+
+.newitemcont p {
+  font-size: 12px;
+  margin: 3px 0;
+  color: #333;
+  text-align: left;
+}
+
+.head {
+  font-weight: bold;
+}
+
+.price {
+  margin-top: 5px;
+}
+
+/* button */
+button {
+  width: 100%;
+  height: 35px;
+  margin-top: 10px;
+
+  background: #1d7522;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+button:hover {
+  background: #333;
+}
+
+/* ================= TABLET VIEW ================= */
+@media (min-width: 601px) and (max-width: 1024px) {
+
+  /* banner */
+  .banner img {
+    height: 240px;
+  }
+
+  /* assurance */
+  .assu {
+    width: 90%;
+    padding: 12px;
+  }
+
+  .assurance p {
+    font-size: 13px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  /* category + products grid */
+  .catitem,
+  .newitem {
+    width: 30%;
+  }
+
+  .catitem img {
+    height: 110px;
+  }
+
+  .newitem img {
+    height: 120px;
+  }
+
+  /* text */
+  .category p,
+  .new p {
+    font-size: 18px;
+  }
+
+  button {
+    height: 32px;
+    font-size: 13px;
+  }
+}
+
+
+
+/* ================= MOBILE SHRINK MODE ================= */
+@media (max-width: 600px) {
+
+  /* reduce overall spacing */
+  .cats,
+  .news {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  /* ================= TEXT SMALL ================= */
+  .category p,
+  .new p {
+    font-size: 14px;
+  }
+
+  .assurance p {
+    font-size: 11px;
+  }
+
+  .catText {
+    font-size: 12px;
+  }
+
+  .catitem p {
+    font-size: 11px;
+  }
+
+  .newitemcont p {
+    font-size: 10px;
+  }
+
+  /* ================= IMAGES SMALL ================= */
+  .banner img {
+    height: 160px; /* shrink banner */
+  }
+
+  .catitem img {
+    height: 90px;
+  }
+
+  .newitem img {
+    height: 100px;
+  }
+
+  /* ================= CARDS SAME DESIGN BUT SMALL ================= */
+  .catitem {
+    width: 140px;
+    padding: 8px;
+  }
+
+  .newitem {
+    width: 150px;
+    padding: 8px;
+  }
+
+  /* ================= BUTTON SMALL ================= */
+  button {
+    height: 28px;
+    font-size: 11px;
+    padding: 5px;
+  }
+
+  /* ================= ASSURANCE SECTION ================= */
+  .assu {
+    width: 95%;
+    padding: 10px;
+    top: -20px;
+  }
+
+  .logo {
+    font-size: 14px;
+  }
+
+  .divider {
+    display: none;
+  }
+}

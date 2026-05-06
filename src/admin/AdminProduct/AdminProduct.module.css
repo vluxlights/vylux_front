@@ -1,0 +1,341 @@
+.cont {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+}
+
+.right {
+  flex: 1;
+  padding: 20px;
+  margin-left: 270px;
+  margin-top: 90px;
+}
+
+.rhead {
+  font-size: 25px;
+  color: rgb(4, 4, 36);
+}
+
+.rsub {
+  font-size: 13px;
+  color: rgb(12, 90, 94);
+  margin-bottom: 15px;
+}
+
+/* ================= BOX ================= */
+
+.basicinfo {
+  background: #fff;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: rgb(9, 9, 56);
+}
+
+.formGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.bsinfos {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.bsinfos label {
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.bsinfos input,
+.bsinfos select {
+  height: 35px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  background: #fff;
+  outline: none;
+}
+
+/* ================= IMAGE UPLOAD ================= */
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* BIG IMAGE */
+.imageBox {
+  width: 420px;
+  height: 220px;
+  border: 2px dashed #aaa;
+  border-radius: 10px;
+  background: #fafafa;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.imageInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageInner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* SMALL IMAGES */
+.smallImages {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.smallBox {
+  width: 200px;
+  height: 120px;
+  border: 2px dashed #aaa;
+  border-radius: 10px;
+  background: #fafafa;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.smallInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smallInner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================= DELETE BUTTON ================= */
+
+.deleteBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 0, 0, 0.9);
+  color: white;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* ================= BUTTONS ================= */
+
+.btnRow {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.addBtn {
+  background: green;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  background: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ================= CATEGORY DROPDOWN ================= */
+
+.categoryBox {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.categoryBox label {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #444;
+}
+
+.categoryBox select {
+  height: 35px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.categoryBox select:focus {
+  border-color: #0c5a5e;
+  box-shadow: 0 0 3px rgba(12, 90, 94, 0.3);
+}
+
+/* ================= TABLET VIEW ================= */
+
+@media (max-width: 768px) {
+
+  .main {
+    flex-direction: column;
+  }
+
+  .right {
+    margin-left: 0;
+    margin-top: 70px;
+    padding: 15px;
+    width: 100%;
+  }
+
+  .rhead {
+    font-size: 20px;
+  }
+
+  .rsub {
+    font-size: 12px;
+  }
+
+  .formGrid {
+    gap: 15px;
+  }
+
+  .bsinfos {
+    width: 100%;
+  }
+
+  .imageBox {
+    width: 100%;
+    height: 180px;
+  }
+
+  .smallImages {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .smallBox {
+    width: 48%;
+    height: 100px;
+  }
+
+  .btnRow {
+    flex-wrap: wrap;
+  }
+}
+
+/* ================= MOBILE VIEW ================= */
+
+@media (max-width: 480px) {
+
+  .main {
+    flex-direction: column;
+  }
+
+  .right {
+    padding: 10px;
+    margin-top: 70px;
+  }
+
+  .basicinfo {
+    padding: 15px;
+  }
+
+  .rhead {
+    font-size: 18px;
+    margin-top: 30px;
+  }
+
+  .rsub {
+    font-size: 11px;
+  }
+
+  .h1 {
+    font-size: 16px;
+  }
+
+  .formGrid {
+    gap: 10px;
+  }
+
+  .bsinfos {
+    width: 100%;
+  }
+
+  .bsinfos input,
+  .bsinfos select {
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .imageBox {
+    width: 100%;
+    height: 150px;
+  }
+
+  .smallImages {
+    flex-direction: column;
+  }
+
+  .smallBox {
+    width: 100%;
+    height: 90px;
+  }
+
+  .btnRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .addBtn,
+  .cancelBtn {
+    width: 100%;
+    padding: 10px;
+  }
+}

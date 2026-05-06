@@ -1,0 +1,372 @@
+
+/* ================= MAIN ================= */
+.main {
+  display: flex;
+  margin-top: 30px;
+}
+
+/* ================= LEFT PANEL ================= */
+.left {
+  width: 260px;
+  margin-left: 30px;
+  height: 600px;
+ 
+
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 10px;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.29);
+}
+
+/* ================= FILTER TOP ================= */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #0d0d3a;
+  font-weight: 600;
+}
+
+.top p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.top button {
+  background: transparent;
+  border: none;
+  color: #0d0d3a;
+  cursor: pointer;
+}
+
+.top button:hover {
+  color: red;
+}
+
+/* ================= CATEGORY ================= */
+.cat {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.cathead {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #0d0d3a;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.catItem,
+.allcat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.all {
+  font-weight: bold;
+  text-transform: uppercase;
+
+
+}
+
+hr{
+
+    width: 100%;
+}
+
+/* ================= PRICE BOX UPGRADE ================= */
+.price {
+  width: 100%;
+  
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+}
+
+.price h2{
+
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+}
+
+/* values display */
+.values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d7522;
+  margin: 5px 0;
+}
+
+/* range slider */
+.range {
+  width: 100%;
+  accent-color: green;
+  margin: 4px 0;
+}
+
+/* min max box */
+.rangeBox {
+  display: flex;
+  gap: 40px;
+  margin-top: 10px;
+  justify-content: space-around;
+  align-items: center;
+  width: 70px;
+}
+
+
+.rangeBox div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.rangeBox label {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.rangeBox input {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.applybtn{
+
+    width: 200px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.apply:hover{
+
+    transform: scale(1.03);
+    background-color: #0d0d3a;
+    color: white;
+}
+
+/* ================= RIGHT ================= */
+.right {
+  flex: 1;
+  padding-top:5px;
+  padding-left: 20px;
+}
+
+.right h2{
+
+  color: #0d0d3a;
+  text-transform: uppercase;
+
+}
+
+.right .sub{
+
+  margin-top: 10px;
+  font-size: 15px;
+  color: rgb(16, 119, 122);
+
+}
+
+.rcont{
+
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  /* border: 1px solid black; */
+
+
+}
+
+.rconts{
+
+  /* border: 1px solid black; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.rcts{
+
+  border: 1px solid rgb(253, 244, 244);
+  border-radius: 10px;
+  width: 230px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+.rcts:hover{
+
+  transform: scale(1.02);
+}
+
+.rcts img{
+
+  width: 200px;
+  height: 170px;
+  object-fit:inherit;
+  padding-left: 19px;
+  padding-top: 5px;
+  
+  
+
+}
+
+.rchead{
+
+  margin-top: 10px;
+  margin-left: 16px;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.rcsub{
+
+  margin-top: 5px;
+  margin-left: 16px;
+  font-size: 13px;
+  
+}
+
+.rcwatt{
+
+  margin-top: 5px;
+  margin-left: 16px;
+  font-size: 13px;
+  
+}
+
+.rcprice{
+
+  margin-top: 10px;
+  margin-left: 16px;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.rccart{
+
+  margin-left: 16px;
+  width: 130px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  
+
+}
+
+/* ===== PAGINATION CONTAINER ===== */
+.pagination {
+  display: flex;
+  justify-content: center; /* CENTERED */
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+/* ===== SMALL ARROW BUTTON ===== */
+.pageBtn {
+  padding: 5px 10px;   /* smaller size */
+  border: none;
+  background-color: #255c10;
+  color: #f7efef;
+  font-size: 19px;    /* smaller arrow */
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.2s;
+  width: 70px;
+}
+
+/* HOVER */
+.pageBtn:hover {
+  background-color: #ddd;
+}
+
+/* DISABLED */
+.pageBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ================= MOBILE VIEW ================= */
+@media (max-width: 768px) {
+
+  /* MAIN LAYOUT STACK */
+  .main {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  /* LEFT PANEL FULL WIDTH */
+  .left {
+    width: 90%;
+    margin: 10px auto;
+    height: auto;
+  }
+
+  /* RIGHT PANEL FULL WIDTH */
+  .right {
+    padding: 10px;
+  }
+
+  /* PRODUCT GRID CENTER */
+  .rconts {
+    justify-content: center;
+  }
+
+  /* PRODUCT CARD SMALLER */
+  .rcts {
+    width: 45%;   /* 2 per row */
+  }
+
+  .rcts img {
+    width: 100%;
+    height: 140px;
+    padding: 5px;
+  }
+
+  /* TEXT SIZE REDUCE */
+  .rchead {
+    font-size: 15px;
+  }
+
+  .rcprice {
+    font-size: 15px;
+  }
+
+  /* BUTTON FULL WIDTH */
+  .rccart {
+    width: 90%;
+  }
+
+  /* PRICE FILTER STACK */
+  .rangeBox {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  /* APPLY BUTTON CENTER */
+  .applybtn {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* PAGINATION SMALLER */
+  .pageBtn {
+    width: 50px;
+    font-size: 16px;
+    padding: 4px;
+  }
+}

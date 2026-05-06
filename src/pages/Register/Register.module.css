@@ -1,0 +1,277 @@
+/* GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* GLOBAL */
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: #f5f7fb;
+}
+
+/* PAGE WRAPPER */
+.cont {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* LOGO
+.logo {
+    font-size: 22px;
+    margin-bottom: 15px;
+} */
+
+.logo{
+
+    width: 100px;
+    height: 70px;
+}
+
+/* MAIN CARD */
+.main {
+    width: 900px;
+    min-height: 520px;
+    display: flex;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    background: #fff;
+}
+
+/* LEFT SIDE (IMAGE) */
+.leftside {
+    width: 340px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.leftside img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* RIGHT SIDE */
+.rightside {
+    flex: 1;
+    padding: 30px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* SHOP HEADER */
+.shopHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: center;
+    /* margin-left: 500px; */
+}
+
+/* ICON */
+.left {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: #eef2ff; */
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+/* TEXT BLOCK */
+.right {
+    display: flex;
+    flex-direction: column;
+}
+
+/* SHOP NAME */
+.shopName {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+}
+
+/* SHOP TYPE */
+.shopType {
+    margin: 0;
+    font-size: 12px;
+    color: #777;
+}
+
+/* TITLE */
+.rightside h1 {
+    font-size: 26px;
+    margin: 0 0 4px;
+    color: #222;
+}
+
+/* SUB TEXT */
+.rightside p {
+    font-size: 13px;
+    color: #777;
+    margin: 0 0 16px;
+}
+
+/* FORM */
+.rightside form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+/* LABEL */
+.rightside label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #444;
+    margin-top: 6px;
+}
+
+/* INPUT + SELECT */
+.rightside input,
+.rightside select {
+    width: 100%;
+    height: 42px;
+    border: 1px solid #d6dbe6;
+    border-radius: 8px;
+    padding: 0 12px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+/* HOVER */
+.rightside input:hover,
+.rightside select:hover {
+    border-color: #4a90e2;
+}
+
+/* FOCUS */
+.rightside input:focus,
+.rightside select:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74,144,226,0.15);
+}
+
+/* BUTTON */
+.rightside button {
+    margin-top: 12px;
+    height: 44px;
+    background: linear-gradient(135deg, #4a90e2, #357bd8);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* BUTTON HOVER */
+.rightside button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(53, 123, 216, 0.25);
+}
+
+/* LOGIN TEXT */
+.loginText {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #666;
+}
+
+.loginText a {
+    color: #4a90e2;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.loginText a:hover {
+    text-decoration: underline;
+}
+
+/* ================= MOBILE VIEW ================= */
+@media (max-width: 768px) {
+
+    /* PAGE WRAPPER */
+    .cont {
+        padding: 15px;
+        justify-content: flex-start;
+    }
+
+    /* MAIN CARD STACK */
+    .main {
+        width: 100%;
+        flex-direction: column;
+        min-height: auto;
+        border-radius: 12px;
+    }
+
+    /* IMAGE SECTION */
+    .leftside {
+        width: 100%;
+        height: 200px;
+    }
+
+    .leftside img {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    /* RIGHT SIDE */
+    .rightside {
+        padding: 20px;
+    }
+
+    /* SHOP HEADER */
+    .shopHeader {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    /* TITLE */
+    .rightside h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .rightside p {
+        text-align: center;
+        font-size: 12px;
+    }
+
+    /* FORM FIELDS */
+    .rightside input,
+    .rightside select {
+        height: 40px;
+        font-size: 13px;
+    }
+
+    /* BUTTON */
+    .rightside button {
+        height: 42px;
+        font-size: 14px;
+    }
+
+    /* TEXT LINKS */
+    .loginText {
+        text-align: center;
+    }
+
+    /* REMOVE EXTRA SPACING ISSUES */
+    .rightside form {
+        gap: 8px;
+    }
+}

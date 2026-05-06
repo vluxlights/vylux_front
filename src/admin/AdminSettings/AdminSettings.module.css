@@ -1,0 +1,123 @@
+/* ================= WRAPPER ================= */
+.cont {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f5f7fb;
+    margin-top: 90px;
+}
+
+/* ================= MAIN LAYOUT ================= */
+.main {
+    display: flex;
+    gap: 20px;
+}
+
+/* SIDEBAR */
+.left {
+    width: 260px;
+}
+
+/* RIGHT CONTENT */
+.right {
+    flex: 1;
+    margin: 20px;
+}
+
+/* ================= TITLE ================= */
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+/* ================= FORM ================= */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ================= CARD ================= */
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* CARD TITLE */
+.card h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+/* LABEL */
+.card label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #374151;
+}
+
+/* INPUT */
+.card input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+/* FOCUS EFFECT */
+.card input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+/* ================= BUTTON ================= */
+.btn {
+    width: 200px;
+    padding: 12px;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+    .main {
+        flex-direction: column;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .right {
+        margin: 10px;
+        margin-top: 30px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px;
+    }
+}

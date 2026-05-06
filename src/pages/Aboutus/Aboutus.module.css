@@ -1,0 +1,322 @@
+/* =====================================================
+   🌍 GLOBAL RESET
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* =====================================================
+   🖼️ BANNER
+===================================================== */
+.banner img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+}
+
+/* =====================================================
+   MAIN SECTION
+===================================================== */
+.main {
+  margin: 20px;
+}
+
+.main h2 {
+  color: rgb(3, 3, 24);
+  text-align: center;
+}
+
+.main span {
+  color: green;
+}
+
+hr {
+  width: 10%;
+  margin: 10px auto;
+}
+
+/* =====================================================
+   CARDS SECTION
+===================================================== */
+.cards {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  margin-left: 90px;
+  margin-right: 90px;
+
+  border-radius: 10px;
+  border: 1px solid rgb(230, 217, 217);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.card {
+  flex: 1;
+  min-width: 180px;
+
+  border: 1px solid rgb(235, 223, 223);
+  padding: 15px;
+  text-align: center;
+}
+
+.icon {
+  color: rgb(5, 63, 5);
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.cardname {
+  margin-top: 15px;
+  font-weight: 900;
+}
+
+.cardsub {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgb(2, 3, 37);
+}
+
+/* =====================================================
+   MISSION SECTION
+===================================================== */
+.mission {
+  border: 1px solid rgb(238, 211, 211);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+
+  width: 600px;
+  padding: 10px;
+  gap: 30px;
+
+  background-color: aqua;
+}
+
+.faicon {
+  font-size: 90px;
+  color: rgb(2, 2, 19);
+}
+
+.mname {
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.msub {
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.mcont {
+  text-align: center;
+  width: 100%;
+}
+
+.mhr {
+  width: 20%;
+  margin: 10px auto;
+}
+
+/* =====================================================
+   CONTACT SECTION
+===================================================== */
+.touch {
+  margin: 40px 80px;
+  display: flex;
+  gap: 30px;
+
+  border: 1px solid rgb(243, 219, 219);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+/* LEFT SIDE */
+.ltouch {
+  flex: 1;
+}
+
+/* CONTACT CARD */
+.tcard {
+  display: flex;
+  margin-top: 20px;
+  gap: 15px;
+  align-items: center;
+}
+
+.fa {
+  border: 1px solid rgb(177, 136, 136);
+  background-color: aqua;
+  border-radius: 5px;
+  padding: 6px;
+  font-size: 25px;
+}
+
+.lhead {
+  font-weight: 900;
+}
+
+.lsub {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* MAP */
+.map {
+  margin-top: 20px;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* =====================================================
+   RIGHT FORM
+===================================================== */
+.rtouch {
+  flex: 1;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.rtouch h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2e7d32;
+}
+
+/* ROW */
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.rtouch input,
+.rtouch textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+
+  border: 1px solid #ddd;
+  border-radius: 6px;
+
+  outline: none;
+  font-size: 14px;
+}
+
+/* TEXTAREA */
+.rtouch textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* BUTTON */
+.rtouch button {
+  width: 100%;
+  padding: 10px;
+
+  background: #2e7d32;
+  color: #fff;
+
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.rtouch button:hover {
+  background: #1b5e20;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 900px) {
+
+  .cards {
+    margin: 10px;
+  }
+
+  /* banner */
+  .banner img {
+    height: 230px;
+  }
+
+  .mission {
+    width: 90%;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .touch {
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .banner img {
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .cats,
+  .news {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .catitem {
+    width: 140px;
+  }
+
+  .newitem {
+    width: 150px;
+  }
+
+  .catitem img {
+    height: 90px;
+  }
+
+  .newitem img {
+    height: 100px;
+  }
+
+  button {
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .assu {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .divider {
+    display: none;
+  }
+}

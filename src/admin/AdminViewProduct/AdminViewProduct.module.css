@@ -1,0 +1,465 @@
+.right {
+    margin-top: 100px;
+    margin-left: 290px;
+    margin-right: 20px;
+}
+
+.right h2 {
+    font-size: 30px;
+    color: rgb(12, 12, 59);
+}
+
+/* ================= FILTER TOP ================= */
+.rtop {
+    border: 1px solid rgb(219, 210, 210);
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rsearch, .rcat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.rsearch input,
+.rcat select {
+    padding: 8px;
+    width: 200px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.rbtn {
+    display: flex;
+    gap: 20px;
+}
+
+.rbtns {
+    width: 100px;
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    background-color: darkgreen;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.rbtns:hover {
+    background-color: grey;
+}
+
+/* ================= TABLE ================= */
+.tableContainer {
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table thead {
+    background-color: darkgreen;
+    color: white;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.pimg {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* ================= ACTION BUTTONS ================= */
+.editBtn {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    margin-right: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.deleteBtn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.editBtn:hover,
+.deleteBtn:hover {
+    background-color: #444;
+}
+
+/* ================= CATEGORY BOX ================= */
+.addCategoryBox {
+    margin-top: 15px;
+    padding: 15px;
+    
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+}
+
+.addCategoryBox p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: rgb(12, 12, 59);
+}
+
+/* ================= CATEGORY ROW ================= */
+.categoryRow {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.cataddbtn{
+
+    display: flex;
+    
+    
+    gap: 30px;
+}
+
+.catdelbtn{
+
+    display: flex;
+    
+    
+    gap: 30px;
+}
+
+.addbtn{
+
+    width: 100px;
+
+}
+
+.categoryRow input,
+.categoryRow select {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+/* ADD / DELETE BUTTONS */
+.addCategoryBtn,
+.deleteCategoryBtn {
+    padding: 6px 12px;
+    font-size: 12px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.addCategoryBtn {
+    background-color: darkgreen;
+}
+
+.deleteCategoryBtn {
+    background-color: darkred;
+}
+
+.addCategoryBtn:hover,
+.deleteCategoryBtn:hover {
+    background-color: grey;
+}
+
+/* ================= POPUP MESSAGE ================= */
+.popupMsg {
+    margin-top: 15px;
+    padding: 10px;
+    width: fit-content;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    animation: fadeIn 0.3s ease;
+}
+
+/* ================= PAGINATION ================= */
+.pagination {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.pagination button {
+    padding: 6px 12px;
+    font-size: 13px;
+    border: none;
+    border-radius: 6px;
+    background: darkgreen;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.pagination button:hover {
+    background: grey;
+}
+
+.pagination button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(12, 12, 59);
+}
+
+.prevbtn{
+
+    width: 70px;
+    margin-bottom: 20px;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+ /* ================= TABLET VIEW ================= */
+
+@media (max-width: 768px) {
+
+  .right {
+    margin-left: 0;
+    margin-right: 10px;
+    margin-top: 80px;
+    padding: 10px;
+  }
+
+  .right h2 {
+    font-size: 22px;
+  }
+
+  /* ===== FILTER BOX ===== */
+  .rtop {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .rsearch input,
+  .rcat select {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .rbtn {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .rbtns {
+    width: 48%;
+    font-size: 13px;
+    padding: 7px;
+  }
+
+  /* ===== CATEGORY BOX ===== */
+  .categoryRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .categoryRow input,
+  .categoryRow select {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .addCategoryBtn,
+  .deleteCategoryBtn {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  /* ===== TABLE ===== */
+  .table {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px;
+  }
+
+  .pimg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  /* ===== PAGINATION ===== */
+  .pagination {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .pagination button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .popupMsg {
+    font-size: 12px;
+  }
+}
+
+
+/* ================= MOBILE VIEW ================= */
+
+@media (max-width: 480px) {
+
+  .right {
+    margin: 60px 5px 0 5px;
+    padding: 8px;
+  }
+
+  .right h2 {
+    font-size: 18px;
+  }
+
+  /* ===== FILTER ===== */
+  .rtop {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .rsearch input,
+  .rcat select {
+    width: 100%;
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .rbtn {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .rbtns {
+    width: 100%;
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  /* ===== CATEGORY ===== */
+  .categoryRow {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .categoryRow input,
+  .categoryRow select {
+    width: 100%;
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .addCategoryBtn,
+  .deleteCategoryBtn {
+    width: 100%;
+    font-size: 11px;
+    padding: 6px;
+  }
+
+  /* ===== TABLE ===== */
+  .tableContainer {
+    overflow-x: auto;
+  }
+
+  .table {
+    min-width: 650px;
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    padding: 6px;
+  }
+
+  .pimg {
+    width: 35px;
+    height: 35px;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+
+  /* ===== PAGINATION ===== */
+  .pagination {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pagination button {
+    width: 100%;
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .pagination span {
+    font-size: 12px;
+  }
+
+  /* ===== POPUP ===== */
+  .popupMsg {
+    font-size: 11px;
+    padding: 8px;
+  }
+}

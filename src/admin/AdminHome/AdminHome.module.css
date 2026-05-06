@@ -1,0 +1,379 @@
+/* ================= MAIN ================= */
+
+.main {
+  display: flex;
+ 
+}
+
+/* ================= LEFT ================= */
+
+.left {
+  width: 250px;
+  background: rgb(13, 13, 58);
+  padding-top: 20px;
+}
+
+.left button {
+  width: 200px;
+  margin: 10px 20px;
+  padding: 10px;
+  color: white;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.left button:hover {
+  background: blue;
+  transform: scale(1.05);
+}
+
+/* ================= RIGHT ================= */
+
+.right {
+  margin-top: 70px;
+  flex: 1;
+  padding: 20px;
+  margin-left: 250px;
+}
+
+/* ================= BANNER ================= */
+
+.banner {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.bannerimg img {
+  margin-top: 20px;
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.bannerimg input {
+  margin-bottom: 10px;
+}
+
+.bannerbtn {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* buttons */
+.actions button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.updateBtn {
+  background: green;
+}
+
+.bannerdelete {
+  background: red;
+}
+
+/* ================= TABLE ================= */
+
+.cat {
+  margin-top: 20px;
+  border: 1px solid violet;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.table {
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+/* image */
+.table img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* inputs */
+.table input {
+  width: 90%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* buttons */
+.table button {
+  padding: 5px 10px;
+  margin: 2px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.table button {
+  background: #2196f3;
+  color: white;
+}
+
+.table button:last-child {
+  background: red;
+}
+
+
+
+.addBox {
+  margin-top: 25px;
+  padding: 20px;
+  width: 320px;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Title */
+.addBox h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Inputs */
+.addBox input[type="text"] {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.addBox input[type="text"]:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.3);
+}
+
+/* File input */
+.addBox input[type="file"] {
+  font-size: 13px;
+  padding: 5px;
+}
+
+/* Preview image */
+.addBox img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Add button */
+.addBox button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.addBox button:hover {
+  transform: scale(1.03);
+  background: linear-gradient(135deg, #43a047, #1b5e20);
+}
+
+/* disabled feel (optional if you want later) */
+.addBox button:active {
+  transform: scale(0.98);
+}
+
+
+
+/* ---------  tablert view -------- */
+@media (max-width: 768px) {
+
+  /* MAIN LAYOUT STACK */
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* SIDEBAR */
+  .left {
+    width: 100%;
+    height: auto;
+    position: relative; /* remove fixed behavior */
+    padding: 10px 0;
+  }
+
+  .left button {
+    width: 90%;
+    margin: 8px auto;
+    display: block;
+    text-align: left;
+  }
+
+  /* RIGHT CONTENT */
+  .right {
+    margin-left: 0;
+    padding: 15px;
+    width: 100%;
+  }
+
+  /* TABLE RESPONSIVE */
+  .table {
+    font-size: 14px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px;
+  }
+
+  .table img {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* BANNER */
+  .bannerimg img {
+    max-height: 220px;
+  }
+
+  /* ADD BOX */
+  .addBox {
+    width: 100%;
+  }
+}
+
+
+/* ----------- mobile view ----------- */
+
+@media (max-width: 480px) {
+
+  /* ================= LAYOUT ================= */
+  .main {
+    flex-direction: column;
+  }
+
+  .right {
+    margin-left: 0;
+    padding: 10px; /* smaller padding */
+  }
+
+  /* ================= SIDEBAR ================= */
+  .left {
+    width: 100%;
+    padding: 8px 0;
+  }
+
+  .left button {
+    width: 92%;
+    margin: 6px auto;
+    padding: 8px;        /* smaller button */
+    font-size: 13px;     /* reduce text */
+  }
+
+  /* ================= HEADINGS ================= */
+  .right h1,
+  .right h2 {
+    font-size: 16px; /* reduce big headings */
+  }
+
+  /* ================= BANNER ================= */
+  .banner {
+    padding: 12px;
+  }
+
+  .bannerimg img {
+    max-height: 150px; /* smaller image */
+  }
+
+  .bannerbtn {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .actions button {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+
+  /* ================= TABLE ================= */
+  .table {
+    font-size: 11px; /* compact table */
+  }
+
+  .table th,
+  .table td {
+    padding: 5px;
+  }
+
+  .table img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .table input {
+    padding: 4px;
+    font-size: 12px;
+  }
+
+  /* ================= ADD BOX ================= */
+  .addBox {
+    width: 100%;
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .addBox h3 {
+    font-size: 14px;
+  }
+
+  .addBox input[type="text"] {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .addBox button {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .addBox img {
+    width: 50px;
+    height: 50px;
+  }
+}
