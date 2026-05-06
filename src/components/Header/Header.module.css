@@ -142,7 +142,7 @@
 
   /* LOGO TOP */
   .logo img {
-    width: 65px;
+    width: 90px;
     height: auto;
   }
 
@@ -152,6 +152,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 20px;
   }
 
   /* NAV TEXT SMALL */
@@ -161,7 +162,7 @@
   }
 
   .navList a {
-    font-size: 11px;
+    font-size: 15px;
   }
 
   /* ICONS RIGHT SIDE */
