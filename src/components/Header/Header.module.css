@@ -158,7 +158,7 @@
   /* NAV TEXT SMALL */
   .navList {
     display: flex;
-    gap: 10px;
+    gap: 20px;
   }
 
   .navList a {
@@ -168,7 +168,8 @@
   /* ICONS RIGHT SIDE */
   .icons {
     display: flex;
-    gap: 12px;
+    gap: 15px;
+    padding-right: 10px;
   }
 
   .cart,
