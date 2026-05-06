@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 export default function AdminSidebar() {
   return (
     <div className={styles.left}>
-     <Link to="/admindashboard"><button>Dashboard</button></Link>
+     <Link to="/admindashboard"><button>Dashboard Page</button></Link>
       <Link to="/adminhome"><button>Home Page</button></Link>
       <Link to="/adminproducts"><button>Product Add Page</button></Link>
       <Link to="/adminviewproducts"><button>Product View Page</button></Link>
