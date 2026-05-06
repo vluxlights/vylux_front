@@ -290,147 +290,277 @@
 
 /* ================= MOBILE RESPONSIVE ================= */
 
-/* ================= MOBILE FULL FIX ================= */
 @media (max-width: 768px) {
+    .row {
+        width: 100%;
+    }
 
-  /* MAIN CONTAINER */
-  .productview {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 0;
-    padding: 10px;
-    gap: 12px;
-  }
-
-  /* REMOVE DESKTOP WIDTHS */
-  .left,
-  .center,
-  .right {
-    width: 100%;
-    margin: 0;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-
-  /* ===== IMAGE SECTION ===== */
-
-  /* MAIN IMAGE */
-  .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .center img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    object-fit: contain;
-  }
-
-  /* THUMBNAILS ROW */
-  .left {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 5px;
-  }
-
-  .left .img {
-    min-width: 70px;
-  }
-
-  .left img {
-    width: 70px;
-    height: 60px;
-    object-fit: cover;
-  }
-
-  /* ===== RIGHT CONTENT ===== */
-
-  .right h2 {
-    font-size: 18px;
-    margin: 5px 0;
-  }
-
-  .type {
-    font-size: 13px;
-    margin-left: 0;
-  }
-
-  /* PRICE */
-  .pricelist {
-    flex-wrap: wrap;
-    gap: 6px;
-    margin: 10px 0;
-  }
-
-  .price {
-    font-size: 20px;
-  }
-
-  .orprice {
-    font-size: 13px;
-  }
-
-  .discount {
-    font-size: 11px;
-    padding: 3px 5px;
-  }
-
-  /* DESC */
-  .desc {
-    flex-direction: column;
-    margin: 10px 0;
-    padding: 8px;
-  }
-
-  .descs {
-    width: 100%;
-    padding: 6px 0;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .descs:last-child {
-    border-bottom: none;
-  }
-
-  /* QUANTITY */
-  .quantity {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
-  }
-
-  .controls button {
-    width: 28px;
-    height: 28px;
-  }
-
-  /* BUTTONS */
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .buttons button {
-    width: 100%;
-    height: 45px;
-  }
-
-  /* ===== IMPORTANT GLOBAL FIX ===== */
-  * {
-    max-width: 100%;
-  }
-
-  body {
-    overflow-x: hidden;   /* 🔥 removes side scroll */
-  }
+    .value {
+        text-align: left;
+        margin-top: 4px;
+    }
 }
 
+
+/* --------- related products ------- */
+
+.relatedp{
+
+    border: 1px solid rgb(238, 240, 240);
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.29);
+    padding: 10px;
+    margin-bottom: 10px;
+    
+}
+
+.relatedp h2{
+
+    margin-left: 20px;
+    color: #04035f;
+}
+
+.repr{
+
+    display: flex;
+    gap: 30px;
+    margin-left: 20px;
+    margin-top: 20px;
+    
+    
+}
+
+.reprs{
+
+    border: 1px solid rgb(245, 242, 242);
+    width: 200px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.29);
+    margin-bottom: 10px;
+
+}
+
+.reprs img{
+
+    width: 150px;
+    height: 130px;
+    object-fit:fill;
+
+}
+
+.rname{
+
+    text-align: start;
+    font-size: 20px;
+    font-weight: 900;
+    color: #04035f;
+    margin-left: 10px;
+}
+
+.rtype{
+
+    font-size: 13px;
+    color: #2b0404;
+    margin-left: 10px;
+
+}
+
+.rprice{
+
+    padding-top: 10px;
+    font-size: 15px;
+    font-weight: 900;
+    margin-left: 10px;
+
+}
+
+
+/* ================= MOBILE VIEW ================= */
+/* For small screens like phones */
+
+/* ================= CLEAN MOBILE DESIGN ================= */
+/* ================= MOBILE - KEEP DESKTOP LOOK ================= */
+/* ================= UNIVERSAL MOBILE (ANDROID + IPHONE) ================= */
+@media (max-width: 768px) {
+
+    /* main layout → stack */
+    .productview {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    /* remove fixed widths */
+    .left, .center, .right {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    /* ===== IMAGE SECTION ===== */
+
+    /* main image on top */
+    .center img {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+        object-fit: contain;
+    }
+
+    /* thumbnails below */
+    .left {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+    }
+
+    .left img {
+        width: 80px;
+        height: 70px;
+        flex-shrink: 0;
+    }
+
+    /* ===== TEXT ===== */
+
+    .right h2 {
+        font-size: 20px;
+        margin: 5px 0;
+    }
+
+    .type {
+        font-size: 14px;
+        margin-left: 0;
+    }
+
+    /* ===== PRICE ===== */
+
+    .pricelist {
+        margin: 10px 0;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .price {
+        font-size: 20px;
+    }
+
+    .orprice {
+        font-size: 14px;
+    }
+
+    .discount {
+        font-size: 12px;
+        padding: 4px 6px;
+    }
+
+    /* ===== DESCRIPTION ===== */
+
+    .desc {
+        flex-direction: column;
+        margin: 10px 0;
+        padding: 8px;
+    }
+
+    .descs {
+        width: 100%;
+        padding: 6px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .descs:last-child {
+        border-bottom: none;
+    }
+
+    .desc p {
+        font-size: 13px;
+    }
+
+    /* ===== QUANTITY ===== */
+
+    .quantity {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+    }
+
+    .controls button {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* ===== BUTTONS ===== */
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 10px 0;
+    }
+
+    .buttons button {
+        width: 100%;
+        height: 45px;
+        font-size: 16px;
+    }
+
+    /* ===== SPECS ===== */
+
+    .specs {
+        width: 100%;
+        margin: 10px 0;
+        font-size: 13px;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .value {
+        text-align: left;
+    }
+
+    /* ===== RELATED PRODUCTS ===== */
+
+    .repr {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+    }
+
+    .reprs {
+        min-width: 150px;
+    }
+
+    .reprs img {
+        width: 100%;
+        height: 110px;
+    }
+
+    .rname {
+        font-size: 14px;
+    }
+
+    .rtype {
+        font-size: 12px;
+    }
+
+    .rprice {
+        font-size: 13px;
+    }
+
+    /* prevent sideways scroll */
+    body {
+        overflow-x: hidden;
+    }
+}
 
 /* ================= TABLET VIEW ================= */
 /* Medium devices like tablets */
