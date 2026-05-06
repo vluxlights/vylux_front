@@ -146,7 +146,7 @@ export function Rightside({
         </div>
 
         <div className={Styles.forgot}>
-          <a href="#">Forgot Password?</a>
+          <Link to="/forgot">Forgot Password?</Link>
         </div>
 
         <button type="submit">Login</button>
