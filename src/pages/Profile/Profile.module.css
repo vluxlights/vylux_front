@@ -173,7 +173,7 @@
 
   /* 🔥 FIXED VERTICAL SIDEBAR */
   .sidebar {
-    width: 36%;
+    width: 40%;
     display: flex;
     flex-direction: column;
 
@@ -229,7 +229,7 @@
   }
 
   .content h2 {
-    font-size: 10px;
+    font-size: 15px;
   }
 
   .editBtn {
