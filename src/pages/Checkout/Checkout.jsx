@@ -227,7 +227,7 @@ Thank you for your order!`;
               <div className={styles.basic}>
 
                 <div className={styles.name}>
-                  <label>Full Name</label><br /><br />
+                  <label>Full Name</label>
                   <input
                     type="text"
                     name="name"
@@ -238,7 +238,7 @@ Thank you for your order!`;
                 </div>
 
                 <div className={styles.phone}>
-                  <label>Phone Number</label><br /><br />
+                  <label>Phone Number</label>
                   <input
                     type="text"
                     name="phone"
@@ -251,7 +251,7 @@ Thank you for your order!`;
               </div>
 
               <div className={styles.address}>
-                <label>Address</label><br /><br />
+                <label>Address</label>
                 <textarea
                 rows="5"
                 cols="50"
@@ -265,7 +265,7 @@ Thank you for your order!`;
               <div className={styles.location}>
 
                 <div className={styles.name}>
-                  <label>City</label><br /><br />
+                  <label>City</label>
                   <input
                     type="text"
                     name="city"
@@ -276,7 +276,7 @@ Thank you for your order!`;
                 </div>
 
                 <div className={styles.phone}>
-                  <label>State</label><br /><br />
+                  <label>State</label>
                   <input
                     type="text"
                     name="state"
@@ -291,7 +291,7 @@ Thank you for your order!`;
               <div className={styles.landmark}>
 
                 <div className={styles.name}>
-                  <label>Pincode</label><br /><br />
+                  <label>Pincode</label>
                   <input
                     type="text"
                     name="pincode"
@@ -302,7 +302,7 @@ Thank you for your order!`;
                 </div>
 
                 <div className={styles.phone}>
-                  <label>Landmark</label><br /><br />
+                  <label>Landmark</label>
                   <input
                     type="text"
                     name="landmark"
