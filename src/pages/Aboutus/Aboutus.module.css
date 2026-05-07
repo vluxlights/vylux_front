@@ -259,6 +259,7 @@ hr {
   /* banner */
   .banner img {
     height: 230px;
+    width:100% ;
   }
 
   .mission {
@@ -280,7 +281,7 @@ hr {
 @media (max-width: 600px) {
 
   .banner img {
-    height: 160px;
+    height: 150px;
     object-fit: cover;
   }
 
@@ -307,8 +308,8 @@ hr {
   }
 
   button {
-    height: 28px;
-    font-size: 11px;
+    height: 35px;
+    font-size: 10px;
   }
 
   .assu {
@@ -319,4 +320,6 @@ hr {
   .divider {
     display: none;
   }
+
+  
 }
