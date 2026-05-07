@@ -425,6 +425,26 @@
   /* ===== PRODUCTS ===== */
   .right {
     padding: 10px;
+    margin-left: 15px;
+    margin-top: 10px;
+  }
+
+  .msub{
+        font-size: 10px;
+        margin-top: 10px;
+        color: #918c8c;
+    
+  }
+
+  .rhead{
+
+    font-size: 15px;
+  }
+
+  .rcont{
+
+    width: 320px;
+    height: auto;
   }
 
   .rconts {
