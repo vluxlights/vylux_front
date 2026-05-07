@@ -168,18 +168,19 @@
   .container {
     /* flex-direction: column; */
     display: flex;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   /* 🔥 FIXED VERTICAL SIDEBAR */
   .sidebar {
-    width: 38%;
+    width: 34%;
     display: flex;
     flex-direction: column;
+    height: 80px;
 
-    gap: 5px;
-    padding: 10px;
-    height: 100px;
+    
+   
 
     /* background: #f8f7f4;
     border-radius: 10px;
@@ -220,11 +221,12 @@
   /* form */
   .form {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 0px;
+    
   }
 
   .field input {
-    height: 30px;
+    height: 25px;
     font-size: 10px;
   }
 
