@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Products() {
 
-  const [value, setValue] = useState([0, 10000]);
+  const [value, setValue] = useState([0, 1000]);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -277,7 +277,7 @@ export default function Products() {
                   onChange={handleChange}
                   valueLabelDisplay="auto"
                   min={0}
-                  max={10000}
+                  max={1000}
                 />
 
               </div>
