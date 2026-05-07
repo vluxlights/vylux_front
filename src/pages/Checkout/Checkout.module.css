@@ -83,11 +83,17 @@
     padding-top: 5px;
 }
 
+.cbtn{
+
+    margin-top: 40px;
+    
+}
+
 /* ================= RIGHT SIDE ================= */
 .right {
     border: 1px solid rgb(212, 195, 195);
     padding: 15px;
-    margin-top: 90px;
+    margin-top: 70px;
     width: 400px;
     
     border-radius: 10px;
@@ -98,8 +104,15 @@
 .placepro {
     border: 1px solid rgb(233, 224, 224);
     border-radius: 5px;
+
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+
     padding: 5px;
+
+    max-height: 230px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .pros {
@@ -173,7 +186,8 @@
 
 /* ================= BUTTON ================= */
 .checkout {
-    margin-top: 30px;
+    margin-top: 45px;
+    padding: 5px;
 }
 
 /* ================= REMOVE ITEM SECTION ================= */
@@ -238,13 +252,15 @@
     .basic,
     .location,
     .landmark {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
     }
 
     .name input,
     .phone input {
-        width: 100%;
+        width: 90%;
     }
 
     /* TEXTAREA FIX */

@@ -315,13 +315,16 @@ Thank you for your order!`;
               </div>
 
               {/* ✅ BUTTON BELOW FORM (CORRECT POSITION) */}
-              <button
-                className={styles.checkout}
-                style={{ marginTop: "15px" }}
-                onClick={handleUpdateAddress}
-              >
-                Update Address
-              </button>
+              <div className={styles.cbtn}>
+              
+                              <button
+                              className={styles.checkout}
+                              style={{ marginTop: "15px" }}
+                              onClick={handleUpdateAddress}
+                            >
+                              Update Address
+                            </button>
+                            </div>
 
             </div>
           </div>
