@@ -150,6 +150,29 @@
         margin: 10px;
         gap: 15px;
     }
+    
+    .top{
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .top h2{
+
+        text-align: center;
+    }
+
+    .top input{
+        
+        margin-top: 10px;
+        margin-left: 70px;
+    }
+
+    .card{
+
+        display: flex;
+        flex-direction: column;
+    }
 
     /* ================= LEFT (CART / LIST AREA) ================= */
     .left {
@@ -252,14 +275,38 @@
         height: auto;
         padding: 12px;
         border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.7);
         background: #fff;
+    }
+
+    .rightCard{
+
+        border: 1px solid rgb(245, 234, 234);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+        background: #fff;
+        width: 350px;
+    }
+
+    .rightCard span{
+
+        font-size: 12px;
     }
 
     /* SUMMARY TITLE */
     .right h2 {
         font-size: 18px;
         margin-bottom: 10px;
+    }
+
+    .sectionTitle{
+
+        width: 200px;
+        border: none;
+    }
+
+    .infoBox{
+
+        width: 200px;
     }
 
     /* ADDRESS BLOCK */
