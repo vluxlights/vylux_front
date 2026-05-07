@@ -269,7 +269,7 @@
   /* ===== FILTER BOX (COMPACT LIKE AMAZON) ===== */
  .left {
 
-  width: 90%;
+  width: 100vh;
   max-width: 320px;
 
   /* margin: 10px auto; */
@@ -324,7 +324,7 @@
   /* ===== CATEGORY ===== */
   .cat {
     padding:5px; 
-    width: 150px;
+    width: 290px;
      /* remove extra shift */
     border: 1px solid rgb(250, 247, 247);
     border-radius: 10px;
@@ -370,9 +370,11 @@
   
     display: flex;
     border-radius: 6px;
-    width: 320px;
-    padding: 10px;
+    width: 650px;
+    height: 120px;
+    padding-left: 10px;
     margin-bottom: 10px;
+    margin-top: 14px;
     justify-content: space-between;
 
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
@@ -381,7 +383,7 @@
   }
 
   .price h2 {
-    font-size: 9px;
+    font-size: 8px;
     
   }
 
@@ -401,9 +403,10 @@
   .rangeBox {
     flex-direction: row;
     gap: 20px;
-    width: 60%;
+    width: 45%;
     margin-top: 2px;
-    margin-left: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .rangeBox input {
@@ -453,6 +456,6 @@
   .pageBtn {
     width: 40px;
     font-size: 13px;
-    padding: 4px;
+    padding: 3px;
   }
 }
