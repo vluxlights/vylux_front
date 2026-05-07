@@ -160,61 +160,69 @@
 /* =====================================================
    📱 MOBILE VIEW
 ===================================================== */
+/* =====================================================
+   📱 MOBILE VIEW
+===================================================== */
 @media (max-width: 600px) {
 
+  *{
+    box-sizing: border-box;
+  }
+
   .container {
+
     display: flex;
     flex-direction: row;
 
-    gap: 10px;
+    align-items: flex-start;
+
+    gap: 8px;
+
     padding: 8px;
 
-    align-items: flex-start;
+    width: 100%;
+
+    overflow-x: hidden;
   }
 
-  /* ================= SIDEBAR LEFT ================= */
+  /* ================= LEFT SIDEBAR ================= */
 
   .sidebar {
 
-    width: 95px;
-    min-width: 95px;
+    width: 90px;
+    min-width: 90px;
 
     padding: 8px;
-    gap: 8px;
 
     display: flex;
     flex-direction: column;
 
+    gap: 6px;
+
+    border-radius: 8px;
+
     position: sticky;
     top: 10px;
 
-    border-radius: 10px;
-
-    background: #f8f7f4;
-
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
   }
 
   .menu,
   .logout {
 
-    padding: 8px 6px;
+    width: 100%;
 
-    font-size: 11px;
-    line-height: 15px;
+    padding: 8px 4px;
+
+    font-size: 10px;
 
     text-align: center;
 
-    border-radius: 6px;
-
-    background: white;
-    border: 1px solid #eee;
+    border-radius: 5px;
 
     word-break: break-word;
-  }
 
-  .logout {
-    color: red;
+    overflow: hidden;
   }
 
   /* ================= RIGHT CONTENT ================= */
@@ -223,17 +231,20 @@
 
     flex: 1;
 
+    width: calc(100% - 98px);
+
     padding: 10px;
 
-    border-radius: 10px;
+    border-radius: 8px;
 
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   .content h2 {
 
     font-size: 15px;
-    margin-bottom: 10px;
+
+    margin-bottom: 12px;
   }
 
   /* ================= FORM ================= */
@@ -244,6 +255,8 @@
     flex-direction: column;
 
     gap: 10px;
+
+    width: 100%;
   }
 
   .field {
@@ -254,6 +267,7 @@
   .field label {
 
     font-size: 11px;
+
     margin-bottom: 4px;
   }
 
@@ -268,6 +282,8 @@
     font-size: 12px;
 
     border-radius: 5px;
+
+    overflow: hidden;
   }
 
   /* ================= BUTTON ================= */
@@ -276,11 +292,11 @@
 
     width: 100%;
 
-    height: 35px;
+    height: 34px;
 
     font-size: 12px;
 
-    margin-top: 15px;
+    margin-top: 14px;
   }
 
 }
