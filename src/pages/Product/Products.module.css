@@ -267,40 +267,75 @@
   }
 
   /* ===== FILTER BOX (COMPACT LIKE AMAZON) ===== */
-  .left {
-    width: 90%;              /* full usable width */
-    max-width: 320px;        /* limit size */
-    margin: 10px auto;
-    padding: 8px;
+ .left {
 
-    height: auto;            /* remove fixed height */
-    border-radius: 6px;
+  width: 90%;
+  max-width: 320px;
 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  }
+  /* margin: 10px auto; */
+  /* padding: 8px; */
 
+  /* display: flex;
+  flex-direction: row;    */
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+  height: auto;
+
+  
+
+  /* border-radius: 6px; */
+
+  /* box-shadow: 0 2px 8px rgba(0,0,0,0.12); */
+
+  /* overflow-x: auto; */
+}
   /* ===== HEADER ===== */
   .top {
-    font-size: 12px;
+    font-size: 10px;
+   
+   
   }
 
   hr{
 
     width: 60%;
+    display: none;
   }
 
   .top button {
-    font-size: 11px;
+    font-size: 9px;
+    position: relative;
+    bottom: 6px;
+    left: 100px;
+    
+    
+  }
+
+   .flexlr{
+
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
   }
 
   /* ===== CATEGORY ===== */
   .cat {
-    padding-left: 0;   /* remove extra shift */
+    padding:5px; 
+    width: 150px;
+     /* remove extra shift */
+    border: 1px solid rgb(250, 247, 247);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+
   }
 
   .cathead {
-    font-size: 12px;
-    margin-bottom: 6px;
+    font-size: 8px;
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
 
   /* 🔥 PERFECT ALIGNMENT FIX */
@@ -308,49 +343,77 @@
     display: grid;
     grid-template-columns: 14px 1fr;  /* radio + text */
     align-items: center;
+    
 
     column-gap: 8px;   /* tight spacing */
     margin: 5px 0;
 
-    font-size: 12px;
+    font-size: 8px;
   }
 
   .catItem input {
-    width: 14px;
-    height: 14px;
+    width: 8px;
+    height: 8px;
+    font-size: 8px;
   }
 
   .catItem label {
     margin: 0;
     line-height: 1.2;
+    font-size: 8px;
   }
 
   /* ===== PRICE ===== */
+
+  .price{
+
+  
+    display: flex;
+    border-radius: 6px;
+    width: 320px;
+    padding: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+
+   
+  }
+
   .price h2 {
-    font-size: 13px;
-    margin: 8px 0;
+    font-size: 9px;
+    
   }
 
   .values {
-    font-size: 11px;
+    font-size: 9px;
   }
 
   /* SLIDER SMALL */
   .MuiSlider-root {
     padding: 4px 0 !important;
+    font-size: 5px;
   }
+
+ 
 
   /* INPUT BOX */
   .rangeBox {
     flex-direction: row;
-    gap: 6px;
-    width: 100%;
-    margin-top: 6px;
+    gap: 20px;
+    width: 60%;
+    margin-top: 2px;
+    margin-left: 30px;
   }
 
   .rangeBox input {
-    font-size: 11px;
+    font-size: 9px;
     padding: 3px;
+  }
+
+  .rangeBox label{
+
+    font-size: 9px;
   }
 
   /* ===== PRODUCTS ===== */
