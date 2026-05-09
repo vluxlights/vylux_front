@@ -1,196 +1,378 @@
-return (
+import styles from "./Products.module.css";
 
-  <div className={styles.container}>
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
-    <Helmet>
-      <title>Product Page</title>
-    </Helmet>
+import { Helmet } from "react-helmet";
 
-    <Header />
+import {
+  FaFilter,
+  FaSortAmountDown,
+  FaShoppingCart,
+  FaChevronRight
+} from "react-icons/fa";
 
-    <div className={styles.main}>
+import { useEffect, useState } from "react";
 
-      {/* ================= FILTER + SORT ================= */}
+import axios from "axios";
 
-      <div className={styles.topBar}>
+import { useNavigate } from "react-router-dom";
 
-        {/* FILTER */}
+export default function Products() {
 
-        <div className={styles.filterBox}>
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-          <FaBars className={styles.filterIcon} />
+  const [category, setCategory] = useState("all");
 
-          <span className={styles.filterLabel}>
-            Filter:
-          </span>
+  const [sort, setSort] = useState("low");
 
-          <select
-            value={category}
-            onChange={(e) => {
+  const [page, setPage] = useState(1);
 
-              setCategory(e.target.value);
-              setPage(1);
+  const [total, setTotal] = useState(0);
 
-            }}
-          >
+  const [loading, setLoading] = useState(false);
 
-            <option value="all">
-              All Categories
-            </option>
+  const navigate = useNavigate();
 
-            {categories.map((c) => {
+  const limit = 12;
 
-              const catName =
-                c.name || c.category || "Unknown";
+  // ================= FETCH PRODUCTS =================
 
-              return (
+  const fetchProducts = async () => {
 
-                <option
-                  key={c._id}
-                  value={catName}
-                >
-                  {catName}
-                </option>
+    try {
 
-              );
+      setLoading(true);
 
-            })}
+      const res = await axios.get(
+        "https://vlux-backend.onrender.com/api/vlux/adminproducts",
+        {
+          params: {
+            page,
+            limit,
+            type: category !== "all" ? category : undefined
+          }
+        }
+      );
 
-          </select>
+      let fetchedProducts = res.data.products || [];
 
-        </div>
+      // ================= SORT =================
 
-        {/* SORT */}
+      if (sort === "low") {
 
-        <div className={styles.filterBox}>
+        fetchedProducts.sort((a, b) => a.price - b.price);
 
-          <FaBars className={styles.filterIcon} />
+      } else {
 
-          <span className={styles.filterLabel}>
-            Price:
-          </span>
+        fetchedProducts.sort((a, b) => b.price - a.price);
 
-          <select
-            value={value[1]}
-            onChange={(e) => {
+      }
 
-              setValue([0, Number(e.target.value)]);
-              setPage(1);
+      setProducts(fetchedProducts);
 
-            }}
-          >
+      setTotal(res.data.total || 0);
 
-            <option value={1000}>
-              Low to High
-            </option>
+    } catch (err) {
 
-            <option value={300}>
-              Under ₹300
-            </option>
+      console.log(err);
 
-            <option value={500}>
-              Under ₹500
-            </option>
+    } finally {
 
-            <option value={1000}>
-              Under ₹1000
-            </option>
+      setLoading(false);
 
-          </select>
+    }
 
-        </div>
+  };
 
-      </div>
+  // ================= FETCH CATEGORIES =================
 
-      {/* ================= PRODUCTS ================= */}
+  const fetchCategories = async () => {
 
-      {loading && (
+    try {
 
-        <p className={styles.loading}>
-          Loading...
-        </p>
+      const res = await axios.get(
+        "https://vlux-backend.onrender.com/api/vlux/admincategories"
+      );
 
-      )}
+      setCategories(res.data.categories || []);
 
-      <div className={styles.productGrid}>
+    } catch (err) {
 
-        {products.map((p) => (
+      console.log(err);
 
-          <div
-            key={p._id}
-            className={styles.card}
-            onClick={() => openProduct(p._id)}
-          >
+    }
 
-            {/* IMAGE */}
+  };
 
-            <div className={styles.imageBox}>
+  // ================= USE EFFECT =================
 
-              <img
-                src={p.images?.[0]?.url}
-                alt={p.name}
-              />
+  useEffect(() => {
 
-            </div>
+    fetchCategories();
 
-            {/* CONTENT */}
+  }, []);
 
-            <div className={styles.content}>
+  useEffect(() => {
 
-              <h2>{p.name}</h2>
+    fetchProducts();
 
-              <p>
-                {p.subName}
-              </p>
+  }, [page, category, sort]);
 
-              <div className={styles.priceRow}>
+  // ================= PAGINATION =================
 
-                <span className={styles.price}>
-                  ₹{p.price}
-                </span>
+  const nextPage = () => {
 
-              </div>
+    if (page * limit < total) {
 
-              <button className={styles.cartBtn}>
+      setPage((prev) => prev + 1);
 
-                Add to Cart
+    }
 
-              </button>
+  };
 
-            </div>
+  const prevPage = () => {
+
+    setPage((prev) => Math.max(prev - 1, 1));
+
+  };
+
+  // ================= OPEN PRODUCT =================
+
+  const openProduct = (id) => {
+
+    navigate(`/product/${id}`);
+
+  };
+
+  return (
+
+    <div className={styles.container}>
+
+      <Helmet>
+
+        <title>
+          Products
+        </title>
+
+      </Helmet>
+
+      {/* ================= HEADER ================= */}
+
+      <Header />
+
+      {/* ================= MAIN ================= */}
+
+      <div className={styles.main}>
+
+        {/* ================= FILTER + SORT ================= */}
+
+        <div className={styles.topBar}>
+
+          {/* FILTER */}
+
+          <div className={styles.filterBox}>
+
+            <FaFilter className={styles.filterIcon} />
+
+            <span className={styles.filterLabel}>
+              Filter:
+            </span>
+
+            <select
+              value={category}
+              onChange={(e) => {
+
+                setCategory(e.target.value);
+                setPage(1);
+
+              }}
+            >
+
+              <option value="all">
+                All Categories
+              </option>
+
+              {categories.map((c) => {
+
+                const catName =
+                  c.name || c.category || "Unknown";
+
+                return (
+
+                  <option
+                    key={c._id}
+                    value={catName}
+                  >
+
+                    {catName}
+
+                  </option>
+
+                );
+
+              })}
+
+            </select>
 
           </div>
 
-        ))}
+          {/* SORT */}
+
+          <div className={styles.filterBox}>
+
+            <FaSortAmountDown className={styles.filterIcon} />
+
+            <span className={styles.filterLabel}>
+              Sort:
+            </span>
+
+            <select
+              value={sort}
+              onChange={(e) => {
+
+                setSort(e.target.value);
+                setPage(1);
+
+              }}
+            >
+
+              <option value="low">
+                Price Low to High
+              </option>
+
+              <option value="high">
+                Price High to Low
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+        {/* ================= PRODUCTS ================= */}
+
+        {loading && (
+
+          <p className={styles.loading}>
+            Loading...
+          </p>
+
+        )}
+
+        <div className={styles.productGrid}>
+
+          {products.map((p) => (
+
+            <div
+              key={p._id}
+              className={styles.card}
+              onClick={() => openProduct(p._id)}
+            >
+
+              {/* IMAGE */}
+
+              <div className={styles.imageBox}>
+
+                <img
+                  src={p.images?.[0]?.url}
+                  alt={p.name}
+                />
+
+              </div>
+
+              {/* CONTENT */}
+
+              <div className={styles.content}>
+
+                <h2>
+                  {p.name}
+                </h2>
+
+                <p>
+                  {p.subName}
+                </p>
+
+                <div className={styles.priceRow}>
+
+                  <span className={styles.price}>
+                    ₹{p.price}
+                  </span>
+
+                </div>
+
+                {/* BUTTON */}
+
+                <button className={styles.cartBtn}>
+
+                  <FaShoppingCart />
+
+                  Add to Cart
+
+                </button>
+
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+        {/* ================= PAGINATION ================= */}
+
+        <div className={styles.pagination}>
+
+          <button
+            className={styles.pageBtn}
+            onClick={prevPage}
+            disabled={page === 1}
+          >
+            1
+          </button>
+
+          <button className={styles.pageBtn}>
+            2
+          </button>
+
+          <button className={styles.pageBtn}>
+            3
+          </button>
+
+          <button className={styles.pageBtn}>
+            4
+          </button>
+
+          <button className={styles.pageBtn}>
+            5
+          </button>
+
+          <button className={styles.pageBtn}>
+            ...
+          </button>
+
+          <button
+            className={styles.pageBtn}
+            onClick={nextPage}
+            disabled={page * limit >= total}
+          >
+
+            <FaChevronRight />
+
+          </button>
+
+        </div>
 
       </div>
 
-      {/* ================= PAGINATION ================= */}
+      {/* ================= FOOTER ================= */}
 
-      <div className={styles.pagination}>
-
-        <button
-          className={`${styles.pageBtn} ${page === 1 ? styles.activePage : ""}`}
-          onClick={prevPage}
-          disabled={page === 1}
-        >
-          ←
-        </button>
-
-        <button
-          className={styles.pageBtn}
-          onClick={nextPage}
-          disabled={page * limit >= total}
-        >
-          →
-        </button>
-
-      </div>
+      <Footer />
 
     </div>
 
-    <Footer />
+  );
 
-  </div>
-
-);
+}
