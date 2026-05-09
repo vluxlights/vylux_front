@@ -1,354 +1,469 @@
-.container {
-    padding: 20px;
-    background: #f8fafc;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-/* TOP */
-.top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
+.container{
+  width:100%;
+  min-height:100vh;
+  background:#f7f7fb;
+  margin-top:72px;
+  padding:14px;
+  padding-bottom:120px;
 }
 
-.top input {
-    padding: 8px;
-    width: 250px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+/* ================= TOP ================= */
+
+.top h1{
+  font-size:22px;
+  font-weight:800;
+  color:#111827;
 }
 
-/* ================= SMALL CARD ================= */
-.card {
-    display: flex;
-    gap: 12px;
-    padding: 10px;
-    border-radius: 10px;
-    background: #fff;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+.top p{
+  margin-top:4px;
+  font-size:13px;
+  color:#6b7280;
 }
 
-/* LEFT SMALLER */
-.left {
-    width: 65%;
+/* ================= SEARCH ================= */
+
+.searchRow{
+  margin-top:18px;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-.product {
-    display: flex;
-    gap: 10px;
-    padding: 6px 0;
-    border-bottom: 1px solid #eee;
+.searchBox{
+  flex:1;
+  height:52px;
+
+  background:#fff;
+
+  border:1px solid #ebe7f7;
+  border-radius:14px;
+
+  display:flex;
+  align-items:center;
+
+  padding:0 14px;
+
+  box-shadow:0 2px 6px rgba(0,0,0,0.04);
 }
 
-.product img {
-    width: 60px;
-    height: 60px;
-    border-radius: 6px;
-    object-fit: cover;
+.searchIcon{
+  color:#9ca3af;
+  font-size:16px;
+  margin-right:10px;
 }
 
-.pinfo {
-    font-size: 12px;
+.searchBox input{
+  width:100%;
+
+  border:none;
+  outline:none;
+  background:none;
+
+  font-size:14px;
+  color:#111827;
 }
 
-.name {
-    font-weight: 700;
-    color: #1e3a8a;
+.searchBox input::placeholder{
+  color:#9ca3af;
 }
 
-.price {
-    font-weight: 800;
-    color: #16a34a;
+.filterBtn{
+  width:52px;
+  height:52px;
+
+  border:none;
+  border-radius:14px;
+
+  background:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:18px;
+  color:#5b21b6;
+
+  border:1px solid #ebe7f7;
+
+  box-shadow:0 2px 6px rgba(0,0,0,0.04);
+
+  cursor:pointer;
 }
 
-/* ================= RIGHT SMALL CARD ================= */
-.rightCard {
-    width: 35%;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 8px;
-    background: #f9fafb;
+/* ================= ORDER LIST ================= */
+
+.orderList{
+  margin-top:18px;
+
+  display:flex;
+  flex-direction:column;
+  gap:18px;
 }
 
-/* TITLE */
-.sectionTitle {
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 6px;
+/* ================= CARD ================= */
+
+.card{
+  background:#fff;
+
+  border-radius:18px;
+
+  padding:14px;
+
+  border:1px solid #f1f1f1;
+
+  box-shadow:0 3px 10px rgba(0,0,0,0.05);
 }
 
-/* INFO */
-.infoBox p {
-    font-size: 11px;
-    padding: 4px 5px;
-    margin-bottom: 4px;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 5px;
+/* ================= CARD TOP ================= */
+
+.cardTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  margin-bottom:14px;
 }
 
-.infoBox span {
-    font-weight: 700;
+.orderId{
+  background:#f5f0ff;
+  color:#6d28d9;
+
+  padding:10px 14px;
+
+  border-radius:10px;
+
+  font-size:13px;
+  font-weight:700;
 }
 
-/* TOTAL */
-.totalBox {
-    margin-top: 8px;
-    padding: 6px;
-    background: #1e3a8a;
-    color: #fff;
-    font-size: 13px;
-    text-align: center;
-    border-radius: 6px;
-    font-weight: 700;
+/* ================= STATUS ================= */
+
+.delivered,
+.shipped{
+  display:flex;
+  align-items:center;
+  gap:6px;
+
+  padding:9px 14px;
+
+  border-radius:10px;
+
+  font-size:13px;
+  font-weight:700;
 }
 
-/* DATE */
-.date {
-    font-size: 10px;
-    text-align: center;
-    margin-top: 6px;
-    color: #6b7280;
+.delivered{
+  background:#ecfdf3;
+  color:#16a34a;
+}
+
+.shipped{
+  background:#eef2ff;
+  color:#2563eb;
+}
+
+/* ================= PRODUCT ================= */
+
+.productRow{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  padding-bottom:16px;
+
+  border-bottom:1px solid #f1f1f1;
+}
+
+.productRow img{
+  width:95px;
+  height:95px;
+
+  border-radius:12px;
+
+  object-fit:cover;
+
+  background:#f7f2ff;
+}
+
+.productContent{
+  flex:1;
+}
+
+.productContent h2{
+  font-size:15px;
+  font-weight:800;
+
+  color:#111827;
+
+  line-height:1.4;
+
+  margin-bottom:6px;
+}
+
+.productContent p{
+  font-size:13px;
+  color:#4b5563;
+
+  margin-bottom:5px;
+}
+
+.productContent h3{
+  margin-top:8px;
+
+  color:#6d28d9;
+
+  font-size:16px;
+  font-weight:800;
+}
+
+/* ================= ARROW ================= */
+
+.arrowBtn{
+  border:none;
+  background:none;
+
+  color:#7c3aed;
+
+  font-size:18px;
+
+  cursor:pointer;
+}
+
+/* ================= DETAILS ================= */
+
+.detailsRow{
+  padding:18px 0;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  border-bottom:1px solid #f1f1f1;
+}
+
+.detailBox{
+  flex:1;
+
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.detailIcon{
+  color:#6d28d9;
+  font-size:18px;
+  margin-top:2px;
+}
+
+.label{
+  font-size:12px;
+  color:#6b7280;
+  margin-bottom:4px;
+}
+
+.detailBox h4{
+  font-size:14px;
+  font-weight:700;
+  color:#111827;
+
+  line-height:1.5;
+}
+
+.amount{
+  color:#6d28d9 !important;
+  font-size:20px !important;
+}
+
+/* ================= VERTICAL ================= */
+
+.vertical{
+  width:1px;
+  height:48px;
+  background:#ececec;
+}
+
+/* ================= DELIVERY HEADER ================= */
+
+.deliveryHead{
+  padding-top:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  cursor:pointer;
+}
+
+.deliveryLeft{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  color:#111827;
+
+  font-size:15px;
+  font-weight:700;
+}
+
+.deliveryLeft svg{
+  color:#6d28d9;
+}
+
+.deliveryRight{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  color:#6d28d9;
+
+  font-size:14px;
+  font-weight:700;
+}
+
+.deliveryRight svg{
+  transition:0.3s;
+}
+
+.rotate{
+  transform:rotate(180deg);
+}
+
+/* ================= DELIVERY DETAILS ================= */
+
+.deliveryBox{
+  margin-top:14px;
+
+  background:#faf7ff;
+
+  border:1px solid #ece7f7;
+
+  border-radius:14px;
+
+  padding:14px;
+
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.deliveryBox p{
+  font-size:13px;
+  line-height:1.6;
+  color:#374151;
+}
+
+.deliveryBox span{
+  font-weight:700;
+  color:#111827;
 }
 
 /* ================= PAGINATION ================= */
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
-    align-items: center;
+
+.pagination{
+  margin-top:24px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
 }
 
-.pagination button {
-    padding: 6px 12px;
-    border: none;
-    
-    background: #111827;   
-    color: #fff;
-    border-radius: 6px;
-    cursor: pointer;
+.pagination p{
+  font-size:16px;
+  font-weight:600;
+  color:#111827;
 }
 
-.pagination button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
+.pagination button{
+  width:48px;
+  height:48px;
+
+  border:none;
+  border-radius:12px;
+
+  background:#fff;
+  color:#6d28d9;
+
+  border:1px solid #ece7f7;
+
+  font-size:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+
+  cursor:pointer;
 }
 
-.btn{
-
-    width: 50px;
-    background-color: #060c1b;
-    color: #c4f5d6;
+.pagination button:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
 }
 
-@media (max-width: 768px) {
+/* ================= DESKTOP ================= */
 
-    /* ================= MAIN LAYOUT ================= */
-    .main {
-        flex-direction: column;
-        margin: 10px;
-        gap: 15px;
-    }
-    
-    .top{
+@media(min-width:768px){
 
-        display: flex;
-        flex-direction: column;
-    }
+  .container{
+    width:95%;
+    margin-left:auto;
+    margin-right:auto;
+    padding-top:30px;
+  }
 
-    .top h2{
+  .top h1{
+    font-size:36px;
+  }
 
-        text-align: center;
-    }
+  .top p{
+    font-size:16px;
+  }
 
-    .top input{
-        
-        margin-top: 10px;
-        margin-left: 70px;
-    }
+  .orderList{
+    gap:24px;
+  }
 
-    .card{
+  .card{
+    padding:22px;
+  }
 
-        display: flex;
-        flex-direction: column;
-    }
+  .productRow img{
+    width:130px;
+    height:130px;
+  }
 
-    /* ================= LEFT (CART / LIST AREA) ================= */
-    .left {
-        width: 100%;
-        max-height: 60vh;
-        overflow-y: auto;
-        padding: 8px;
-        border-radius: 10px;
-    }
+  .productContent h2{
+    font-size:24px;
+  }
 
-    /* EACH ITEM CARD */
-    .lmain {
-        padding: 8px;
-        margin-top: 10px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        background: #fff;
-    }
+  .productContent p{
+    font-size:15px;
+  }
 
-    /* PRODUCT ROW */
-    .lcard {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-    }
+  .productContent h3{
+    font-size:24px;
+  }
 
-    /* IMAGE */
-    .cimg img {
-        width: 55px;
-        height: 55px;
-        object-fit: cover;
-        border-radius: 6px;
-    }
+  .detailsRow{
+    padding:24px 0;
+  }
 
-    /* TEXT BLOCK */
-    .cenhead {
-        font-size: 14px;
-        font-weight: 700;
-    }
+  .detailBox h4{
+    font-size:16px;
+  }
 
-    .censub {
-        font-size: 11px;
-        color: #666;
-    }
+  .deliveryBox p{
+    font-size:15px;
+  }
 
-    .cenprice {
-        font-size: 13px;
-        font-weight: 600;
-        margin-top: 4px;
-    }
-
-    /* QUANTITY CONTROLS */
-    .quant {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 4px;
-    }
-
-    .qbtn {
-        width: 24px;
-        height: 24px;
-        font-size: 13px;
-        border-radius: 4px;
-        background: #117a40;
-        color: #fff;
-        border: none;
-    }
-
-    .quant p {
-        font-size: 12px;
-        margin: 0;
-        font-weight: 600;
-    }
-
-    /* RIGHT SIDE ACTIONS */
-    .llast {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 5px;
-    }
-
-    .cancel {
-        font-size: 13px;
-        padding: 3px 6px;
-        color: red;
-        cursor: pointer;
-    }
-
-    .fprice {
-        font-size: 13px;
-        font-weight: 700;
-    }
-
-    /* ================= RIGHT (ORDER SUMMARY) ================= */
-    .right {
-        width: 100%;
-        height: auto;
-        padding: 12px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.7);
-        background: #fff;
-    }
-
-    .rightCard{
-
-        border: 1px solid rgb(245, 234, 234);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.7);
-        background: #fff;
-        width: 350px;
-    }
-
-    .rightCard span{
-
-        font-size: 12px;
-    }
-
-    /* SUMMARY TITLE */
-    .right h2 {
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-
-    .sectionTitle{
-
-        width: 200px;
-        border: none;
-    }
-
-    .infoBox{
-
-        width: 200px;
-    }
-
-    /* ADDRESS BLOCK */
-    .addressBox {
-        font-size: 13px;
-        line-height: 1.5;
-    }
-
-    .addressBox b {
-        color: #117a40;
-    }
-
-    /* TOTAL */
-    .total {
-        font-size: 16px;
-        font-weight: 700;
-        margin-top: 10px;
-    }
-
-    /* ================= PAGINATION (if used) ================= */
-    .pagination {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 15px;
-    }
-
-    .pagination button {
-        background: #111827;   /* dark background */
-        color: #fff;
-        border: none;
-        padding: 6px 12px;
-        border-radius: 6px;
-        font-size: 13px;
-    }
-
-    .pagination button:disabled {
-        opacity: 0.4;
-    }
-
-    /* PREVENT HORIZONTAL SCROLL */
-    body {
-        overflow-x: hidden;
-    }
 }

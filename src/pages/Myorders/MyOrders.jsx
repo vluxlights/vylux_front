@@ -3,175 +3,450 @@ import axios from "axios";
 import { Helmet } from "react-helmet";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+
 import styles from "./MyOrders.module.css";
+
+import {
+  FaSearch,
+  FaFilter,
+  FaChevronRight,
+  FaChevronDown,
+  FaCalendarAlt,
+  FaMapMarkerAlt,
+  FaCheckCircle,
+  FaTruck
+} from "react-icons/fa";
 
 export default function MyOrders() {
 
-    const [orders, setOrders] = useState([]);
-    const [search, setSearch] = useState("");
-    const [currentPage, setCurrentPage] = useState(1);
+  const [orders, setOrders] = useState([]);
+  const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
-    const token = localStorage.getItem("token");
-    const itemsPerPage = 2;
+  const [openDetails, setOpenDetails] = useState({});
 
-    const fetchOrders = async () => {
-        try {
-            const res = await axios.get(
-                "https://vlux-backend.onrender.com/api/vlux/order/my",
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
+  const token = localStorage.getItem("token");
 
-            setOrders(res.data || []);
-        } catch (err) {
-            console.log(err);
+  const itemsPerPage = 2;
+
+  // ================= FETCH ORDERS =================
+
+  const fetchOrders = async () => {
+
+    try {
+
+      const res = await axios.get(
+        "https://vlux-backend.onrender.com/api/vlux/order/my",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         }
-    };
+      );
 
-    useEffect(() => {
-        fetchOrders();
-    }, []);
+      setOrders(res.data || []);
 
-    const filteredOrders = useMemo(() => {
-        return orders.filter((order) =>
-            order?.address?.name?.toLowerCase().includes(search.toLowerCase()) ||
-            order?.address?.phone?.includes(search)
-        );
-    }, [orders, search]);
+    } catch (err) {
 
-    /* ================= PAGINATION ================= */
-    const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
+      console.log(err);
 
-    const currentOrders = filteredOrders.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
+    }
+
+  };
+
+  useEffect(() => {
+
+    fetchOrders();
+
+  }, []);
+
+  // ================= SEARCH =================
+
+  const filteredOrders = useMemo(() => {
+
+    return orders.filter((order) =>
+
+      order?.address?.name
+        ?.toLowerCase()
+        .includes(search.toLowerCase())
+
+      ||
+
+      order?.address?.phone?.includes(search)
+
     );
 
-    return (
-        <>
-            <Header />
+  }, [orders, search]);
 
-            <Helmet>
-                <title>My Orders</title>
-            </Helmet>
+  // ================= PAGINATION =================
 
-            <div className={styles.container}>
+  const totalPages = Math.ceil(
+    filteredOrders.length / itemsPerPage
+  );
 
-                {/* TOP */}
-                <div className={styles.top}>
-                    <h2>My Orders</h2>
+  const currentOrders = filteredOrders.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
-                    <input
-                        type="text"
-                        placeholder="Search by name or phone"
-                        value={search}
-                        onChange={(e) => {
-                            setSearch(e.target.value);
-                            setCurrentPage(1);
-                        }}
-                    />
-                </div>
+  // ================= TOGGLE DETAILS =================
 
-                {/* ORDERS */}
-                <div className={styles.list}>
+  const toggleDetails = (id) => {
 
-                    {currentOrders.map((order) => (
+    setOpenDetails((prev) => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
 
-                        <div key={order._id} className={styles.card}>
+  };
 
-                            {/* LEFT */}
-                            <div className={styles.left}>
+  return (
 
-                                {order.items.map((item, i) => (
-                                    <div key={i} className={styles.product}>
+    <>
 
-                                        <img
-                                            src={item.productId?.images?.[0]?.url}
-                                            alt=""
-                                        />
+      <Helmet>
+        <title>My Orders</title>
+      </Helmet>
 
-                                        <div className={styles.pinfo}>
-                                            <p className={styles.name}>
-                                                {item.productId?.name}
-                                            </p>
+      <Header />
 
-                                            <p>Model: {item.productId?.modelNumber}</p>
-                                            <p>Qty: {item.quantity}</p>
+      <div className={styles.container}>
 
-                                            <p className={styles.price}>
-                                                ₹{item.price * item.quantity}
-                                            </p>
-                                        </div>
+        {/* ================= TOP ================= */}
 
-                                    </div>
-                                ))}
+        <div className={styles.top}>
 
-                            </div>
+          <h1>My Orders</h1>
 
-                            {/* RIGHT (ADDRESS + DETAILS) */}
-                            <div className={styles.rightCard}>
+          <p>
+            Track and view all your orders
+          </p>
 
-                                <p className={styles.sectionTitle}>
-                                    Delivery Details
-                                </p>
+          {/* SEARCH */}
 
-                                <div className={styles.infoBox}>
-                                    <p><span>Name:</span> {order.address?.name}</p>
-                                    <p><span>Phone:</span> {order.address?.phone}</p>
-                                    <p><span>Address:</span> {order.address?.address}</p>
-                                    <p><span>City:</span> {order.address?.city}</p>
-                                    <p><span>State:</span> {order.address?.state}</p>
-                                    <p><span>Pincode:</span> {order.address?.pincode}</p>
-                                    <p><span>Landmark:</span> {order.address?.landmark}</p>
-                                </div>
+          <div className={styles.searchRow}>
 
-                                <div className={styles.totalBox}>
-                                    ₹{order.total}
-                                </div>
+            <div className={styles.searchBox}>
 
-                                <p className={styles.date}>
-                                    {new Date(order.createdAt).toLocaleString()}
-                                </p>
+              <FaSearch className={styles.searchIcon} />
 
-                            </div>
+              <input
+                type="text"
+                placeholder="Search by order ID or phone"
+                value={search}
+                onChange={(e) => {
 
-                        </div>
+                  setSearch(e.target.value);
+                  setCurrentPage(1);
 
-                    ))}
-
-                </div>
-
-                {/* ================= PAGINATION ================= */}
-                <div className={styles.pagination}>
-
-                    <button
-                        disabled={currentPage === 1}
-                        onClick={() => setCurrentPage(prev => prev - 1)}
-                        className={styles.btn}
-                    >
-                        Prev
-                    </button>
-
-                    <p>
-                        Page {currentPage} of {totalPages || 1}
-                    </p>
-
-                    <button
-                        disabled={currentPage === totalPages}
-                        onClick={() => setCurrentPage(prev => prev + 1)}
-                        className={styles.btn}
-                    >
-                        Next
-                    </button>
-
-                </div>
+                }}
+              />
 
             </div>
 
-            <Footer />
-        </>
-    );
+            <button className={styles.filterBtn}>
+
+              <FaFilter />
+
+            </button>
+
+          </div>
+
+        </div>
+
+        {/* ================= ORDERS ================= */}
+
+        <div className={styles.orderList}>
+
+          {currentOrders.map((order) => (
+
+            <div
+              key={order._id}
+              className={styles.card}
+            >
+
+              {/* ================= CARD TOP ================= */}
+
+              <div className={styles.cardTop}>
+
+                <div className={styles.orderId}>
+
+                  Order ID:
+                  {" "}
+                  #{order._id.slice(-8).toUpperCase()}
+
+                </div>
+
+                <div
+                  className={
+                    order.orderStatus === "Shipped"
+                      ? styles.shipped
+                      : styles.delivered
+                  }
+                >
+
+                  {
+
+                    order.orderStatus === "Shipped"
+
+                      ?
+
+                      <>
+                        Shipped
+                        <FaTruck />
+                      </>
+
+                      :
+
+                      <>
+                        Delivered
+                        <FaCheckCircle />
+                      </>
+
+                  }
+
+                </div>
+
+              </div>
+
+              {/* ================= PRODUCTS ================= */}
+
+              {order.items.map((item, i) => (
+
+                <div
+                  className={styles.productRow}
+                  key={i}
+                >
+
+                  {/* IMAGE */}
+
+                  <img
+                    src={item.productId?.images?.[0]?.url}
+                    alt=""
+                  />
+
+                  {/* CONTENT */}
+
+                  <div className={styles.productContent}>
+
+                    <h2>
+                      {item.productId?.name}
+                    </h2>
+
+                    <p>
+                      Model:
+                      {" "}
+                      {item.productId?.modelNumber}
+                    </p>
+
+                    <p>
+                      Qty:
+                      {" "}
+                      {item.quantity}
+                    </p>
+
+                    <h3>
+                      ₹{item.price * item.quantity}
+                    </h3>
+
+                  </div>
+
+                  {/* ARROW */}
+
+                  <button className={styles.arrowBtn}>
+
+                    <FaChevronRight />
+
+                  </button>
+
+                </div>
+
+              ))}
+
+              {/* ================= DETAILS ROW ================= */}
+
+              <div className={styles.detailsRow}>
+
+                {/* DATE */}
+
+                <div className={styles.detailBox}>
+
+                  <FaCalendarAlt
+                    className={styles.detailIcon}
+                  />
+
+                  <div>
+
+                    <p className={styles.label}>
+                      Order Date
+                    </p>
+
+                    <h4>
+
+                      {
+                        new Date(
+                          order.createdAt
+                        ).toLocaleString()
+                      }
+
+                    </h4>
+
+                  </div>
+
+                </div>
+
+                <div className={styles.vertical}></div>
+
+                {/* TOTAL */}
+
+                <div className={styles.detailBox}>
+
+                  <div>
+
+                    <p className={styles.label}>
+                      Total Amount
+                    </p>
+
+                    <h4 className={styles.amount}>
+                      ₹{order.total}
+                    </h4>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* ================= DELIVERY TOGGLE ================= */}
+
+              <div
+                className={styles.deliveryHead}
+                onClick={() =>
+                  toggleDetails(order._id)
+                }
+              >
+
+                <div className={styles.deliveryLeft}>
+
+                  <FaMapMarkerAlt />
+
+                  <span>
+                    Delivery Details
+                  </span>
+
+                </div>
+
+                <div className={styles.deliveryRight}>
+
+                  <span>
+                    View details
+                  </span>
+
+                  <FaChevronDown
+                    className={
+                      openDetails[order._id]
+                        ? styles.rotate
+                        : ""
+                    }
+                  />
+
+                </div>
+
+              </div>
+
+              {/* ================= DELIVERY DETAILS ================= */}
+
+              {
+
+                openDetails[order._id] && (
+
+                  <div className={styles.deliveryBox}>
+
+                    <p>
+                      <span>Name:</span>
+                      {" "}
+                      {order.address?.name}
+                    </p>
+
+                    <p>
+                      <span>Phone:</span>
+                      {" "}
+                      {order.address?.phone}
+                    </p>
+
+                    <p>
+                      <span>Address:</span>
+                      {" "}
+                      {order.address?.address}
+                    </p>
+
+                    <p>
+                      <span>City:</span>
+                      {" "}
+                      {order.address?.city}
+                    </p>
+
+                    <p>
+                      <span>State:</span>
+                      {" "}
+                      {order.address?.state}
+                    </p>
+
+                    <p>
+                      <span>Pincode:</span>
+                      {" "}
+                      {order.address?.pincode}
+                    </p>
+
+                    <p>
+                      <span>Landmark:</span>
+                      {" "}
+                      {order.address?.landmark}
+                    </p>
+
+                  </div>
+
+                )
+
+              }
+
+            </div>
+
+          ))}
+
+        </div>
+
+        {/* ================= PAGINATION ================= */}
+
+        <div className={styles.pagination}>
+
+          <p>
+
+            Page {currentPage} of {totalPages || 1}
+
+          </p>
+
+          <button
+            onClick={() =>
+              setCurrentPage((prev) =>
+                Math.min(prev + 1, totalPages)
+              )
+            }
+            disabled={currentPage === totalPages}
+          >
+
+            <FaChevronRight />
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <Footer />
+
+    </>
+
+  );
+
 }
