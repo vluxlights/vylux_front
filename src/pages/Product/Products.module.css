@@ -18,7 +18,7 @@
   padding:10px;
 }
 
-/* ================= FILTER BAR ================= */
+/* ================= TOP BAR ================= */
 
 .topBar{
   display:flex;
@@ -28,12 +28,12 @@
 
 .filterBox{
   flex:1;
-  height:48px;
+  height:50px;
 
   background:#fff;
 
   border:1px solid #ebe7f7;
-  border-radius:14px;
+  border-radius:16px;
 
   display:flex;
   align-items:center;
@@ -43,30 +43,34 @@
   box-shadow:0 2px 6px rgba(0,0,0,0.05);
 }
 
-.filterIcon{
+.topIcon{
   color:#6d28d9;
   font-size:14px;
-  margin-right:6px;
+  margin-right:7px;
 }
 
-.filterLabel{
+.filterBox span{
   font-size:12px;
   font-weight:700;
   color:#111827;
-  margin-right:5px;
+  margin-right:4px;
+  white-space:nowrap;
 }
 
 .filterBox select{
   width:100%;
+
   border:none;
   outline:none;
   background:none;
 
   font-size:12px;
   color:#4b5563;
+
+  cursor:pointer;
 }
 
-/* ================= GRID ================= */
+/* ================= PRODUCT GRID ================= */
 
 .productGrid{
   display:grid;
@@ -90,11 +94,17 @@
   box-shadow:0 2px 8px rgba(0,0,0,0.04);
 
   cursor:pointer;
+
+  transition:0.2s;
 }
 
-/* ================= OFFER TAG ================= */
+.card:hover{
+  transform:translateY(-2px);
+}
 
-.offerTag{
+/* ================= OFFER BADGE ================= */
+
+.offerBadge{
   position:absolute;
 
   top:10px;
@@ -117,7 +127,7 @@
 
 .imageBox{
   width:100%;
-  height:150px;
+  height:145px;
 
   background:#f7f2ff;
 }
@@ -135,15 +145,21 @@
   padding:10px;
 }
 
-.content h2{
-  font-size:13px;
+.content h3{
+  font-size:14px;
   font-weight:800;
-
-  line-height:1.4;
 
   color:#111827;
 
+  line-height:1.4;
+
   margin-bottom:6px;
+
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+
+  overflow:hidden;
 }
 
 .content p{
@@ -153,6 +169,14 @@
   color:#4b5563;
 
   margin-bottom:10px;
+
+  min-height:32px;
+
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+
+  overflow:hidden;
 }
 
 /* ================= PRICE ================= */
@@ -165,14 +189,14 @@
   margin-bottom:12px;
 }
 
-.price{
-  font-size:15px;
+.priceRow h2{
+  font-size:16px;
   font-weight:800;
 
   color:#6d28d9;
 }
 
-.oldPrice{
+.priceRow span{
   font-size:11px;
 
   color:#9ca3af;
@@ -203,50 +227,132 @@
   cursor:pointer;
 }
 
+/* ================= LOADING ================= */
+
+.loading{
+  text-align:center;
+  margin:20px 0;
+
+  font-size:14px;
+  font-weight:600;
+
+  color:#6b7280;
+}
+
 /* ================= PAGINATION ================= */
 
 .pagination{
-  margin-top:18px;
+  margin-top:20px;
+  margin-bottom:25px;
 
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:8px;
-
-  margin-bottom:20px;
+  gap:10px;
 }
 
-.pageBtn,
-.activePage{
+.pagination button{
   width:38px;
   height:38px;
 
   border:none;
   border-radius:10px;
 
+  background:#fff;
+
+  color:#6d28d9;
+
   font-size:13px;
   font-weight:700;
 
   cursor:pointer;
-}
 
-.pageBtn{
-  background:#fff;
-  color:#6d28d9;
   border:1px solid #ece7f5;
 }
 
-.activePage{
-  background:#6d28d9;
-  color:#fff;
+.pagination button:disabled{
+  opacity:0.4;
+  cursor:not-allowed;
 }
 
-/* ================= LOADING ================= */
+.pageNo{
+  width:38px;
+  height:38px;
 
-.loading{
-  text-align:center;
-  margin-top:20px;
-  font-size:14px;
+  background:#6d28d9;
+  color:#fff;
+
+  border-radius:10px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:13px;
+  font-weight:700;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:480px){
+
+  .main{
+    padding:8px;
+  }
+
+  .topBar{
+    gap:8px;
+  }
+
+  .filterBox{
+    height:46px;
+    padding:0 10px;
+  }
+
+  .filterBox span{
+    font-size:11px;
+  }
+
+  .filterBox select{
+    font-size:11px;
+  }
+
+  .imageBox{
+    height:130px;
+  }
+
+  .content{
+    padding:8px;
+  }
+
+  .content h3{
+    font-size:12px;
+  }
+
+  .content p{
+    font-size:10px;
+    min-height:28px;
+  }
+
+  .priceRow h2{
+    font-size:15px;
+  }
+
+  .priceRow span{
+    font-size:10px;
+  }
+
+  .cartBtn{
+    height:34px;
+    font-size:11px;
+    gap:6px;
+  }
+
+  .offerBadge{
+    font-size:9px;
+    padding:4px 8px;
+  }
+
 }
 
 /* ================= DESKTOP ================= */
@@ -265,28 +371,38 @@
   }
 
   .imageBox{
-    height:230px;
+    height:240px;
   }
 
-  .content h2{
+  .content{
+    padding:14px;
+  }
+
+  .content h3{
     font-size:18px;
   }
 
   .content p{
     font-size:14px;
+    min-height:42px;
   }
 
-  .price{
-    font-size:20px;
+  .priceRow h2{
+    font-size:22px;
   }
 
-  .oldPrice{
+  .priceRow span{
     font-size:14px;
   }
 
   .cartBtn{
-    height:45px;
+    height:46px;
     font-size:14px;
+  }
+
+  .offerBadge{
+    font-size:12px;
+    padding:6px 12px;
   }
 
 }
