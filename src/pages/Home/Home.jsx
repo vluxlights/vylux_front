@@ -135,7 +135,7 @@ export default function Home() {
           {/* ---------- NEW ARRIVALS ---------- */}
           <div className={styles.new}>
 
-            <p>NEW ARRIVALS</p>
+            <p className={styles.newarr}>NEW ARRIVALS</p>
 
             <hr className={styles.hr} />
 
