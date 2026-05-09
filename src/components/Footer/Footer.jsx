@@ -53,17 +53,17 @@ export default function Footer() {
 
               <div className={styles.featureBox}>
                 <FaTruck className={styles.featureIcon} />
-                <p>Delivery</p>
+                <p>Fast Delivery</p>
               </div>
 
               <div className={styles.featureBox}>
                 <FaShieldAlt className={styles.featureIcon} />
-                <p>Quality</p>
+                <p>Quality Products</p>
               </div>
 
               <div className={styles.featureBox}>
                 <FaHeadset className={styles.featureIcon} />
-                <p>Support</p>
+                <p>24/7 Support</p>
               </div>
 
             </div>
