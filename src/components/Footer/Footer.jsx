@@ -26,20 +26,21 @@ export default function Footer() {
           className={styles.footerImage}
         />
 
-        {/* CONTENT */}
+        {/* OVERLAY CONTENT */}
         <div className={styles.overlayContent}>
 
           {/* LEFT CONTENT */}
-          <div className={styles.left}>
+          <div className={styles.leftContent}>
 
             <h1 className={styles.heading}>
-              Bulk Orders <br />
-              & Dealership
+              Looking for <span>Bulk Orders</span>
+              <br />
+              or <span>Dealership?</span>
             </h1>
 
             <p className={styles.desc}>
-              Premium quality lighting products
-              for your business.
+              Join hands with VYLUX and grow your business
+              with premium quality lighting products.
             </p>
 
             {/* FEATURES */}
@@ -47,7 +48,7 @@ export default function Footer() {
 
               <div className={styles.featureBox}>
                 <FaTags className={styles.featureIcon} />
-                <p>Best Price</p>
+                <p>Best Prices</p>
               </div>
 
               <div className={styles.featureBox}>
@@ -70,7 +71,7 @@ export default function Footer() {
           </div>
 
           {/* BUTTON */}
-          <div className={styles.btnDiv}>
+          <div className={styles.buttonDiv}>
 
             <Link to="/contactus">
               <button className={styles.contactBtn}>
