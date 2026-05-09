@@ -120,29 +120,23 @@ export default function Products() {
 
   }, [page, category, sort]);
 
-  // ================= PAGINATION =================
-
-  const nextPage = () => {
-
-    if (page * limit < total) {
-
-      setPage((prev) => prev + 1);
-
-    }
-
-  };
-
-  const prevPage = () => {
-
-    setPage((prev) => Math.max(prev - 1, 1));
-
-  };
-
   // ================= OPEN PRODUCT =================
 
   const openProduct = (id) => {
 
     navigate(`/product/${id}`);
+
+  };
+
+  // ================= OFFER =================
+
+  const getOfferPercentage = (oldPrice, newPrice) => {
+
+    if (!oldPrice || oldPrice <= newPrice) return null;
+
+    return Math.round(
+      ((oldPrice - newPrice) / oldPrice) * 100
+    );
 
   };
 
@@ -157,8 +151,6 @@ export default function Products() {
         </title>
 
       </Helmet>
-
-      {/* ================= HEADER ================= */}
 
       <Header />
 
@@ -264,60 +256,94 @@ export default function Products() {
 
         <div className={styles.productGrid}>
 
-          {products.map((p) => (
+          {products.map((p) => {
 
-            <div
-              key={p._id}
-              className={styles.card}
-              onClick={() => openProduct(p._id)}
-            >
+            const offer =
+              getOfferPercentage(
+                p.oldPrice,
+                p.price
+              );
 
-              {/* IMAGE */}
+            return (
 
-              <div className={styles.imageBox}>
+              <div
+                key={p._id}
+                className={styles.card}
+                onClick={() => openProduct(p._id)}
+              >
 
-                <img
-                  src={p.images?.[0]?.url}
-                  alt={p.name}
-                />
+                {/* OFFER */}
 
-              </div>
+                {offer && (
 
-              {/* CONTENT */}
+                  <div className={styles.offerTag}>
 
-              <div className={styles.content}>
+                    -{offer}%
 
-                <h2>
-                  {p.name}
-                </h2>
+                  </div>
 
-                <p>
-                  {p.subName}
-                </p>
+                )}
 
-                <div className={styles.priceRow}>
+                {/* IMAGE */}
 
-                  <span className={styles.price}>
-                    ₹{p.price}
-                  </span>
+                <div className={styles.imageBox}>
+
+                  <img
+                    src={p.images?.[0]?.url}
+                    alt={p.name}
+                  />
 
                 </div>
 
-                {/* BUTTON */}
+                {/* CONTENT */}
 
-                <button className={styles.cartBtn}>
+                <div className={styles.content}>
 
-                  <FaShoppingCart />
+                  <h2>
+                    {p.name}
+                  </h2>
 
-                  Add to Cart
+                  <p>
+                    {p.subName}
+                  </p>
 
-                </button>
+                  {/* PRICE */}
+
+                  <div className={styles.priceRow}>
+
+                    <span className={styles.price}>
+                      ₹{p.price}
+                    </span>
+
+                    {p.oldPrice && (
+
+                      <span className={styles.oldPrice}>
+
+                        ₹{p.oldPrice}
+
+                      </span>
+
+                    )}
+
+                  </div>
+
+                  {/* BUTTON */}
+
+                  <button className={styles.cartBtn}>
+
+                    <FaShoppingCart />
+
+                    Add to Cart
+
+                  </button>
+
+                </div>
 
               </div>
 
-            </div>
+            );
 
-          ))}
+          })}
 
         </div>
 
@@ -325,11 +351,7 @@ export default function Products() {
 
         <div className={styles.pagination}>
 
-          <button
-            className={styles.pageBtn}
-            onClick={prevPage}
-            disabled={page === 1}
-          >
+          <button className={styles.activePage}>
             1
           </button>
 
@@ -355,8 +377,6 @@ export default function Products() {
 
           <button
             className={styles.pageBtn}
-            onClick={nextPage}
-            disabled={page * limit >= total}
           >
 
             <FaChevronRight />
@@ -366,8 +386,6 @@ export default function Products() {
         </div>
 
       </div>
-
-      {/* ================= FOOTER ================= */}
 
       <Footer />
 

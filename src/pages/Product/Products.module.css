@@ -15,7 +15,7 @@
 
 .main{
   width:100%;
-  padding:12px;
+  padding:10px;
 }
 
 /* ================= FILTER BAR ================= */
@@ -28,87 +28,98 @@
 
 .filterBox{
   flex:1;
-  height:56px;
+  height:48px;
 
   background:#fff;
 
-  border:1px solid #ece7f5;
-  border-radius:18px;
+  border:1px solid #ebe7f7;
+  border-radius:14px;
 
   display:flex;
   align-items:center;
 
   padding:0 12px;
 
-  box-shadow:0 2px 8px rgba(0,0,0,0.04);
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
 }
 
 .filterIcon{
-  color:#5b21b6;
-  font-size:15px;
-  margin-right:8px;
+  color:#6d28d9;
+  font-size:14px;
+  margin-right:6px;
 }
 
 .filterLabel{
   font-size:12px;
   font-weight:700;
   color:#111827;
-  margin-right:4px;
-  white-space:nowrap;
+  margin-right:5px;
 }
 
 .filterBox select{
   width:100%;
-
   border:none;
   outline:none;
   background:none;
 
   font-size:12px;
   color:#4b5563;
-
-  cursor:pointer;
 }
 
-/* ================= LOADING ================= */
-
-.loading{
-  text-align:center;
-  padding:20px;
-  font-size:14px;
-}
-
-/* ================= PRODUCT GRID ================= */
+/* ================= GRID ================= */
 
 .productGrid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:12px;
+  gap:10px;
 }
 
 /* ================= CARD ================= */
 
 .card{
+  position:relative;
+
   background:#fff;
 
-  border-radius:18px;
+  border-radius:16px;
 
   overflow:hidden;
 
   border:1px solid #ececec;
 
-  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
 
   cursor:pointer;
+}
+
+/* ================= OFFER TAG ================= */
+
+.offerTag{
+  position:absolute;
+
+  top:10px;
+  left:10px;
+
+  background:#ff8a00;
+  color:#fff;
+
+  font-size:10px;
+  font-weight:700;
+
+  padding:5px 10px;
+
+  border-radius:20px;
+
+  z-index:5;
 }
 
 /* ================= IMAGE ================= */
 
 .imageBox{
   width:100%;
-  height:165px;
+  height:150px;
 
-  background:#f8f3ff;
+  background:#f7f2ff;
 }
 
 .imageBox img{
@@ -121,7 +132,7 @@
 /* ================= CONTENT ================= */
 
 .content{
-  padding:12px;
+  padding:10px;
 }
 
 .content h2{
@@ -141,7 +152,7 @@
 
   color:#4b5563;
 
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 
 /* ================= PRICE ================= */
@@ -149,30 +160,44 @@
 .priceRow{
   display:flex;
   align-items:center;
+  gap:8px;
 
   margin-bottom:12px;
 }
 
 .price{
-  font-size:18px;
+  font-size:15px;
   font-weight:800;
 
   color:#6d28d9;
+}
+
+.oldPrice{
+  font-size:11px;
+
+  color:#9ca3af;
+
+  text-decoration:line-through;
 }
 
 /* ================= BUTTON ================= */
 
 .cartBtn{
   width:100%;
-  height:40px;
+  height:38px;
 
   border:none;
   border-radius:10px;
 
-  background:#049312;
+  background:#059212;
   color:#fff;
 
-  font-size:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+
+  font-size:12px;
   font-weight:700;
 
   cursor:pointer;
@@ -182,35 +207,46 @@
 
 .pagination{
   margin-top:18px;
-  margin-bottom:10px;
 
   display:flex;
   justify-content:center;
   align-items:center;
-
   gap:8px;
+
+  margin-bottom:20px;
 }
 
-.pageBtn{
-  width:40px;
-  height:40px;
+.pageBtn,
+.activePage{
+  width:38px;
+  height:38px;
 
-  border:1px solid #ece7f5;
-  border-radius:12px;
+  border:none;
+  border-radius:10px;
 
-  background:#fff;
-
-  color:#5b21b6;
-
-  font-size:14px;
+  font-size:13px;
   font-weight:700;
 
   cursor:pointer;
 }
 
+.pageBtn{
+  background:#fff;
+  color:#6d28d9;
+  border:1px solid #ece7f5;
+}
+
 .activePage{
   background:#6d28d9;
   color:#fff;
+}
+
+/* ================= LOADING ================= */
+
+.loading{
+  text-align:center;
+  margin-top:20px;
+  font-size:14px;
 }
 
 /* ================= DESKTOP ================= */
@@ -223,17 +259,13 @@
     padding-top:20px;
   }
 
-  .topBar{
-    width:500px;
-  }
-
   .productGrid{
     grid-template-columns:repeat(4,1fr);
     gap:20px;
   }
 
   .imageBox{
-    height:240px;
+    height:230px;
   }
 
   .content h2{
@@ -244,9 +276,17 @@
     font-size:14px;
   }
 
+  .price{
+    font-size:20px;
+  }
+
+  .oldPrice{
+    font-size:14px;
+  }
+
   .cartBtn{
-    height:46px;
-    font-size:15px;
+    height:45px;
+    font-size:14px;
   }
 
 }
