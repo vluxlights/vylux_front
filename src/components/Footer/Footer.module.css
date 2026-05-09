@@ -1,350 +1,393 @@
-/* ================= FOOTER ================= */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.footerContainer {
-  width: 100%;
-  height: 250px;
+/* ================= TOP BANNER ================= */
 
-  position: relative;
-
+.topBanner{
+  width: 96%;
+  margin: 25px auto 15px auto;
+  border-radius: 18px;
   overflow: hidden;
 }
 
-/* ================= IMAGE ================= */
-
-.footerImage {
+.bannerImage{
   width: 100%;
-  height: 250px;
-
-  object-fit: cover;
-
+  height: auto;
   display: block;
+  object-fit: cover;
 }
 
-/* ================= OVERLAY ================= */
+/* ================= MAIN FOOTER ================= */
 
-.overlayContent {
-  position: absolute;
+.footerMain{
+  width: 96%;
+  margin: auto;
 
-  top: 0;
-  left: 0;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
 
-  width: 100%;
-  height: 100%;
+  gap: 25px;
 
-  padding: 40px 70px;
+  padding: 35px 15px;
 
-  box-sizing: border-box;
+  background: #fff;
+  border-top: 1px solid #e5e5e5;
+}
+
+.footerBox{
+  padding: 0 18px;
+  border-right: 1px solid #e5e5e5;
+}
+
+.footerBox:last-child{
+  border-right: none;
+}
+
+/* ================= LOGO ================= */
+
+.logo{
+  width: 180px;
+  object-fit: contain;
+  margin-bottom: 18px;
+}
+
+/* ================= TITLES ================= */
+
+.footerBox h2{
+  font-size: 22px;
+  color: #6c2bd9;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.line{
+  width: 45px;
+  height: 3px;
+  background: #6c2bd9;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+/* ================= TEXT ================= */
+
+.footerText{
+  font-size: 17px;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* ================= SOCIAL ================= */
+
+.socials{
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.socialIcon{
+  width: 48px;
+  height: 48px;
+
+  border-radius: 10px;
+  background: #f3edff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #6c2bd9;
+  font-size: 20px;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.socialIcon:hover{
+  transform: translateY(-3px);
+}
+
+/* ================= CONTACT BUTTON ================= */
+
+.contactLink{
+  text-decoration: none;
+}
+
+.contactBtn{
+  margin-top: 25px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: transparent;
+  border: none;
+
+  color: #6c2bd9;
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* ================= INFO ROW ================= */
+
+.infoRow{
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+
+  margin-bottom: 22px;
+}
+
+.infoIcon{
+  color: #6c2bd9;
+  font-size: 18px;
+  margin-top: 4px;
+}
+
+.infoRow p{
+  font-size: 17px;
+  line-height: 1.8;
+  color: #222;
+}
+
+/* ================= BOTTOM BAR ================= */
+
+.bottomBar{
+  width: 96%;
+  margin: auto;
+
+  border-top: 1px solid #e5e5e5;
+
+  padding: 22px 10px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  color: white;
-}
-
-/* ================= LEFT CONTENT ================= */
-
-.leftContent {
-  display: flex;
-  flex-direction: column;
-
-  width: 70%;
-}
-
-/* ================= HEADING ================= */
-
-.heading {
-  font-size: 25px;
-  font-weight: 800;
-
-  line-height: 1.3;
-
-  margin-bottom: 20px;
-}
-
-.heading span {
-  color: #b4ff57;
-}
-
-/* ================= DESCRIPTION ================= */
-
-.desc {
-  font-size: 15px;
-
-  line-height: 1.8;
-
-  max-width: 700px;
-
-  margin-bottom: 40px;
-}
-
-/* ================= FEATURES ================= */
-
-.features {
-  display: flex;
-  align-items: center;
-
-  gap: 60px;
-
   flex-wrap: wrap;
+  gap: 15px;
 }
 
-/* ================= FEATURE BOX ================= */
+/* ================= SECURE ================= */
 
-.featureBox {
+.secure{
   display: flex;
-  flex-direction: column;
   align-items: center;
-
   gap: 10px;
+
+  color: #6c2bd9;
+  font-size: 22px;
 }
 
-.featureBox p {
-  font-size: 10px;
-  font-weight: 500;
-
-  text-align: center;
-}
-
-/* ================= FEATURE ICON ================= */
-
-.featureIcon {
-  font-size: 42px;
-
-  color: #b4ff57;
-}
-
-/* ================= BUTTON ================= */
-
-.buttonDiv {
-  margin-right: 30px;
-}
-
-.contactBtn {
-   position: relative;
-    top: 90px;
-    left: -290px;
-
-        background-color: #284405;
-
-    
-
-    height: 40px;
-
-    padding: 5px 20px;
-
-    font-size: 13px;
-
-  cursor: pointer;
-
-  transition: 0.3s;
-}
-
-.contactBtn:hover {
-  background-color: #5c9911;
-  transform: scale(1.05);
+.secure p{
+  font-size: 17px;
+  color: #111;
 }
 
 /* ================= COPYRIGHT ================= */
 
-.copyDiv {
-  width: 100%;
-
-  background-color: rgb(4, 15, 4);
-
-  text-align: center;
-
-  padding: 8px 8px;
+.copyRight{
+  font-size: 17px;
+  color: #111;
 }
 
-.copyDiv p {
-  color: white;
-
-  font-size: 12px;
+.copyRight span{
+  color: #6c2bd9;
+  font-weight: 700;
 }
 
-/* ================= MOBILE VIEW ================= */
+/* =========================================================
+   =================== TABLET VIEW =========================
+========================================================= */
 
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 769px) and (max-width: 1024px){
 
-  .footerContainer {
-    width: 100%;
-    height: 150px;
-
-    position: relative;
-
-    overflow: hidden;
+  .footerMain{
+    grid-template-columns: repeat(2,1fr);
+    gap: 30px;
   }
 
-  .footerImage {
-    width: 100%;
-    height: 160px;
+  .footerBox{
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 25px;
+  }
 
+  .logo{
+    width: 150px;
+  }
+
+  .footerBox h2{
+    font-size: 20px;
+  }
+
+  .footerText{
+    font-size: 15px;
+  }
+
+  .infoRow p{
+    font-size: 15px;
+  }
+
+  .copyRight{
+    font-size: 15px;
+  }
+
+  .secure p{
+    font-size: 15px;
+  }
+
+}
+
+/* =========================================================
+   =================== MOBILE VIEW =========================
+========================================================= */
+
+@media screen and (max-width: 768px){
+
+  .topBanner{
+    width: 96%;
+    margin-top: 15px;
+    border-radius: 12px;
+  }
+
+  .bannerImage{
+    width: 100%;
+    height: auto;
     object-fit: cover;
-
-    display: block;
   }
 
-  .overlayContent {
-    position: absolute;
+  /* ================= FOOTER MAIN ================= */
 
-    top: 3px;
-    left: 10px;
-
-    width: 90%;
-    height: 100%;
-
-    padding: 10px 12px;
-
-    box-sizing: border-box;
+  .footerMain{
+    width: 96%;
 
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
 
-    color: white;
+    gap: 10px;
+
+    padding: 15px 8px;
   }
 
-  .leftContent {
-    width: 75%;
+  /* ================= FOOTER BOX ================= */
 
-    display: flex;
-    flex-direction: column;
+  .footerBox{
+    width: 48%;
+
+    border-right: none;
+    border-bottom: 1px solid #eee;
+
+    padding: 0 5px 15px 5px;
   }
 
-  .heading {
-    font-size: 10px !important;
-
-    font-weight: 900;
-
-    line-height: 1.4;
-
-    margin-bottom: 15px;
+  .footerBox:last-child{
+    border-bottom: none;
   }
 
-  .heading span {
-    color: #b4ff57;
+  /* ================= LOGO ================= */
+
+  .logo{
+    width: 100px;
+    margin-bottom: 10px;
   }
 
-  .desc {
+  /* ================= TITLES ================= */
+
+  .footerBox h2{
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+
+  .line{
+    width: 25px;
+    height: 2px;
+    margin-bottom: 10px;
+  }
+
+  /* ================= TEXT ================= */
+
+  .footerText{
     font-size: 8px;
-
-    line-height: 1.5;
-
-    margin-bottom: 30px;
+    line-height: 1.6;
   }
 
-  .features {
-    display: flex;
-    align-items: center;
+  /* ================= SOCIAL ================= */
 
-    gap: 19px;
-
-    flex-wrap: wrap;
+  .socials{
+    margin-top: 10px;
+    gap: 6px;
   }
 
-  .featureBox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .socialIcon{
+    width: 26px;
+    height: 26px;
 
-    gap: 3px;
-  }
+    font-size: 10px;
 
-  .featureBox p {
-    font-size: 7px;
-    font-weight: 500;
-
-    text-align: center;
-  }
-
-  .featureIcon {
-    font-size: 12px;
-
-    color: #b4ff57;
-  }
-
-  .buttonDiv {
-    margin-right: 0px;
-  }
-
-  .contactBtn {
-
-    position: relative;
-    top: 50px;
-    left: 0px;
-
-    padding: 7px 10px;
-
-    border: none;
     border-radius: 6px;
+  }
 
-    background-color: #284405;
+  /* ================= BUTTON ================= */
 
+  .contactBtn{
+    margin-top: 10px;
+
+    gap: 4px;
+
+    font-size: 8px;
+  }
+
+  /* ================= INFO ================= */
+
+  .infoRow{
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .infoIcon{
     font-size: 9px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    height: 25px;
+    margin-top: 2px;
   }
 
-  .contactBtn:hover{
-
-    background-color: #528f08;
+  .infoRow p{
+    font-size: 8px;
+    line-height: 1.5;
   }
 
-  .copyDiv {
-    width: 100%;
+  /* ================= BOTTOM ================= */
 
-    background-color: rgb(3, 3, 3);
+  .bottomBar{
+    width: 96%;
 
-    text-align: center;
+    padding: 10px 5px;
 
-    padding: 5px;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 10px;
   }
 
-  .copyDiv p {
-    color: white;
-
-    font-size: 7px;
-  }
-
-}
-
-/* ================= TABLET VIEW ================= */
-
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-
-  .heading {
-    font-size: 25px;
-  }
-
-  .desc {
-    font-size: 13px;
-  }
-
-  .featureIcon {
-    font-size: 30px;
-  }
-
-  .featureBox p {
+  .secure{
+    gap: 5px;
     font-size: 10px;
   }
 
-  .contactBtn {
+  .secure p{
+    font-size: 8px;
+  }
 
-    position: relative;
-    top: 90px;
-    left: -20px;
-
-    height: 35px;
-
-    padding: 5px 20px;
-
-    font-size: 13px;
-    background-color: #284405;
-
+  .copyRight{
+    font-size: 8px;
+    text-align: right;
   }
 
 }

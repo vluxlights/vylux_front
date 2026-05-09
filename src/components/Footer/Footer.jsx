@@ -1,83 +1,225 @@
 import styles from "./Footer.module.css";
-import FooterImg from "../../assests/Home_page/foooter.jpeg";
+
+import FooterBanner from "../../assests/Home_page/footer.jpeg";
+import Logo from "../../assests/logo/web_logo.png";
 
 import {
-  FaTags,
-  FaTruck,
+  FaFacebookF,
+  FaInstagram,
+  FaWhatsapp,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaGlobe,
+  FaMapMarkerAlt,
+  FaChevronRight,
   FaShieldAlt,
-  FaHeadset,
 } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 export default function Footer() {
+
+  const [settings, setSettings] = useState({});
+
+  // ================= FETCH SETTINGS =================
+
+  const fetchSettings = async () => {
+
+    try {
+
+      const res = await axios.get(
+        "https://vlux-backend.onrender.com/api/vlux/settings"
+      );
+
+      setSettings(res.data || {});
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
+
+  };
+
+  useEffect(() => {
+
+    fetchSettings();
+
+  }, []);
 
   return (
     <>
 
-      {/* ================= FOOTER ================= */}
+      {/* ================= TOP IMAGE ================= */}
 
-      <div className={styles.footerContainer}>
+      <div className={styles.topBanner}>
 
-        {/* IMAGE */}
         <img
-          src={FooterImg}
-          alt="footer"
-          className={styles.footerImage}
+          src={FooterBanner}
+          alt="footer-banner"
+          className={styles.bannerImage}
         />
 
-        {/* OVERLAY CONTENT */}
-        <div className={styles.overlayContent}>
+      </div>
 
-          {/* LEFT CONTENT */}
-          <div className={styles.leftContent}>
+      {/* ================= FOOTER MAIN ================= */}
 
-            <h1 className={styles.heading}>
-              Looking for <span>Bulk Orders</span>
-              <br />
-              or <span>Dealership?</span>
-            </h1>
+      <div className={styles.footerMain}>
 
-            <p className={styles.desc}>
-              Join hands with VYLUX and grow your business
-              with premium quality lighting products.
-            </p>
+        {/* ================= LOGO SECTION ================= */}
 
-            {/* FEATURES */}
-            <div className={styles.features}>
+        <div className={styles.footerBox}>
 
-              <div className={styles.featureBox}>
-                <FaTags className={styles.featureIcon} />
-                <p>Best Prices</p>
-              </div>
+          <img
+            src={Logo}
+            alt="logo"
+            className={styles.logo}
+          />
 
-              <div className={styles.featureBox}>
-                <FaTruck className={styles.featureIcon} />
-                <p>Fast Delivery</p>
-              </div>
+          <p className={styles.footerText}>
+            High performance LED lighting
+            solutions for every home,
+            industry and outdoor spaces.
+          </p>
 
-              <div className={styles.featureBox}>
-                <FaShieldAlt className={styles.featureIcon} />
-                <p>Quality Products</p>
-              </div>
+          <div className={styles.socials}>
 
-              <div className={styles.featureBox}>
-                <FaHeadset className={styles.featureIcon} />
-                <p>24/7 Support</p>
-              </div>
+            {/* FACEBOOK */}
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialIcon}
+            >
+              <FaFacebookF />
+            </a>
 
-            </div>
+            {/* INSTAGRAM */}
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialIcon}
+            >
+              <FaInstagram />
+            </a>
+
+            {/* WHATSAPP */}
+            <a
+              href={`https://wa.me/91${settings.contactPhone || "917358433622"}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialIcon}
+            >
+              <FaWhatsapp />
+            </a>
 
           </div>
 
-          {/* BUTTON */}
-          <div className={styles.buttonDiv}>
+        </div>
 
-            <Link to="/contactus">
-              <button className={styles.contactBtn}>
-                Contact Us
-              </button>
-            </Link>
+        {/* ================= BULK ORDER ================= */}
+
+        <div className={styles.footerBox}>
+
+          <h2>BULK ORDERS & DEALERSHIP</h2>
+
+          <div className={styles.line}></div>
+
+          <p className={styles.footerText}>
+            We offer special pricing and dedicated
+            support for bulk orders and dealers.
+            Partner with VYLUX and grow together.
+          </p>
+
+          <Link
+            to="/contactus"
+            className={styles.contactLink}
+          >
+
+            <button className={styles.contactBtn}>
+
+              <FaChevronRight />
+
+              Get in touch for business inquiries
+
+            </button>
+
+          </Link>
+
+        </div>
+
+        {/* ================= LOCATION ================= */}
+
+        <div className={styles.footerBox}>
+
+          <h2>OUR LOCATION</h2>
+
+          <div className={styles.line}></div>
+
+          <div className={styles.infoRow}>
+
+            <FaMapMarkerAlt className={styles.infoIcon} />
+
+            <p className={styles.addressText}>
+
+              {
+                settings.contactAddress
+                  ? settings.contactAddress
+                      .split(",")
+                      .map((item, index) => (
+                        <span key={index}>
+                          {item.trim()}
+                          <br />
+                        </span>
+                      ))
+                  : "Address Not Available"
+              }
+
+            </p>
+
+          </div>
+
+        </div>
+
+        {/* ================= CONTACT ================= */}
+
+        <div className={styles.footerBox}>
+
+          <h2>CONTACT US</h2>
+
+          <div className={styles.line}></div>
+
+          <div className={styles.infoRow}>
+
+            <FaPhoneAlt className={styles.infoIcon} />
+
+            <p>
+              {settings.contactPhone || "Phone Not Available"}
+            </p>
+
+          </div>
+
+          <div className={styles.infoRow}>
+
+            <FaEnvelope className={styles.infoIcon} />
+
+            <p>
+              {settings.contactEmail || "Email Not Available"}
+            </p>
+
+          </div>
+
+          <div className={styles.infoRow}>
+
+            <FaGlobe className={styles.infoIcon} />
+
+            <p>
+              www.vyluxlighting.com
+            </p>
 
           </div>
 
@@ -85,12 +227,22 @@ export default function Footer() {
 
       </div>
 
-      {/* ================= COPYRIGHT ================= */}
+      {/* ================= BOTTOM BAR ================= */}
 
-      <div className={styles.copyDiv}>
-        <p>
-          © 2026 VYLUX Lighting. All Rights Reserved.
+      <div className={styles.bottomBar}>
+
+        <div className={styles.secure}>
+
+          <FaShieldAlt />
+
+          <p>100% Secure Payments</p>
+
+        </div>
+
+        <p className={styles.copyRight}>
+          © 2026 <span>VYLUX</span> Lighting. All Rights Reserved.
         </p>
+
       </div>
 
     </>
