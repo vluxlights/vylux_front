@@ -10,6 +10,7 @@
 .topBanner{
   width: 96%;
   margin: 25px auto 15px auto;
+  padding-top: 10px;
   border-radius: 18px;
   overflow: hidden;
 }
@@ -22,13 +23,22 @@
 }
 
 /* ================= MAIN FOOTER ================= */
+.cont{
+
+  background-color: #cdccdb;
+
+
+}
+
 
 .footerMain{
   width: 96%;
   margin: auto;
+  
 
   display: grid;
   grid-template-columns: repeat(4,1fr);
+  
 
   gap: 25px;
 
@@ -42,7 +52,7 @@
 .footerBox{
   padding: 0 18px;
   border-right: 1px solid #e5e5e5;
-  
+  background-color: #eae7ee;
 }
 
 .footerBox:last-child{

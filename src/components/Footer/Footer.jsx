@@ -54,7 +54,10 @@ export default function Footer() {
     <>
 
       {/* ================= TOP IMAGE ================= */}
+         
+         <div className={styles.cont}>
 
+          
       <div className={styles.topBanner}>
 
         <img
@@ -244,6 +247,7 @@ export default function Footer() {
         </p>
 
       </div>
+         </div>
 
     </>
   );
