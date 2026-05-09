@@ -6,13 +6,13 @@ import Footer from "../../components/Footer/Footer";
 import { Helmet } from "react-helmet";
 
 import {
-  FaFilter,
-  FaSortAmountDown,
-  FaShoppingCart,
-  FaChevronRight
+  FaBars,
+  FaShoppingCart
 } from "react-icons/fa";
 
 import { useEffect, useState } from "react";
+
+import Slider from "@mui/material/Slider";
 
 import axios from "axios";
 
@@ -20,12 +20,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function Products() {
 
+  const [value, setValue] = useState([0, 1000]);
+
   const [products, setProducts] = useState([]);
+
   const [categories, setCategories] = useState([]);
 
   const [category, setCategory] = useState("all");
-
-  const [sort, setSort] = useState("low");
 
   const [page, setPage] = useState(1);
 
@@ -51,26 +52,14 @@ export default function Products() {
           params: {
             page,
             limit,
-            type: category !== "all" ? category : undefined
+            type: category !== "all" ? category : undefined,
+            minPrice: value[0],
+            maxPrice: value[1]
           }
         }
       );
 
-      let fetchedProducts = res.data.products || [];
-
-      // ================= SORT =================
-
-      if (sort === "low") {
-
-        fetchedProducts.sort((a, b) => a.price - b.price);
-
-      } else {
-
-        fetchedProducts.sort((a, b) => b.price - a.price);
-
-      }
-
-      setProducts(fetchedProducts);
+      setProducts(res.data.products || []);
 
       setTotal(res.data.total || 0);
 
@@ -118,7 +107,67 @@ export default function Products() {
 
     fetchProducts();
 
-  }, [page, category, sort]);
+  }, [page, category, value]);
+
+  // ================= SLIDER =================
+
+  const handleChange = (event, newValue) => {
+
+    setValue(newValue);
+
+    setPage(1);
+
+  };
+
+  const handleMin = (e) => {
+
+    const newMin = Math.min(
+      Number(e.target.value),
+      value[1] - 1
+    );
+
+    setValue([newMin, value[1]]);
+
+    setPage(1);
+
+  };
+
+  const handleMax = (e) => {
+
+    const newMax = Math.max(
+      Number(e.target.value),
+      value[0] + 1
+    );
+
+    setValue([value[0], newMax]);
+
+    setPage(1);
+
+  };
+
+  // ================= PAGINATION =================
+
+  const nextPage = () => {
+
+    if (page * limit < total) {
+
+      setPage((prev) => prev + 1);
+
+    }
+
+  };
+
+  const prevPage = () => {
+
+    setPage((prev) => Math.max(prev - 1, 1));
+
+  };
+
+  const start = total === 0
+    ? 0
+    : (page - 1) * limit + 1;
+
+  const end = Math.min(page * limit, total);
 
   // ================= OPEN PRODUCT =================
 
@@ -128,117 +177,166 @@ export default function Products() {
 
   };
 
-  // ================= OFFER =================
+  // ================= OFFER PERCENTAGE =================
 
-  const getOfferPercentage = (oldPrice, newPrice) => {
+  const getOfferPercentage = (price, offerPrice) => {
 
-    if (!oldPrice || oldPrice <= newPrice) return null;
+    if (!offerPrice || offerPrice >= price) return null;
 
     return Math.round(
-      ((oldPrice - newPrice) / oldPrice) * 100
+      ((price - offerPrice) / price) * 100
     );
 
   };
 
   return (
 
-    <div className={styles.container}>
+    <div className={styles.cont}>
 
       <Helmet>
 
-        <title>
-          Products
-        </title>
+        <title>Product Page</title>
 
       </Helmet>
 
       <Header />
 
-      {/* ================= MAIN ================= */}
-
       <div className={styles.main}>
 
-        {/* ================= FILTER + SORT ================= */}
+        {/* ================= FILTER ================= */}
 
-        <div className={styles.topBar}>
+        <div className={styles.left}>
 
-          {/* FILTER */}
+          <div className={styles.top}>
 
-          <div className={styles.filterBox}>
+            <p>
 
-            <FaFilter className={styles.filterIcon} />
+              <FaBars />
 
-            <span className={styles.filterLabel}>
-              Filter:
-            </span>
+              Filters
 
-            <select
-              value={category}
-              onChange={(e) => {
+            </p>
 
-                setCategory(e.target.value);
+            <button
+              onClick={() => {
+
+                setCategory("all");
+
+                setValue([0, 10000]);
+
                 setPage(1);
 
               }}
             >
 
-              <option value="all">
-                All Categories
-              </option>
+              Clear
 
-              {categories.map((c) => {
-
-                const catName =
-                  c.name || c.category || "Unknown";
-
-                return (
-
-                  <option
-                    key={c._id}
-                    value={catName}
-                  >
-
-                    {catName}
-
-                  </option>
-
-                );
-
-              })}
-
-            </select>
+            </button>
 
           </div>
 
-          {/* SORT */}
+          {/* CATEGORY */}
 
-          <div className={styles.filterBox}>
+          <div className={styles.cat}>
 
-            <FaSortAmountDown className={styles.filterIcon} />
+            <h3>Categories</h3>
 
-            <span className={styles.filterLabel}>
-              Sort:
-            </span>
+            <div className={styles.catItem}>
 
-            <select
-              value={sort}
-              onChange={(e) => {
+              <input
+                type="radio"
+                id="all"
+                checked={category === "all"}
+                onChange={() => {
 
-                setSort(e.target.value);
-                setPage(1);
+                  setCategory("all");
 
-              }}
-            >
+                  setPage(1);
 
-              <option value="low">
-                Price Low to High
-              </option>
+                }}
+              />
 
-              <option value="high">
-                Price High to Low
-              </option>
+              <label htmlFor="all">
+                All Products
+              </label>
 
-            </select>
+            </div>
+
+            {categories.map((c) => {
+
+              const catName =
+                c.name || c.category || "Unknown";
+
+              return (
+
+                <div
+                  className={styles.catItem}
+                  key={c._id}
+                >
+
+                  <input
+                    type="radio"
+                    id={c._id}
+                    checked={category === catName}
+                    onChange={() => {
+
+                      setCategory(catName);
+
+                      setPage(1);
+
+                    }}
+                  />
+
+                  <label htmlFor={c._id}>
+                    {catName}
+                  </label>
+
+                </div>
+
+              );
+
+            })}
+
+          </div>
+
+          {/* PRICE */}
+
+          <div className={styles.price}>
+
+            <h3>Price Range</h3>
+
+            <div className={styles.values}>
+
+              <span>₹{value[0]}</span>
+
+              <span>₹{value[1]}</span>
+
+            </div>
+
+            <Slider
+              value={value}
+              onChange={handleChange}
+              min={0}
+              max={1000}
+            />
+
+            <div className={styles.rangeBox}>
+
+              <input
+                type="number"
+                value={value[0]}
+                onChange={handleMin}
+                placeholder="Min"
+              />
+
+              <input
+                type="number"
+                value={value[1]}
+                onChange={handleMax}
+                placeholder="Max"
+              />
+
+            </div>
 
           </div>
 
@@ -246,142 +344,160 @@ export default function Products() {
 
         {/* ================= PRODUCTS ================= */}
 
-        {loading && (
+        <div className={styles.right}>
 
-          <p className={styles.loading}>
-            Loading...
-          </p>
+          <div className={styles.productTop}>
 
-        )}
+            <div>
 
-        <div className={styles.productGrid}>
+              <h2>Products</h2>
 
-          {products.map((p) => {
+              <p>
 
-            const offer =
-              getOfferPercentage(
-                p.oldPrice,
-                p.price
+                Showing {start}-{end} of {total}
+
+              </p>
+
+            </div>
+
+          </div>
+
+          {loading && (
+
+            <p className={styles.loading}>
+              Loading...
+            </p>
+
+          )}
+
+          <div className={styles.productsGrid}>
+
+            {products.map((p) => {
+
+              const offer =
+                getOfferPercentage(
+                  p.price,
+                  p.offerPrice
+                );
+
+              return (
+
+                <div
+                  key={p._id}
+                  className={styles.card}
+                  onClick={() => openProduct(p._id)}
+                >
+
+                  {/* OFFER BADGE */}
+
+                  {offer && (
+
+                    <div className={styles.offerBadge}>
+
+                      {offer}% OFF
+
+                    </div>
+
+                  )}
+
+                  {/* IMAGE */}
+
+                  <div className={styles.imageBox}>
+
+                    <img
+                      src={p.images?.[0]?.url}
+                      alt={p.name}
+                    />
+
+                  </div>
+
+                  {/* CONTENT */}
+
+                  <div className={styles.content}>
+
+                    <h3>
+                      {p.name}
+                    </h3>
+
+                    <p className={styles.subName}>
+                      {p.subName}
+                    </p>
+
+                    <p className={styles.watt}>
+                      {p.powerConsumption}
+                    </p>
+
+                    {/* PRICE */}
+
+                    <div className={styles.priceRow}>
+
+                      {p.offerPrice ? (
+
+                        <>
+                          <h4 className={styles.offerPrice}>
+                            ₹{p.offerPrice}
+                          </h4>
+
+                          <span className={styles.oldPrice}>
+                            ₹{p.price}
+                          </span>
+                        </>
+
+                      ) : (
+
+                        <h4 className={styles.offerPrice}>
+                          ₹{p.price}
+                        </h4>
+
+                      )}
+
+                    </div>
+
+                    {/* BUTTON */}
+
+                    <button className={styles.cartBtn}>
+
+                      <FaShoppingCart />
+
+                      Add to Cart
+
+                    </button>
+
+                  </div>
+
+                </div>
+
               );
 
-            return (
+            })}
 
-              <div
-                key={p._id}
-                className={styles.card}
-                onClick={() => openProduct(p._id)}
-              >
+          </div>
 
-                {/* OFFER */}
+          {/* ================= PAGINATION ================= */}
 
-                {offer && (
+          <div className={styles.pagination}>
 
-                  <div className={styles.offerTag}>
+            <button
+              className={styles.pageBtn}
+              onClick={prevPage}
+              disabled={page === 1}
+            >
 
-                    -{offer}%
+              ←
 
-                  </div>
+            </button>
 
-                )}
+            <button
+              className={styles.pageBtn}
+              onClick={nextPage}
+              disabled={page * limit >= total}
+            >
 
-                {/* IMAGE */}
+              →
 
-                <div className={styles.imageBox}>
+            </button>
 
-                  <img
-                    src={p.images?.[0]?.url}
-                    alt={p.name}
-                  />
-
-                </div>
-
-                {/* CONTENT */}
-
-                <div className={styles.content}>
-
-                  <h2>
-                    {p.name}
-                  </h2>
-
-                  <p>
-                    {p.subName}
-                  </p>
-
-                  {/* PRICE */}
-
-                  <div className={styles.priceRow}>
-
-                    <span className={styles.price}>
-                      ₹{p.price}
-                    </span>
-
-                    {p.oldPrice && (
-
-                      <span className={styles.oldPrice}>
-
-                        ₹{p.oldPrice}
-
-                      </span>
-
-                    )}
-
-                  </div>
-
-                  {/* BUTTON */}
-
-                  <button className={styles.cartBtn}>
-
-                    <FaShoppingCart />
-
-                    Add to Cart
-
-                  </button>
-
-                </div>
-
-              </div>
-
-            );
-
-          })}
-
-        </div>
-
-        {/* ================= PAGINATION ================= */}
-
-        <div className={styles.pagination}>
-
-          <button className={styles.activePage}>
-            1
-          </button>
-
-          <button className={styles.pageBtn}>
-            2
-          </button>
-
-          <button className={styles.pageBtn}>
-            3
-          </button>
-
-          <button className={styles.pageBtn}>
-            4
-          </button>
-
-          <button className={styles.pageBtn}>
-            5
-          </button>
-
-          <button className={styles.pageBtn}>
-            ...
-          </button>
-
-          <button
-            className={styles.pageBtn}
-          >
-
-            <FaChevronRight />
-
-          </button>
+          </div>
 
         </div>
 
