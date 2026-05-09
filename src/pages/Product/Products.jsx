@@ -1,408 +1,196 @@
-import styles from "./Products.module.css";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import { Helmet } from "react-helmet";
-import { FaBars } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import Slider from "@mui/material/Slider";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+return (
 
-export default function Products() {
+  <div className={styles.container}>
 
-  const [value, setValue] = useState([0, 1000]);
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+    <Helmet>
+      <title>Product Page</title>
+    </Helmet>
 
-  const [category, setCategory] = useState("all");
+    <Header />
 
-  const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(false);
+    <div className={styles.main}>
 
-  const navigate = useNavigate();
+      {/* ================= FILTER + SORT ================= */}
 
-  const limit = 12;
+      <div className={styles.topBar}>
 
-  // ================= FETCH PRODUCTS =================
-  const fetchProducts = async () => {
+        {/* FILTER */}
 
-    try {
+        <div className={styles.filterBox}>
 
-      setLoading(true);
+          <FaBars className={styles.filterIcon} />
 
-      const res = await axios.get(
-        "https://vlux-backend.onrender.com/api/vlux/adminproducts",
-        {
-          params: {
-            page,
-            limit,
-            type: category !== "all" ? category : undefined,
-            minPrice: value[0],
-            maxPrice: value[1]
-          }
-        }
-      );
+          <span className={styles.filterLabel}>
+            Filter:
+          </span>
 
-      setProducts(res.data.products || []);
-      setTotal(res.data.total || 0);
+          <select
+            value={category}
+            onChange={(e) => {
 
-    } catch (err) {
+              setCategory(e.target.value);
+              setPage(1);
 
-      console.log(err);
+            }}
+          >
 
-    } finally {
+            <option value="all">
+              All Categories
+            </option>
 
-      setLoading(false);
+            {categories.map((c) => {
 
-    }
+              const catName =
+                c.name || c.category || "Unknown";
 
-  };
+              return (
 
-  // ================= FETCH CATEGORIES =================
-  const fetchCategories = async () => {
+                <option
+                  key={c._id}
+                  value={catName}
+                >
+                  {catName}
+                </option>
 
-    try {
+              );
 
-      const res = await axios.get(
-        "https://vlux-backend.onrender.com/api/vlux/admincategories"
-      );
+            })}
 
-      setCategories(res.data.categories || []);
-
-    } catch (err) {
-
-      console.log(err);
-
-    }
-
-  };
-
-  // ================= USE EFFECT =================
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  useEffect(() => {
-    fetchProducts();
-  }, [page, category, value]);
-
-  // ================= SLIDER =================
-  const handleChange = (event, newValue) => {
-
-    setValue(newValue);
-    setPage(1);
-
-  };
-
-  const handleMin = (e) => {
-
-    const newMin = Math.min(
-      Number(e.target.value),
-      value[1] - 1
-    );
-
-    setValue([newMin, value[1]]);
-    setPage(1);
-
-  };
-
-  const handleMax = (e) => {
-
-    const newMax = Math.max(
-      Number(e.target.value),
-      value[0] + 1
-    );
-
-    setValue([value[0], newMax]);
-    setPage(1);
-
-  };
-
-  // ================= PAGINATION =================
-  const nextPage = () => {
-
-    if (page * limit < total) {
-      setPage((prev) => prev + 1);
-    }
-
-  };
-
-  const prevPage = () => {
-
-    setPage((prev) => Math.max(prev - 1, 1));
-
-  };
-
-  const start = total === 0
-    ? 0
-    : (page - 1) * limit + 1;
-
-  const end = Math.min(page * limit, total);
-
-  // ================= OPEN PRODUCT =================
-  const openProduct = (id) => {
-
-    navigate(`/product/${id}`);
-
-  };
-
-  return (
-
-    <div className={styles.cont}>
-
-      <Helmet>
-        <title>Product Page</title>
-      </Helmet>
-
-      <Header />
-
-      <div className={styles.main}>
-
-        {/* ================= LEFT FILTER ================= */}
-        <div className={styles.left}>
-
-          <div className={styles.top}>
-
-            <p>
-              <FaBars />
-              Filter
-            </p>
-
-            <button
-              onClick={() => {
-
-                setCategory("all");
-                setValue([0, 10000]);
-                setPage(1);
-
-              }}
-            >
-              Clear All
-            </button>
-
-          </div>
-
-          <hr />
-
-          {/* ================= FLEX LEFT RIGHT ================= */}
-          <div className={styles.flexlr}>
-
-            {/* ================= CATEGORY ================= */}
-            <div className={styles.cat}>
-
-              <h2 className={styles.cathead}>
-                Categories
-              </h2>
-
-              {/* ALL */}
-              <div className={styles.catItem}>
-
-                <input
-                  type="radio"
-                  id="all"
-                  name="cat"
-                  checked={category === "all"}
-                  onChange={() => {
-
-                    setCategory("all");
-                    setPage(1);
-
-                  }}
-                />
-
-                <label htmlFor="all">
-                  All Categories
-                </label>
-
-              </div>
-
-              {/* DYNAMIC */}
-              {categories.map((c) => {
-
-                const catName =
-                  c.name || c.category || "Unknown";
-
-                return (
-
-                  <div
-                    className={styles.catItem}
-                    key={c._id}
-                  >
-
-                    <input
-                      type="radio"
-                      id={c._id}
-                      name="cat"
-                      checked={category === catName}
-                      onChange={() => {
-
-                        setCategory(catName);
-                        setPage(1);
-
-                      }}
-                    />
-
-                    <label htmlFor={c._id}>
-                      {catName}
-                    </label>
-
-                  </div>
-
-                );
-
-              })}
-
-            </div>
-
-            <hr />
-
-            {/* ================= PRICE ================= */}
-            <div className={styles.price}>
-
-              <div className={styles.pran}>
-
-                <h2>Price Range</h2>
-
-                <div className={styles.values}>
-
-                  <span>₹{value[0]}</span>
-
-                  <span>₹{value[1]}</span>
-
-                </div>
-
-                <Slider
-                  value={value}
-                  onChange={handleChange}
-                  valueLabelDisplay="auto"
-                  min={0}
-                  max={1000}
-                />
-
-              </div>
-
-              <div className={styles.rangeBox}>
-
-                <div>
-
-                  <label>Min</label>
-
-                  <input
-                    type="number"
-                    value={value[0]}
-                    onChange={handleMin}
-                  />
-
-                </div>
-
-                <div>
-
-                  <label>Max</label>
-
-                  <input
-                    type="number"
-                    value={value[1]}
-                    onChange={handleMax}
-                  />
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
+          </select>
 
         </div>
 
-        {/* ================= RIGHT ================= */}
-        <div className={styles.right}>
+        {/* SORT */}
 
-          <h2>All Products</h2>
+        <div className={styles.filterBox}>
 
-          <p className={styles.sub}>
+          <FaBars className={styles.filterIcon} />
 
-            Showing {start}-{end} of {total} products
+          <span className={styles.filterLabel}>
+            Price:
+          </span>
 
-          </p>
+          <select
+            value={value[1]}
+            onChange={(e) => {
 
-          {loading && <p>Loading...</p>}
+              setValue([0, Number(e.target.value)]);
+              setPage(1);
 
-          <div className={styles.rcont}>
+            }}
+          >
 
-            <div className={styles.rconts}>
+            <option value={1000}>
+              Low to High
+            </option>
 
-              {products.map((p) => (
+            <option value={300}>
+              Under ₹300
+            </option>
 
-                <div
-                  key={p._id}
-                  className={styles.rcts}
-                  onClick={() => openProduct(p._id)}
-                >
+            <option value={500}>
+              Under ₹500
+            </option>
 
-                  <img
-                    src={p.images?.[0]?.url}
-                    alt={p.name}
-                  />
+            <option value={1000}>
+              Under ₹1000
+            </option>
 
-                  <p className={styles.rchead}>
-                    {p.name}
-                  </p>
-
-                  <p className={styles.rcsub}>
-                    {p.subName}
-                  </p>
-
-                  <p className={styles.rcwatt}>
-                    {p.powerConsumption}
-                  </p>
-
-                  <p className={styles.rcprice}>
-                    ₹{p.price}
-                  </p>
-
-                  <button className={styles.rccart}>
-                    Add to Cart
-                  </button>
-
-                </div>
-
-              ))}
-
-            </div>
-
-            {/* ================= PAGINATION ================= */}
-            <div className={styles.pagination}>
-
-              <button
-                className={styles.pageBtn}
-                onClick={prevPage}
-                disabled={page === 1}
-              >
-                ←
-              </button>
-
-              <button
-                className={styles.pageBtn}
-                onClick={nextPage}
-                disabled={page * limit >= total}
-              >
-                →
-              </button>
-
-            </div>
-
-          </div>
+          </select>
 
         </div>
 
       </div>
 
-      <Footer />
+      {/* ================= PRODUCTS ================= */}
+
+      {loading && (
+
+        <p className={styles.loading}>
+          Loading...
+        </p>
+
+      )}
+
+      <div className={styles.productGrid}>
+
+        {products.map((p) => (
+
+          <div
+            key={p._id}
+            className={styles.card}
+            onClick={() => openProduct(p._id)}
+          >
+
+            {/* IMAGE */}
+
+            <div className={styles.imageBox}>
+
+              <img
+                src={p.images?.[0]?.url}
+                alt={p.name}
+              />
+
+            </div>
+
+            {/* CONTENT */}
+
+            <div className={styles.content}>
+
+              <h2>{p.name}</h2>
+
+              <p>
+                {p.subName}
+              </p>
+
+              <div className={styles.priceRow}>
+
+                <span className={styles.price}>
+                  ₹{p.price}
+                </span>
+
+              </div>
+
+              <button className={styles.cartBtn}>
+
+                Add to Cart
+
+              </button>
+
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
+
+      {/* ================= PAGINATION ================= */}
+
+      <div className={styles.pagination}>
+
+        <button
+          className={`${styles.pageBtn} ${page === 1 ? styles.activePage : ""}`}
+          onClick={prevPage}
+          disabled={page === 1}
+        >
+          ←
+        </button>
+
+        <button
+          className={styles.pageBtn}
+          onClick={nextPage}
+          disabled={page * limit >= total}
+        >
+          →
+        </button>
+
+      </div>
 
     </div>
 
-  );
+    <Footer />
 
-}
+  </div>
+
+);
