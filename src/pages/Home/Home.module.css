@@ -8,6 +8,17 @@
   font-family: "Inter", system-ui, sans-serif;
 }
 
+.cont {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  flex: 1;
+}
+
 /* =====================================================
    🖼️ BANNER
 ===================================================== */
@@ -17,13 +28,7 @@
   object-fit: cover;
 }
 
-.cont {
-  min-height: 100vh;
-  margin-top: 60px;
 
-  display: flex;
-  flex-direction: column;
-}
 
 .shopbycat{
 

@@ -66,13 +66,9 @@ export default function Home() {
     navigate(`/product/${id}`);
   };
 
-  const getFinalPrice = (price, discount) => {
-    if (!discount) return price;
-    return price - (price * discount) / 100;
-  };
-
   return (
     <>
+
       <div className={styles.cont}>
 
         <Helmet>
@@ -81,133 +77,181 @@ export default function Home() {
 
         <Header />
 
-        {/* ---------- BANNER ---------- */}
-        <div className={styles.banner}>
-          <img src={banner?.image || BANNER} alt="banner" />
-        </div>
+        {/* ================= MAIN CONTENT ================= */}
 
-        {/* ---------- CATEGORY ---------- */}
-        <div className={styles.category}>
-          <p className={styles.shopbycat}>SHOP BY CATEGORY</p>
-          <hr className={styles.hr} />
+        <div className={styles.mainContent}>
 
-          <div className={styles.cats}>
-
-            {categories.slice(0, 5).map((cat) => (
-              <div
-                className={styles.catitem}
-                key={cat._id}
-                onClick={() => handleCategoryClick(cat)}
-                style={{ cursor: "pointer" }}
-              >
-                <img src={cat.image || BULB} />
-                <div className={styles.line}></div>
-                <p className={styles.catText}>{cat.category}</p>
-              </div>
-            ))}
-
-            <div
-  className={styles.catitem}
-  onClick={() => navigate("/products")}
-  style={{ cursor: "pointer" }}
->
-  <BsThreeDots className={styles.more} />
-  <p>More</p>
-</div>
-
+          {/* ---------- BANNER ---------- */}
+          <div className={styles.banner}>
+            <img src={banner?.image || BANNER} alt="banner" />
           </div>
-        </div>
 
-        {/* ---------- NEW ARRIVALS ---------- */}
-        <div className={styles.new}>
+          {/* ---------- CATEGORY ---------- */}
+          <div className={styles.category}>
 
-          <p>NEW ARRIVALS</p>
-          <hr className={styles.hr} />
+            <p className={styles.shopbycat}>
+              SHOP BY CATEGORY
+            </p>
 
-          <div className={styles.news}>
+            <hr className={styles.hr} />
 
-            {products.map((item) => {
+            <div className={styles.cats}>
 
-              const price = Number(item.price || 0);
-              const discount = Number(item.discountPercentage || 0);
-              const finalPrice = discount
-                ? price - (price * discount) / 100
-                : price;
-
-              return (
+              {categories.slice(0, 5).map((cat) => (
                 <div
-                  className={styles.newitem}
-                  key={item._id}
-                  onClick={() => handleProductClick(item._id)}
+                  className={styles.catitem}
+                  key={cat._id}
+                  onClick={() => handleCategoryClick(cat)}
                   style={{ cursor: "pointer" }}
                 >
 
-                  <img src={item.images?.[0]?.url || BULB} />
+                  <img src={cat.image || BULB} alt="" />
 
-                  <div className={styles.newitemcont}>
+                  <div className={styles.line}></div>
 
-                    {/* NAME */}
-                    <p className={styles.head} style={{ fontSize: "15px", fontWeight: "700" }} >{item.name}</p>
+                  <p className={styles.catText}>
+                    {cat.category}
+                  </p>
 
-                    {/* SUB NAME */}
-                    <p style={{ fontSize: "12px", color: "#666", marginTop: "2px" }}>
-                      {item.subName}
-                    </p>
+                </div>
+              ))}
 
-                    {/* PRICE SECTION (FIXED ONLY) */}
-                    <div style={{ marginTop: "6px" }}>
+              <div
+                className={styles.catitem}
+                onClick={() => navigate("/products")}
+                style={{ cursor: "pointer" }}
+              >
 
-                      {/* FINAL PRICE */}
-                      <p style={{
-                        fontSize: "16px",
-                        fontWeight: "bold",
-                        color: "#0c5a5e"
-                      }}>
-                        ₹{finalPrice.toFixed(2)}
+                <BsThreeDots className={styles.more} />
+
+                <p>More</p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* ---------- NEW ARRIVALS ---------- */}
+          <div className={styles.new}>
+
+            <p>NEW ARRIVALS</p>
+
+            <hr className={styles.hr} />
+
+            <div className={styles.news}>
+
+              {products.map((item) => {
+
+                const price = Number(item.price || 0);
+
+                const discount = Number(item.discountPercentage || 0);
+
+                const finalPrice = discount
+                  ? price - (price * discount) / 100
+                  : price;
+
+                return (
+
+                  <div
+                    className={styles.newitem}
+                    key={item._id}
+                    onClick={() => handleProductClick(item._id)}
+                    style={{ cursor: "pointer" }}
+                  >
+
+                    <img
+                      src={item.images?.[0]?.url || BULB}
+                      alt=""
+                    />
+
+                    <div className={styles.newitemcont}>
+
+                      {/* NAME */}
+                      <p
+                        className={styles.head}
+                        style={{
+                          fontSize: "15px",
+                          fontWeight: "700"
+                        }}
+                      >
+                        {item.name}
                       </p>
 
-                      {/* ORIGINAL PRICE (SMALL + STRIKE + BELOW) */}
-                      {discount > 0 && (
-                        <p style={{
-                          fontSize: "11px",
-                          textDecoration: "line-through",
-                          color: "gray",
+                      {/* SUB NAME */}
+                      <p
+                        style={{
+                          fontSize: "12px",
+                          color: "#666",
                           marginTop: "2px"
-                        }}>
-                          ₹{price}
+                        }}
+                      >
+                        {item.subName}
+                      </p>
+
+                      {/* PRICE */}
+                      <div style={{ marginTop: "6px" }}>
+
+                        <p
+                          style={{
+                            fontSize: "16px",
+                            fontWeight: "bold",
+                            color: "#0c5a5e"
+                          }}
+                        >
+                          ₹{finalPrice.toFixed(2)}
                         </p>
+
+                        {discount > 0 && (
+                          <p
+                            style={{
+                              fontSize: "11px",
+                              textDecoration: "line-through",
+                              color: "gray",
+                              marginTop: "2px"
+                            }}
+                          >
+                            ₹{price}
+                          </p>
+                        )}
+
+                      </div>
+
+                      {/* DISCOUNT */}
+                      {discount > 0 && (
+                        <div
+                          style={{
+                            marginTop: "5px",
+                            display: "inline-block",
+                            background: "#ff4d4d",
+                            color: "white",
+                            fontSize: "11px",
+                            padding: "2px 6px",
+                            borderRadius: "4px"
+                          }}
+                        >
+                          {discount}% OFF
+                        </div>
                       )}
 
                     </div>
 
-                    {/* DISCOUNT BADGE */}
-                    {discount > 0 && (
-                      <div style={{
-                        marginTop: "5px",
-                        display: "inline-block",
-                        background: "#ff4d4d",
-                        color: "white",
-                        fontSize: "11px",
-                        padding: "2px 6px",
-                        borderRadius: "4px"
-                      }}>
-                        {discount}% OFF
-                      </div>
-                    )}
-
                   </div>
+                );
+              })}
 
-                </div>
-              );
-            })}
+            </div>
 
           </div>
 
         </div>
 
+        {/* ================= FOOTER ================= */}
+
         <Footer />
 
       </div>
+
     </>
   );
 }
