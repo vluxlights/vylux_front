@@ -170,6 +170,7 @@
 .arrowBtn{
   width:30px;
   height:30px;
+  display: none;
 
   border:none;
   border-radius:50%;
