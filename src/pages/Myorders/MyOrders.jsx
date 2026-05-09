@@ -8,13 +8,10 @@ import styles from "./MyOrders.module.css";
 
 import {
   FaSearch,
-  FaFilter,
   FaChevronRight,
   FaChevronDown,
   FaCalendarAlt,
-  FaMapMarkerAlt,
-  FaCheckCircle,
-  FaTruck
+  FaMapMarkerAlt
 } from "react-icons/fa";
 
 export default function MyOrders() {
@@ -144,12 +141,6 @@ export default function MyOrders() {
 
             </div>
 
-            <button className={styles.filterBtn}>
-
-              <FaFilter />
-
-            </button>
-
           </div>
 
         </div>
@@ -165,7 +156,7 @@ export default function MyOrders() {
               className={styles.card}
             >
 
-              {/* ================= CARD TOP ================= */}
+              {/* ================= ORDER ID ================= */}
 
               <div className={styles.cardTop}>
 
@@ -174,36 +165,6 @@ export default function MyOrders() {
                   Order ID:
                   {" "}
                   #{order._id.slice(-8).toUpperCase()}
-
-                </div>
-
-                <div
-                  className={
-                    order.orderStatus === "Shipped"
-                      ? styles.shipped
-                      : styles.delivered
-                  }
-                >
-
-                  {
-
-                    order.orderStatus === "Shipped"
-
-                      ?
-
-                      <>
-                        Shipped
-                        <FaTruck />
-                      </>
-
-                      :
-
-                      <>
-                        Delivered
-                        <FaCheckCircle />
-                      </>
-
-                  }
 
                 </div>
 
