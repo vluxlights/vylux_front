@@ -3,9 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./ProductDetails.module.css";
 import { Helmet } from "react-helmet";
-import Heder from "../../components/Header/Header";
+import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { FaBolt, FaClock, FaShieldAlt } from "react-icons/fa";
+
+import {
+  FaBolt,
+  FaClock,
+  FaShieldAlt
+} from "react-icons/fa";
 
 export default function ProductDetails() {
 
@@ -18,23 +23,28 @@ export default function ProductDetails() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const increase = () => setQty(prev => prev + 1);
-  const decrease = () => setQty(prev => (prev > 1 ? prev - 1 : 1));
+
+  const decrease = () => {
+    setQty(prev => (prev > 1 ? prev - 1 : 1));
+  };
 
   // ================= ADD TO CART =================
+
   const addToCart = async () => {
     try {
+
       const token = localStorage.getItem("token");
 
       await axios.post(
         "https://vlux-backend.onrender.com/api/vlux/cart/add",
         {
           productId: product._id,
-          quantity: qty,
+          quantity: qty
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
+            Authorization: `Bearer ${token}`
+          }
         }
       );
 
@@ -47,19 +57,23 @@ export default function ProductDetails() {
   };
 
   // ================= BUY NOW =================
+
   const buyNow = async () => {
-    await addToCart();   // first add to cart
-    navigate("/cartpage");   // then go to cart page
+    await addToCart();
+    navigate("/cartpage");
   };
 
   // ================= FETCH PRODUCT =================
+
   const fetchProduct = async () => {
     try {
+
       const res = await axios.get(
         `https://vlux-backend.onrender.com/api/vlux/adminproducts/${id}`
       );
 
       const data = res.data.product;
+
       setProduct(data);
 
       setSelectedImage(data?.images?.[0]?.url || null);
@@ -73,15 +87,19 @@ export default function ProductDetails() {
     }
   };
 
+  // ================= RELATED =================
+
   const fetchRelated = async (type, currentId) => {
+
     try {
+
       const res = await axios.get(
         `https://vlux-backend.onrender.com/api/vlux/adminproducts?type=${type}&limit=10`
       );
 
       const filtered = res.data.products
         .filter(p => p._id !== currentId)
-        .slice(0, 5);
+        .slice(0, 6);
 
       setRelated(filtered);
 
@@ -91,8 +109,10 @@ export default function ProductDetails() {
   };
 
   useEffect(() => {
+
     fetchProduct();
     setQty(1);
+
   }, [id]);
 
   if (!product) return <p>Loading...</p>;
@@ -100,168 +120,235 @@ export default function ProductDetails() {
   const images = product.images || [];
 
   const specs = {
-    productId: product.productId,
-    name: product.name,
-    subName: product.subName,
-    type: product.type,
-    modelNumber: product.modelNumber,
-    warranty: product.warranty,
-    color: product.color,
-    price: product.price,
-    discountPercentage: product.discountPercentage,
-    powerConsumption: product.powerConsumption,
-    housingSize: product.housingSize,
-    powerFactor: product.powerFactor,
-    thd: product.thd,
-    lumens: product.lumens,
-    colorTemperature: product.colorTemperature,
-    surgeProtection: product.surgeProtection,
-    lineFrequency: product.lineFrequency,
-    ratedVoltage: product.ratedVoltage,
-    operatingVoltage: product.operatingVoltage,
-    cri: product.cri,
-    features: product.features,
-    housingMaterial: product.housingMaterial,
-    baseType: product.baseType,
-    averageLife: product.averageLife,
+    Product_ID: product.productId,
+    Name: product.name,
+    Type: product.type,
+    Model: product.modelNumber,
+    Warranty: product.warranty,
+    Color: product.color,
+    Power: product.powerConsumption,
+    Housing: product.housingSize,
+    Power_Factor: product.powerFactor,
+    THD: product.thd,
+    Lumens: product.lumens,
+    Temperature: product.colorTemperature,
+    Surge: product.surgeProtection,
+    Frequency: product.lineFrequency,
+    Voltage: product.ratedVoltage,
+    Operating_Voltage: product.operatingVoltage,
+    CRI: product.cri,
+    Material: product.housingMaterial,
+    Base_Type: product.baseType,
+    Average_Life: product.averageLife
   };
 
   return (
     <>
-      <Heder />
+      <Header />
 
       <Helmet>
         <title>{product.name}</title>
       </Helmet>
 
-      {/* ================= PRODUCT VIEW ================= */}
-      <div className={styles.productview}>
+      {/* ================= PRODUCT ================= */}
 
-        <div className={styles.left}>
-          {images.map((img, i) => (
-            <div
-              className={styles.img}
-              key={i}
-              onClick={() => setSelectedImage(img.url)}
-            >
-              <img src={img.url} alt={product.name} />
-            </div>
-          ))}
-        </div>
+      <div className={styles.productWrapper}>
 
-        <div className={styles.center}>
-          <img
-            src={selectedImage || images[0]?.url}
-            alt={product.name}
-          />
-        </div>
+        {/* ================= IMAGES ================= */}
 
-        <div className={styles.right}>
+        <div className={styles.imageSection}>
 
-          <h2>{product.name}</h2>
-          <p className={styles.type}>{product.color}</p>
+          {/* MAIN IMAGE */}
 
-          <div className={styles.pricelist}>
-            <div className={styles.price}>
-              <p>₹{product.price}</p>
-            </div>
-
-            <div className={styles.orprice}>
-              <p>
-                ₹{Math.round(
-                  product.price +
-                  (product.price * product.discountPercentage / 100)
-                )}
-              </p>
-            </div>
-
-            <div className={styles.discount}>
-              <p>{product.discountPercentage}% OFF</p>
-            </div>
+          <div className={styles.mainImageBox}>
+            <img
+              src={selectedImage || images[0]?.url}
+              alt={product.name}
+              className={styles.mainImage}
+            />
           </div>
 
-          <div className={styles.desc}>
-            <div className={styles.descs}>
+          {/* THUMBNAILS */}
+
+          <div className={styles.thumbnailRow}>
+
+            {images.map((img, i) => (
+              <div
+                className={styles.thumb}
+                key={i}
+                onClick={() => setSelectedImage(img.url)}
+              >
+                <img src={img.url} alt="" />
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+
+        {/* ================= DETAILS ================= */}
+
+        <div className={styles.details}>
+
+          <h1>{product.name}</h1>
+
+          <p className={styles.color}>
+            {product.color}
+          </p>
+
+          {/* PRICE */}
+
+          <div className={styles.priceSection}>
+
+            <p className={styles.price}>
+              ₹{product.price}
+            </p>
+
+            <p className={styles.oldPrice}>
+              ₹{
+                Math.round(
+                  product.price +
+                  (product.price * product.discountPercentage / 100)
+                )
+              }
+            </p>
+
+            <span className={styles.discount}>
+              {product.discountPercentage}% OFF
+            </span>
+
+          </div>
+
+          {/* FEATURES */}
+
+          <div className={styles.features}>
+
+            <div className={styles.feature}>
               <FaBolt />
               <p>Energy Efficient</p>
             </div>
 
-            <div className={styles.descs}>
+            <div className={styles.feature}>
               <FaClock />
               <p>Long Life</p>
             </div>
 
-            <div className={styles.descs}>
+            <div className={styles.feature}>
               <FaShieldAlt />
               <p>Quality Assured</p>
             </div>
+
           </div>
 
-          <div className={styles.quantity}>
+          {/* QUANTITY */}
+
+          <div className={styles.quantitySection}>
+
             <p>Quantity</p>
 
-            <div className={styles.controls}>
-              <button onClick={decrease}>-</button>
+            <div className={styles.qtyBox}>
+
+              <button onClick={decrease}>−</button>
+
               <span>{qty}</span>
+
               <button onClick={increase}>+</button>
+
             </div>
+
           </div>
 
-          {/* ================= ACTION BUTTONS (LOGIC ADDED) ================= */}
+          {/* BUTTONS */}
+
           <div className={styles.buttons}>
+
             <button
-              className={styles.cart}
+              className={styles.cartBtn}
               onClick={addToCart}
             >
-              Add to Cart
+              Add To Cart
             </button>
 
             <button
-              className={styles.buy}
+              className={styles.buyBtn}
               onClick={buyNow}
             >
               Buy Now
             </button>
+
           </div>
 
         </div>
+
       </div>
 
-      {/* SPECIFICATIONS */}
+      {/* ================= SPECIFICATIONS ================= */}
+
       <div className={styles.specs}>
+
         <h2>Product Details</h2>
 
-        <div className={styles.spectable}>
+        <div className={styles.specGrid}>
+
           {Object.entries(specs).map(([key, value]) => (
-            <div className={styles.row} key={key}>
-              <p className={styles.key}>{key}</p>
-              <p className={styles.value}>
-                {value !== null && value !== undefined ? String(value) : "-"}
+
+            <div className={styles.specRow} key={key}>
+
+              <p className={styles.specKey}>
+                {key.replaceAll("_", " ")}
               </p>
+
+              <p className={styles.specValue}>
+                {value || "-"}
+              </p>
+
             </div>
+
           ))}
+
         </div>
+
       </div>
 
-      {/* RELATED */}
-      <div className={styles.relatedp}>
+      {/* ================= RELATED ================= */}
+
+      <div className={styles.related}>
+
         <h2>Related Products</h2>
 
-        <div className={styles.repr}>
+        <div className={styles.relatedRow}>
+
           {related.map((p) => (
+
             <div
-              className={styles.reprs}
+              className={styles.relatedCard}
               key={p._id}
               onClick={() => navigate(`/product/${p._id}`)}
-              style={{ cursor: "pointer" }}
             >
-              <img src={p.images?.[0]?.url} alt={p.name} />
-              <p className={styles.rname}>{p.name}</p>
-              <p className={styles.rtype}>{p.color}</p>
-              <p className={styles.rprice}>₹{p.price}</p>
+
+              <img
+                src={p.images?.[0]?.url}
+                alt=""
+              />
+
+              <p className={styles.relatedName}>
+                {p.name}
+              </p>
+
+              <p className={styles.relatedColor}>
+                {p.color}
+              </p>
+
+              <p className={styles.relatedPrice}>
+                ₹{p.price}
+              </p>
+
             </div>
+
           ))}
+
         </div>
+
       </div>
 
       <Footer />
