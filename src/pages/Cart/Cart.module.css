@@ -158,9 +158,10 @@
 
   border:none;
   border-radius:8px;
+ text-align: center;
 
-  background:#6d28d9;
-  color:#fff;
+  background:#fbfafc;
+  color:#080808;
 
   font-size:15px;
   font-weight:700;
@@ -168,10 +169,17 @@
   cursor:pointer;
 }
 
+.qbtn:hover{
+
+  background-color:white;
+  color: black;
+}
+
 .quant p{
   min-width:18px;
 
   text-align:center;
+  margin-top: 19px;
 
   font-size:13px;
   font-weight:700;
