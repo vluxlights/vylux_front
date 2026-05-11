@@ -1,32 +1,55 @@
 /* =========================================================
-   MOBILE FIRST PRODUCT DETAILS
+   PRODUCT DETAILS PAGE - MOBILE FIRST
 ========================================================= */
 
-/* ================= MAIN ================= */
+/* ===== GLOBAL ===== */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    overflow-x: hidden;
+    background: #f8fafc;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================================================
+   PRODUCT VIEW
+========================================================= */
 
 .productview{
     display: flex;
     flex-direction: column;
+    gap: 12px;
     margin-top: 70px;
-    gap: 10px;
-    padding: 10px;
+
     width: 100%;
-    overflow-x: hidden;
+
+    padding: 10px;
 }
 
-/* ================= THUMBNAILS ================= */
+/* =========================================================
+   LEFT THUMBNAILS
+========================================================= */
 
 .left{
+    width: 100%;
+
     display: flex;
-    gap: 8px;
+    gap: 10px;
+
     overflow-x: auto;
 
-    padding: 6px;
+    padding: 8px;
 
-    border-radius: 10px;
-    background: #fff;
+    background: white;
 
-    border: 1px solid #ececec;
+    border-radius: 12px;
+
+    border: 1px solid #e5e7eb;
 }
 
 .left::-webkit-scrollbar{
@@ -39,115 +62,141 @@
 }
 
 .left img{
-    width: 58px;
-    height: 58px;
+    width: 65px;
+    height: 65px;
+
     object-fit: cover;
 
     border-radius: 8px;
+
     border: 1px solid #eee;
+
+    padding: 2px;
 }
 
-/* ================= MAIN IMAGE ================= */
+/* =========================================================
+   CENTER IMAGE
+========================================================= */
 
 .center{
     width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-
-    background: #fff;
-    border: 1px solid #ececec;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    padding: 10px;
+    background: white;
+
+    border-radius: 14px;
+
+    border: 1px solid #e5e7eb;
+
+    padding: 12px;
 }
 
 .center img{
     width: 100%;
-    max-height: 220px;
+    max-height: 240px;
+
     object-fit: contain;
 }
 
-/* ================= RIGHT ================= */
+/* =========================================================
+   RIGHT CONTENT
+========================================================= */
 
 .right{
     width: 100%;
 
-    background: #fff;
-    border-radius: 12px;
+    background: white;
 
-    border: 1px solid #ececec;
+    border-radius: 14px;
 
-    padding: 12px;
+    border: 1px solid #e5e7eb;
+
+    padding: 14px;
 }
 
 /* title */
 
 .right h2{
     font-size: 18px;
-    line-height: 1.4;
-    color: #081c15;
+    line-height: 1.5;
+
+    color: #0f172a;
 }
 
-/* type */
+/* color */
 
 .type{
-    margin-top: 4px;
+    margin-top: 5px;
+
     font-size: 12px;
-    color: #555;
+
+    color: #6b7280;
 }
 
-/* ================= PRICE ================= */
+/* =========================================================
+   PRICE SECTION
+========================================================= */
 
 .pricelist{
+    margin-top: 14px;
+
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 
-    gap: 8px;
-
-    margin-top: 12px;
+    gap: 10px;
 }
 
 .price{
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 800;
-    color: #0f172a;
+
+    color: #111827;
 }
 
 .orprice{
     font-size: 13px;
+
     text-decoration: line-through;
-    color: #777;
+
+    color: #6b7280;
 }
 
 .discount{
     background: #dcfce7;
+
     color: #166534;
+
+    border-radius: 30px;
+
+    padding: 4px 10px;
 
     font-size: 11px;
     font-weight: 700;
-
-    padding: 4px 8px;
-    border-radius: 20px;
 }
 
-/* ================= FEATURES ================= */
+/* =========================================================
+   ASSURANCE FEATURES
+========================================================= */
 
 .desc{
-    margin-top: 14px;
+    margin-top: 16px;
 
     display: flex;
     justify-content: space-between;
 
     gap: 6px;
 
-    background: #fafafa;
-    border-radius: 10px;
+    background: #f9fafb;
 
-    padding: 8px;
+    border: 1px solid #eee;
+
+    border-radius: 12px;
+
+    padding: 10px;
 }
 
 .descs{
@@ -158,32 +207,54 @@
     align-items: center;
     justify-content: center;
 
-    gap: 4px;
-
     text-align: center;
 
-    font-size: 10px;
-    color: #222;
+    gap: 5px;
+
+    position: relative;
 }
 
 .descs svg{
-    font-size: 15px;
+    font-size: 16px;
     color: #15803d;
 }
 
-/* ================= QUANTITY ================= */
+.descs p{
+    font-size: 10px;
+    color: #111827;
+}
+
+.descs:not(:last-child)::after{
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    top: 10%;
+    bottom: 10%;
+
+    width: 1px;
+
+    background: #d1d5db;
+}
+
+/* =========================================================
+   QUANTITY
+========================================================= */
 
 .quantity{
-    margin-top: 14px;
+    margin-top: 18px;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .quantity p{
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
+
+    color: #111827;
 }
 
 /* controls */
@@ -191,20 +262,22 @@
 .controls{
     display: flex;
     align-items: center;
+
     gap: 8px;
 }
 
 .controls button{
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
 
     border: none;
-    border-radius: 6px;
+    border-radius: 7px;
 
     background: #15803d;
+
     color: white;
 
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
 
     cursor: pointer;
@@ -212,16 +285,19 @@
 
 .controls span{
     min-width: 20px;
+
     text-align: center;
 
     font-size: 14px;
     font-weight: 700;
 }
 
-/* ================= BUTTONS ================= */
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .buttons{
-    margin-top: 16px;
+    margin-top: 18px;
 
     display: flex;
     flex-direction: column;
@@ -231,7 +307,7 @@
 
 .buttons button{
     width: 100%;
-    height: 42px;
+    height: 44px;
 
     border: none;
     border-radius: 10px;
@@ -252,23 +328,27 @@
     color: white;
 }
 
-/* ================= SPECS ================= */
+/* =========================================================
+   SPECIFICATIONS
+========================================================= */
 
 .specs{
     margin: 10px;
 
-    border-radius: 12px;
+    background: white;
 
-    background: #fff;
-    border: 1px solid #ececec;
+    border-radius: 14px;
+
+    border: 1px solid #e5e7eb;
 
     padding: 12px;
 }
 
 .specs h2{
     font-size: 16px;
-    margin-bottom: 12px;
     color: #111827;
+
+    margin-bottom: 12px;
 }
 
 /* table */
@@ -276,22 +356,28 @@
 .spectable{
     display: flex;
     flex-direction: column;
+
     gap: 6px;
 }
 
+/* row */
+
 .row{
     display: grid;
-    grid-template-columns: 42% 58%;
+    grid-template-columns: 40% 60%;
 
     gap: 8px;
 
-    padding: 8px;
+    background: #f9fafb;
+
+    border: 1px solid #f1f5f9;
 
     border-radius: 8px;
 
-    background: #fafafa;
-    border: 1px solid #f1f1f1;
+    padding: 8px;
 }
+
+/* key */
 
 .key{
     font-size: 10px;
@@ -302,24 +388,32 @@
     text-transform: capitalize;
 }
 
+/* value */
+
 .value{
     font-size: 10px;
-    color: #444;
+
+    color: #4b5563;
 
     word-break: break-word;
 }
 
-/* ================= RELATED ================= */
+/* =========================================================
+   RELATED PRODUCTS
+========================================================= */
 
 .relatedp{
     margin: 10px;
 
-    background: #fff;
-    border: 1px solid #ececec;
+    background: white;
 
-    border-radius: 12px;
+    border-radius: 14px;
+
+    border: 1px solid #e5e7eb;
 
     padding: 12px;
+
+    margin-bottom: 20px;
 }
 
 .relatedp h2{
@@ -330,12 +424,12 @@
 /* cards row */
 
 .repr{
+    margin-top: 12px;
+
     display: flex;
     gap: 10px;
 
     overflow-x: auto;
-
-    margin-top: 12px;
 }
 
 .repr::-webkit-scrollbar{
@@ -345,15 +439,15 @@
 /* card */
 
 .reprs{
-    min-width: 120px;
-
-    border-radius: 10px;
-
-    border: 1px solid #ececec;
-
-    padding: 8px;
+    min-width: 130px;
 
     background: white;
+
+    border-radius: 12px;
+
+    border: 1px solid #e5e7eb;
+
+    padding: 8px;
 
     flex-shrink: 0;
 }
@@ -365,24 +459,25 @@
     object-fit: contain;
 }
 
-/* related text */
+/* text */
 
 .rname{
-    margin-top: 6px;
+    margin-top: 8px;
 
     font-size: 11px;
     font-weight: 700;
 
-    color: #111827;
-
     line-height: 1.4;
+
+    color: #111827;
 }
 
 .rtype{
-    margin-top: 2px;
+    margin-top: 3px;
 
     font-size: 10px;
-    color: #666;
+
+    color: #6b7280;
 }
 
 .rprice{
@@ -403,20 +498,29 @@
     .productview{
         flex-direction: row;
         align-items: flex-start;
+
+        padding: 20px;
     }
+
+    /* left */
 
     .left{
         width: 12%;
+
         flex-direction: column;
+
         overflow-y: auto;
         overflow-x: hidden;
-        max-height: 500px;
+
+        max-height: 520px;
     }
 
     .left img{
         width: 90px;
         height: 90px;
     }
+
+    /* center */
 
     .center{
         width: 40%;
@@ -426,8 +530,45 @@
         max-height: 420px;
     }
 
+    /* right */
+
     .right{
         width: 48%;
+    }
+
+    .right h2{
+        font-size: 28px;
+    }
+
+    .type{
+        font-size: 15px;
+    }
+
+    .price{
+        font-size: 30px;
+    }
+
+    .orprice{
+        font-size: 18px;
+    }
+
+    .discount{
+        font-size: 14px;
+    }
+
+    .descs p{
+        font-size: 13px;
+    }
+
+    .quantity p{
+        font-size: 16px;
+    }
+
+    .controls button{
+        width: 36px;
+        height: 36px;
+
+        font-size: 18px;
     }
 
     .buttons{
@@ -436,28 +577,73 @@
 
     .buttons button{
         width: 180px;
+        height: 46px;
+    }
+
+    /* specs */
+
+    .specs{
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .specs h2{
+        font-size: 22px;
     }
 
     .spectable{
         display: grid;
         grid-template-columns: 1fr 1fr;
+
         gap: 10px;
     }
 
     .row{
         grid-template-columns: 40% 60%;
+
+        padding: 12px;
+    }
+
+    .key{
+        font-size: 13px;
+    }
+
+    .value{
+        font-size: 13px;
+    }
+
+    /* related */
+
+    .relatedp{
+        margin: 20px;
+    }
+
+    .relatedp h2{
+        font-size: 22px;
     }
 
     .repr{
-        overflow: visible;
         flex-wrap: wrap;
+        overflow: visible;
     }
 
     .reprs{
-        min-width: 180px;
+        min-width: 200px;
     }
 
     .reprs img{
-        height: 140px;
+        height: 150px;
+    }
+
+    .rname{
+        font-size: 16px;
+    }
+
+    .rtype{
+        font-size: 13px;
+    }
+
+    .rprice{
+        font-size: 15px;
     }
 }
