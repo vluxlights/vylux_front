@@ -1,74 +1,239 @@
+/* ======================================================
+   GLOBAL
+====================================================== */
 
-
-.cont{
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 50px;
-    padding-right: 150px;
-    background-color: rgb(10, 10, 73);
-    padding: 40px;
-    
-      
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  z-index: 1000;
-
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-.left h2{
+/* ======================================================
+   HEADER
+====================================================== */
 
-    font-size: 30px;
-    color: aqua;
+.header{
+
+  width:100%;
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  z-index:1000;
+
+  height:65px;
+
+  background:#071739;
+
+  border-bottom:1px solid rgba(255,255,255,0.08);
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:10px 12px;
 }
 
+/* ======================================================
+   LOGO
+====================================================== */
 
-.left p{
+.logoSection{
 
-    font-size: 15px;
-    color: aquamarine;
-
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
-.right{
-    display: flex;
-    gap :20px;justify-content: center;
-    align-items: center;
+.logoSection h2{
+
+  font-size:20px;
+  font-weight:800;
+
+  letter-spacing:1px;
+
+  color:#4ade80;
+
+  line-height:1;
 }
 
-.rcont{
+.logoSection p{
 
-    margin: 20px;
+  margin-top:4px;
+
+  font-size:10px;
+
+  color:#cbd5e1;
+
+  letter-spacing:0.5px;
 }
 
-.rcont:hover{
+/* ======================================================
+   RIGHT MENU
+====================================================== */
 
-    border: 1px solid rgb(14, 5, 37);
-    border-radius: 10px;
-    
-    padding: 3px;
-    background-color: rgb(24, 3, 44);
+.menuSection{
+
+  display:flex;
+  align-items:center;
+
+  gap:10px;
 }
 
-.right .imgs{
+/* ======================================================
+   LINK
+====================================================== */
 
-    border: 1px solid rgb(59, 59, 22);
-    border-radius: 50px;
-    font-size: 30px;
-    padding: 5px;
-    color: rgb(134, 184, 204);
-    margin-top: 10px;
-    margin-left: 8px;
+.link{
+
+  text-decoration:none;
 }
 
-.right p{
+/* ======================================================
+   CARD
+====================================================== */
 
-    font-size: 18px;
-    color: blanchedalmond;
-    padding-bottom: 5px;
+.menuCard{
+
+  min-width:60px;
+
+  height:50px;
+
+  padding:6px 10px;
+
+  border-radius:10px;
+
+  background:rgba(255,255,255,0.05);
+
+  border:1px solid rgba(255,255,255,0.06);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  gap:3px;
+
+  transition:0.2s ease;
+
+  cursor:pointer;
 }
 
+.menuCard:hover{
+
+  background:#11224d;
+
+  transform:translateY(-1px);
+}
+
+/* ======================================================
+   ICON
+====================================================== */
+
+.icon{
+
+  font-size:16px;
+
+  color:#93c5fd;
+}
+
+/* ======================================================
+   TEXT
+====================================================== */
+
+.menuCard span{
+
+  font-size:10px;
+
+  font-weight:600;
+
+  color:#f8fafc;
+}
+
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media(min-width:768px){
+
+  .header{
+
+    height:75px;
+
+    padding:14px 30px;
+  }
+
+  .logoSection h2{
+
+    font-size:28px;
+  }
+
+  .logoSection p{
+
+    font-size:13px;
+  }
+
+  .menuSection{
+
+    gap:16px;
+  }
+
+  .menuCard{
+
+    width:85px;
+    height:58px;
+
+    border-radius:14px;
+  }
+
+  .icon{
+
+    font-size:22px;
+  }
+
+  .menuCard span{
+
+    font-size:13px;
+  }
+}
+
+/* ======================================================
+   DESKTOP
+====================================================== */
+
+@media(min-width:1024px){
+
+  .header{
+
+    padding-left:40px;
+    padding-right:40px;
+  }
+
+  .logoSection h2{
+
+    font-size:32px;
+  }
+
+  .logoSection p{
+
+    font-size:14px;
+  }
+
+  .menuCard{
+
+    width:95px;
+    height:62px;
+  }
+
+  .icon{
+
+    font-size:24px;
+  }
+
+  .menuCard span{
+
+    font-size:14px;
+  }
+}

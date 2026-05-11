@@ -1,46 +1,62 @@
-import styles from "./AdminHeader.module.css"  
-import {  FaUser } from "react-icons/fa";
+import styles from "./AdminHeader.module.css";
+
+import { FaUserShield, FaUser } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
 
+export default function AdminHeader() {
 
+  return (
+    <>
 
+      <div className={styles.header}>
 
+        {/* LEFT */}
 
-export default function AdminHeader(){
+        <div className={styles.logoSection}>
 
+          <h2>VLUX</h2>
 
-    return(
-
-        <>
-        <div className={styles.cont}>
-
-            <div  className={styles.left}>
-                <h2>VLUX</h2>
-                <p>Admin Pannel</p>
-            </div>
-
-            <div className={styles.right}>
-
-                 <div className={styles.rcont}>
-                    <FaUser className={styles.imgs} />
-                    <p>Admin</p>
-                 </div>
-
-                <Link to="/Home" target="_blank"  style={{ textDecoration: "none", color: "inherit" }}>
-                 <div className={styles.rcont} >
-                    <FaUser className={styles.imgs} />
-                    <p>User</p>
-                 </div>
-                </Link>
-            </div>
-            
+          <p>Admin Panel</p>
 
         </div>
-        </>
 
+        {/* RIGHT */}
 
+        <div className={styles.menuSection}>
 
+          {/* ADMIN */}
 
+          <div className={styles.menuCard}>
 
-    );
+            <FaUserShield className={styles.icon} />
+
+            <span>Admin</span>
+
+          </div>
+
+          {/* USER */}
+
+          <Link
+            to="/Home"
+            target="_blank"
+            className={styles.link}
+          >
+
+            <div className={styles.menuCard}>
+
+              <FaUser className={styles.icon} />
+
+              <span>User</span>
+
+            </div>
+
+          </Link>
+
+        </div>
+
+      </div>
+
+    </>
+  );
 }
