@@ -212,14 +212,6 @@ export default function MyOrders() {
 
                   </div>
 
-                  {/* ARROW */}
-
-                  <button className={styles.arrowBtn}>
-
-                    <FaChevronRight />
-
-                  </button>
-
                 </div>
 
               ))}
@@ -381,11 +373,30 @@ export default function MyOrders() {
 
         <div className={styles.pagination}>
 
+          {/* PREV BUTTON */}
+
+          <button
+            onClick={() =>
+              setCurrentPage((prev) =>
+                Math.max(prev - 1, 1)
+              )
+            }
+            disabled={currentPage === 1}
+          >
+
+            ←
+
+          </button>
+
+          {/* PAGE TEXT */}
+
           <p>
 
             Page {currentPage} of {totalPages || 1}
 
           </p>
+
+          {/* NEXT BUTTON */}
 
           <button
             onClick={() =>
