@@ -3,9 +3,7 @@ import axios from "axios";
 
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-
 import styles from "./Aboutus.module.css";
-
 import BANNER from "../../assests/Home_page/banner.jpeg";
 
 import { Helmet } from "react-helmet";
@@ -17,7 +15,8 @@ import {
   FaShieldAlt,
   FaLeaf,
   FaHeadphonesAlt,
-  FaCheckCircle
+  FaCheckCircle,
+  FaUndoAlt
 } from "react-icons/fa";
 
 import { FaCrosshairs } from "react-icons/fa6";
@@ -73,14 +72,13 @@ export default function Aboutus() {
 
   };
 
-  // ================= SEND MESSAGE =================
+  // ================= WHATSAPP SEND =================
 
   const sendMessage = () => {
 
     const number = "9790051137";
 
     const text = `
-
 Hello VYLUX,
 
 Name: ${form.name}
@@ -88,7 +86,6 @@ Phone: ${form.phone}
 Email: ${form.email}
 Subject: ${form.subject}
 Message: ${form.message}
-
     `;
 
     const url =
@@ -103,7 +100,7 @@ Message: ${form.message}
     <>
 
       <Helmet>
-        <title>Contact Us</title>
+        <title>About Us</title>
       </Helmet>
 
       <div className={styles.cont}>
@@ -127,7 +124,11 @@ Message: ${form.message}
 
           {/* ================= TITLE ================= */}
 
-          <div className={styles.head}>
+          <div className={styles.heading}>
+
+            <p className={styles.smallTitle}>
+              WHY CUSTOMERS TRUST US
+            </p>
 
             <h2>
 
@@ -137,9 +138,7 @@ Message: ${form.message}
 
             </h2>
 
-            <p>
-              Smart lighting solutions for modern homes
-            </p>
+            <div className={styles.line}></div>
 
           </div>
 
@@ -147,72 +146,116 @@ Message: ${form.message}
 
           <div className={styles.cards}>
 
+            {/* CARD 1 */}
+
             <div className={styles.card}>
 
-              <FaShieldAlt className={styles.icon} />
+              <div className={styles.iconBox}>
+                <FaShieldAlt className={styles.icon} />
+              </div>
 
               <p className={styles.cardname}>
                 PREMIUM QUALITY
               </p>
 
               <p className={styles.cardsub}>
-                Best quality materials for long-lasting performance
+                Best quality materials for
+                long-lasting lighting performance.
               </p>
 
             </div>
 
+            {/* CARD 2 */}
+
             <div className={styles.card}>
 
-              <FaLeaf className={styles.icon} />
+              <div className={styles.iconBox}>
+                <FaLeaf className={styles.icon} />
+              </div>
 
               <p className={styles.cardname}>
-                ENERGY EFFICIENT
+                ENERGY SAVING
               </p>
 
               <p className={styles.cardsub}>
-                Save more energy with advanced LED technology
+                Advanced LED technology helps
+                reduce electricity consumption.
               </p>
 
             </div>
 
+            {/* CARD 3 */}
+
             <div className={styles.card}>
 
-              <FaCheckCircle className={styles.icon} />
+              <div className={styles.iconBox}>
+                <FaCheckCircle className={styles.icon} />
+              </div>
 
               <p className={styles.cardname}>
                 LONG LIFE
               </p>
 
               <p className={styles.cardsub}>
-                Built to last longer with consistent brightness
+                Durable products with consistent
+                brightness for years.
               </p>
 
             </div>
 
+            {/* CARD 4 */}
+
             <div className={styles.card}>
 
-              <FaCheckCircle className={styles.icon} />
+              <div className={styles.iconBox}>
+                <FaCheckCircle className={styles.icon} />
+              </div>
 
               <p className={styles.cardname}>
-                WARRANTY
+                WARRANTY SUPPORT
               </p>
 
               <p className={styles.cardsub}>
-                18–24 months warranty for peace of mind
+                Trusted warranty coverage for
+                complete peace of mind.
               </p>
 
             </div>
 
+            {/* CARD 5 */}
+
             <div className={styles.card}>
 
-              <FaHeadphonesAlt className={styles.icon} />
+              <div className={styles.iconBox}>
+                <FaHeadphonesAlt className={styles.icon} />
+              </div>
 
               <p className={styles.cardname}>
                 FAST SUPPORT
               </p>
 
               <p className={styles.cardsub}>
-                Quick and hassle-free support service
+                Quick customer assistance through
+                WhatsApp and phone support.
+              </p>
+
+            </div>
+
+            {/* CARD 6 NEW */}
+
+            <div className={styles.card}>
+
+              <div className={styles.iconBox}>
+                <FaUndoAlt className={styles.icon} />
+              </div>
+
+              <p className={styles.cardname}>
+                EASY RETURNS
+              </p>
+
+              <p className={styles.cardsub}>
+                Hassle-free replacement and return
+                support for eligible products.
               </p>
 
             </div>
@@ -224,9 +267,7 @@ Message: ${form.message}
           <div className={styles.mission}>
 
             <div className={styles.faicon}>
-
               <FaCrosshairs className={styles.aicon} />
-
             </div>
 
             <div className={styles.mcont}>
@@ -235,13 +276,15 @@ Message: ${form.message}
                 OUR MISSION
               </p>
 
+              <div className={styles.mhr}></div>
+
               <p className={styles.msub}>
 
-                To provide affordable,
+                To provide affordable and
                 high-quality lighting solutions
-                that improve everyday life
-                while saving energy and
-                protecting the environment.
+                that improve everyday life while
+                saving energy and protecting
+                the environment.
 
               </p>
 
@@ -249,7 +292,7 @@ Message: ${form.message}
 
           </div>
 
-          {/* ================= CONTACT SECTION ================= */}
+          {/* ================= CONTACT ================= */}
 
           <div className={styles.touch}>
 
@@ -259,10 +302,8 @@ Message: ${form.message}
 
               <div className={styles.tcard}>
 
-                <div className={styles.iconBox}>
-
+                <div className={styles.faWrap}>
                   <FaPhone className={styles.fa} />
-
                 </div>
 
                 <div>
@@ -272,12 +313,7 @@ Message: ${form.message}
                   </p>
 
                   <p className={styles.lsub}>
-
-                    {
-                      settings.contactPhone
-                      || "Not Available"
-                    }
-
+                    {settings.contactPhone || "Not Available"}
                   </p>
 
                 </div>
@@ -286,25 +322,18 @@ Message: ${form.message}
 
               <div className={styles.tcard}>
 
-                <div className={styles.iconBox}>
-
+                <div className={styles.faWrap}>
                   <FaEnvelope className={styles.fa} />
-
                 </div>
 
                 <div>
 
                   <p className={styles.lhead}>
-                    Email
+                    Email Address
                   </p>
 
                   <p className={styles.lsub}>
-
-                    {
-                      settings.contactEmail
-                      || "Not Available"
-                    }
-
+                    {settings.contactEmail || "Not Available"}
                   </p>
 
                 </div>
@@ -313,25 +342,18 @@ Message: ${form.message}
 
               <div className={styles.tcard}>
 
-                <div className={styles.iconBox}>
-
+                <div className={styles.faWrap}>
                   <FaMapMarkerAlt className={styles.fa} />
-
                 </div>
 
                 <div>
 
                   <p className={styles.lhead}>
-                    Address
+                    Shop Address
                   </p>
 
                   <p className={styles.lsub}>
-
-                    {
-                      settings.contactAddress
-                      || "Not Available"
-                    }
-
+                    {settings.contactAddress || "Not Available"}
                   </p>
 
                 </div>
@@ -357,9 +379,17 @@ Message: ${form.message}
 
             <div className={styles.rtouch}>
 
-              <h2>
-                Get In Touch
-              </h2>
+              <div className={styles.formTop}>
+
+                <p className={styles.formSmall}>
+                  CONTACT US
+                </p>
+
+                <h2>Get In Touch</h2>
+
+              </div>
+
+              {/* ROW */}
 
               <div className={styles.row}>
 
@@ -405,9 +435,7 @@ Message: ${form.message}
               ></textarea>
 
               <button onClick={sendMessage}>
-
                 Send Message
-
               </button>
 
             </div>
