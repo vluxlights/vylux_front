@@ -1,263 +1,447 @@
+/* ================= MAIN LAYOUT ================= */
 
-
-.right{
-
-
-    margin-top: 100px;
-    margin-left: 290px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+.cont {
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f6f9;
+  overflow-x: hidden;
 }
 
+.main {
+  display: flex;
+  width: 100%;
+}
+
+/* ================= RIGHT SECTION ================= */
+
+.right {
+  flex: 1;
+  margin-top: 90px;
+  margin-left: 290px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.right h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 15px;
+}
 
 /* ================= FILTER TOP ================= */
+
 .rtop {
-    border: 1px solid rgb(219, 210, 210);
-    padding: 15px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    
-    margin-top: 15px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-.rsearch, .rcat {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+.rsearch,
+.rcat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rsearch p,
+.rcat p {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
 }
 
 .rsearch input,
 .rcat select {
-    padding: 8px;
-    width: 200px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+  width: 220px;
+  height: 42px;
+  border: 1px solid #dbe1e8;
+  border-radius: 10px;
+  padding: 0 12px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+}
+
+.rsearch input:focus,
+.rcat select:focus {
+  border-color: #0f766e;
 }
 
 .rbtn {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 12px;
 }
 
 .rbtns {
-    width: 100px;
-    padding: 8px;
-    border-radius: 10px;
-    border: none;
-    background-color: darkgreen;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s ease;
+  width: 110px;
+  height: 42px;
+  border: none;
+  border-radius: 10px;
+  background: #166534;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .rbtns:hover {
-    background-color: grey;
+  background: #14532d;
 }
 
 /* ================= ORDER CONTAINER ================= */
+
 .orderContainer {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
-/* ================= FULL WIDTH CARD ================= */
+/* ================= ORDER CARD ================= */
+
 .orderCard {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    background: white;
-    cursor: pointer;
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  gap: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 
-/* ================= LEFT PRODUCTS ================= */
+/* ================= LEFT PRODUCT SIDE ================= */
+
 .cardLeft {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .productRow {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.productRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .productRow img {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 6px;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #eee;
 }
 
 .pname {
-    font-weight: 700;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
 }
 
-.model, .qty {
-    font-size: 12px;
-    color: gray;
+.model,
+.qty {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 3px;
 }
 
 .price {
-    font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
+  color: #166534;
+  margin-top: 5px;
 }
 
 /* ================= RIGHT DETAILS ================= */
+
 .cardRight {
-    flex: 1;
-    border-left: 1px solid #eee;
-    padding-left: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  flex: 1;
+  border-left: 1px solid #e5e7eb;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
 }
 
-.total {
-    font-size: 16px;
-    font-weight: 800;
-    color: green;
+.cardRight b {
+  font-size: 15px;
+  color: #0f172a;
 }
 
-.date {
-    font-size: 12px;
-    color: gray;
-}
-
-.pageno{
-
-    padding-top: 15px;
+.cardRight p {
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .label {
-    font-weight: 700;
-    color: #111;
-    margin-right: 6px;
+  font-weight: 700;
+  color: #111827;
+  margin-right: 5px;
 }
 
 .value {
-    color: #555;
-    padding-left: 4px;
+  color: #475569;
 }
+
+.cardRight hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 10px 0;
+}
+
+.total {
+  font-size: 18px;
+  font-weight: 800;
+  color: #15803d;
+}
+
+.date {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ================= PAGINATION ================= */
+
+.pageno {
+  font-size: 14px;
+  font-weight: 600;
+  padding-top: 10px;
+  color: #0f172a;
+}
+
+/* ===================================================== */
+/* ================= MOBILE FIRST VIEW ================= */
+/* ===================================================== */
 
 @media (max-width: 768px) {
 
-    /* ================= RIGHT CONTAINER ================= */
-    .right {
-        margin: 10px;
-        width: 100%;
-        margin-top: 55px;
-    }
+  .main {
+    flex-direction: column;
+  }
 
-    /* ================= FILTER SECTION ================= */
-    .rtop {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-        padding: 10px;
-    }
+  .right {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 65px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-    .rsearch input,
-    .rcat select {
-        width: 100%;
-    }
+  .right h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
 
-    .rbtn {
-        width: 100%;
-        justify-content: space-between;
-        gap: 10px;
-    }
+  /* ================= FILTER ================= */
 
-    .rbtns {
-        flex: 1;
-        width: 100%;
-        padding: 8px;
-        font-size: 13px;
-    }
+  .rtop {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 12px;
+  }
 
-    /* ================= ORDER CARD ================= */
-    .orderCard {
-        flex-direction: column;
-        padding: 10px;
-        gap: 10px;
-    }
+  .rsearch,
+  .rcat {
+    width: 100%;
+  }
 
-    /* ================= LEFT PRODUCT SECTION ================= */
-    .cardLeft {
-        flex: unset;
-        width: 100%;
-        gap: 8px;
-    }
+  .rsearch input,
+  .rcat select {
+    width: 100%;
+    height: 40px;
+    font-size: 13px;
+  }
 
-    .productRow {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        border-bottom: 1px solid #f0f0f0;
-        padding-bottom: 6px;
-    }
+  .rbtn {
+    width: 100%;
+    gap: 10px;
+  }
 
-    .productRow img {
-        width: 55px;
-        height: 55px;
-    }
+  .rbtns {
+    flex: 1;
+    width: 100%;
+    height: 40px;
+    font-size: 12px;
+  }
 
-    .pname {
-        font-size: 13px;
-    }
+  /* ================= ORDER CARD ================= */
 
-    .model,
-    .qty {
-        font-size: 11px;
-    }
+  .orderCard {
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 14px;
+    gap: 14px;
+  }
 
-    .price {
-        font-size: 13px;
-    }
+  /* ================= PRODUCTS ================= */
 
-    /* ================= RIGHT DETAILS ================= */
-    .cardRight {
-        flex: unset;
-        width: 100%;
-        border-left: none;
-        padding-left: 0;
-        border-top: 1px solid #eee;
-        padding-top: 10px;
-    }
+  .cardLeft {
+    width: 100%;
+    gap: 10px;
+  }
 
-    .cardRight p {
-        font-size: 12px;
-        margin: 2px 0;
-    }
+  .productRow {
+    gap: 10px;
+    align-items: flex-start;
+    padding-bottom: 10px;
+  }
 
-    .total {
-        font-size: 15px;
-    }
+  .productRow img {
+    width: 58px;
+    height: 58px;
+    border-radius: 8px;
+  }
 
-    .date {
-        font-size: 11px;
-    }
+  .pname {
+    font-size: 13px;
+    line-height: 1.3;
+  }
 
-    /* ================= PAGINATION ================= */
-    .pageno {
-        text-align: center;
-        font-size: 13px;
-        margin-top: 10px;
-    }
+  .model,
+  .qty {
+    font-size: 11px;
+  }
 
-    /* PREVENT HORIZONTAL SCROLL */
-    body {
-        overflow-x: hidden;
-    }
+  .price {
+    font-size: 13px;
+  }
+
+  /* ================= DETAILS ================= */
+
+  .cardRight {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid #e5e7eb;
+    padding-left: 0;
+    padding-top: 12px;
+    gap: 5px;
+  }
+
+  .cardRight p {
+    font-size: 12px;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  .label {
+    font-size: 12px;
+  }
+
+  .value {
+    font-size: 12px;
+  }
+
+  .total {
+    font-size: 16px;
+  }
+
+  .date {
+    font-size: 11px;
+  }
+
+  /* ================= PAGINATION ================= */
+
+  .pageno {
+    font-size: 12px;
+    padding-top: 12px;
+  }
+
+  /* ================= NO HORIZONTAL SCROLL ================= */
+
+  body,
+  html {
+    overflow-x: hidden;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+
+  .right {
+    padding: 8px;
+    margin-top: 60px;
+  }
+
+  .right h2 {
+    font-size: 18px;
+  }
+
+  .rtop {
+    padding: 12px;
+  }
+
+  .rsearch input,
+  .rcat select {
+    font-size: 12px;
+    height: 38px;
+  }
+
+  .rbtns {
+    height: 38px;
+    font-size: 11px;
+  }
+
+  .orderCard {
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .productRow img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .pname {
+    font-size: 12px;
+  }
+
+  .model,
+  .qty {
+    font-size: 10px;
+  }
+
+  .price {
+    font-size: 12px;
+  }
+
+  .cardRight p {
+    font-size: 11px;
+  }
+
+  .label,
+  .value {
+    font-size: 11px;
+  }
+
+  .total {
+    font-size: 15px;
+  }
+
+  .date {
+    font-size: 10px;
+  }
+
+  .pageno {
+    font-size: 11px;
+  }
 }
