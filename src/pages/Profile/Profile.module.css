@@ -1,170 +1,188 @@
-/* ================= MAIN CONTAINER ================= */
+/* ================= CONTAINER ================= */
 
 .container{
     display: flex;
-    gap: 20px;
-    padding: 20px;
-    background: #f5f7fb;
+    gap: 15px;
+    padding: 15px;
+    background: #f5f6fa;
     min-height: 100vh;
 }
 
 /* ================= SIDEBAR ================= */
 
 .sidebar{
-    width: 240px;
+    width: 95px;
+
+    margin-top: 70px;
+
     background: white;
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+
+    border-radius: 14px;
+
+    padding: 12px 8px;
 
     display: flex;
     flex-direction: column;
     gap: 10px;
 
     height: fit-content;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.menu,
+.active,
+.logout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    padding: 12px 5px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
 }
 
 .menu{
-    padding: 14px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 500;
-    color: #222;
-    transition: 0.3s;
+    background: #f7f7f7;
 }
 
 .menu:hover{
-    background: #f1f5ff;
+    background: #ececec;
 }
 
 .active{
-    padding: 14px;
-    border-radius: 10px;
-    background: #0f172a;
+    background: #111827;
     color: white;
-    font-size: 15px;
-    font-weight: 600;
 }
 
 .logout{
-    margin-top: 20px;
-    padding: 14px;
-    border-radius: 10px;
-    background: #fff1f1;
+    background: #ffeaea;
     color: #d10000;
+}
+
+.logout:hover{
+    background: #ffd4d4;
+}
+
+.icon{
+    font-size: 18px;
+}
+
+.menu span,
+.active span,
+.logout span{
+    font-size: 11px;
     font-weight: 600;
-    cursor: pointer;
 }
 
 /* ================= CONTENT ================= */
 
 .content{
     flex: 1;
+
     background: white;
-    border-radius: 18px;
-    padding: 25px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-/* ================= TOP ================= */
-
-.top{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.top h2{
-    font-size: 28px;
+.content h2{
+    font-size: 24px;
     color: #111827;
-}
-
-.top p{
-    margin-top: 5px;
-    color: #6b7280;
-    font-size: 14px;
-}
-
-/* ================= BUTTON ================= */
-
-.editBtn{
-    background: #111827;
-    color: white;
-    border: none;
-    height: 45px;
-    padding: 0 25px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.editBtn:hover{
-    background: #000;
+    margin-bottom: 20px;
 }
 
 /* ================= FORM ================= */
 
 .form{
-    margin-top: 30px;
-
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
 }
-
-/* ================= FIELD ================= */
 
 .field{
     display: flex;
     flex-direction: column;
 }
 
-.full{
-    grid-column: 1 / -1;
-}
-
 .field label{
     font-size: 13px;
-    color: #374151;
-    margin-bottom: 8px;
-    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
 }
 
-.field input,
-.field textarea{
-    width: 100%;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    padding: 12px;
+.field input{
+    height: 42px;
+
+    border: 1px solid #dcdcdc;
+
+    border-radius: 8px;
+
+    padding: 0 12px;
+
     font-size: 14px;
+
     outline: none;
-    background: white;
-    transition: 0.3s;
 }
 
-.field input:focus,
-.field textarea:focus{
+.field input:focus{
     border-color: #111827;
 }
 
 .field textarea{
+    border: 1px solid #dcdcdc;
+
+    border-radius: 8px;
+
+    padding: 10px 12px;
+
+    font-size: 14px;
+
+    outline: none;
+
     resize: none;
+
+    font-family: inherit;
 }
 
-.field input:disabled,
-.field textarea:disabled{
-    background: #f9fafb;
-    cursor: not-allowed;
+.field textarea:focus{
+    border-color: #111827;
+}
+
+/* ================= BUTTON ================= */
+
+.editBtn{
+    margin-top: 25px;
+
+    width: 220px;
+    height: 45px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #111827;
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
 }
 
 /* ================= TABLET ================= */
 
-@media (max-width: 992px){
+@media (max-width: 900px){
 
     .container{
         flex-direction: column;
@@ -173,34 +191,42 @@
     .sidebar{
         width: 100%;
 
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
+        flex-direction: row;
+
+        overflow-x: auto;
+
+        justify-content: space-between;
+    }
+
+    .menu,
+    .active,
+    .logout{
+        min-width: 75px;
     }
 
 }
 
 /* ================= MOBILE ================= */
 
-@media (max-width: 768px){
+@media (max-width: 600px){
 
     .container{
         padding: 10px;
-        gap: 15px;
+        gap: 10px;
     }
-
-    /* SIDEBAR */
 
     .sidebar{
         width: 100%;
-        padding: 12px;
 
-        display: flex;
         flex-direction: row;
 
         overflow-x: auto;
-        gap: 10px;
 
-        border-radius: 14px;
+        padding: 8px;
+
+        gap: 8px;
+
+        border-radius: 10px;
     }
 
     .sidebar::-webkit-scrollbar{
@@ -210,89 +236,49 @@
     .menu,
     .active,
     .logout{
-        min-width: 120px;
-        text-align: center;
-        font-size: 13px;
-        padding: 12px 10px;
-        flex-shrink: 0;
+        min-width: 65px;
+
+        padding: 10px 4px;
+
+        gap: 4px;
     }
 
-    /* CONTENT */
+    .icon{
+        font-size: 15px;
+    }
+
+    .menu span,
+    .active span,
+    .logout span{
+        font-size: 9px;
+    }
 
     .content{
-        padding: 15px;
-        border-radius: 14px;
+        padding: 14px;
     }
 
-    .top{
-        flex-direction: column;
-        align-items: flex-start;
+    .content h2{
+        font-size: 18px;
     }
 
-    .top h2{
-        font-size: 22px;
+    .form{
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
 
-    .top p{
-        font-size: 12px;
+    .field label{
+        font-size: 11px;
+    }
+
+    .field input{
+        height: 38px;
+        font-size: 13px;
     }
 
     .editBtn{
         width: 100%;
         height: 42px;
         font-size: 14px;
-    }
-
-    /* FORM */
-
-    .form{
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .full{
-        grid-column: auto;
-    }
-
-    .field label{
-        font-size: 12px;
-    }
-
-    .field input,
-    .field textarea{
-        font-size: 13px;
-        padding: 11px;
-    }
-
-}
-
-/* ================= SMALL MOBILE ================= */
-
-@media (max-width: 480px){
-
-    .container{
-        padding: 8px;
-    }
-
-    .content{
-        padding: 12px;
-    }
-
-    .top h2{
-        font-size: 20px;
-    }
-
-    .menu,
-    .active,
-    .logout{
-        min-width: 105px;
-        font-size: 12px;
-        padding: 10px;
-    }
-
-    .field input,
-    .field textarea{
-        font-size: 12px;
     }
 
 }

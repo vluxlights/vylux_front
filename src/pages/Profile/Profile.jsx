@@ -2,6 +2,15 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import styles from "./Profile.module.css";
 
+import {
+  FaHome,
+  FaShoppingBag,
+  FaShoppingCart,
+  FaCreditCard,
+  FaUser,
+  FaSignOutAlt
+} from "react-icons/fa";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -28,6 +37,7 @@ export default function Profile() {
   });
 
   // ================= FETCH PROFILE =================
+
   const fetchProfile = async () => {
 
     try {
@@ -71,6 +81,7 @@ export default function Profile() {
   }, []);
 
   // ================= HANDLE CHANGE =================
+
   const handleChange = (e) => {
 
     setUser({
@@ -81,6 +92,7 @@ export default function Profile() {
   };
 
   // ================= SAVE PROFILE =================
+
   const handleEditToggle = async () => {
 
     if (isEditing) {
@@ -130,19 +142,27 @@ export default function Profile() {
   // ================= NAVIGATION =================
 
   const goToOrders = () => {
+
     navigate("/myorders");
+
   };
 
   const goToCart = () => {
+
     navigate("/cartpage");
+
   };
 
   const goToCheckout = () => {
+
     navigate("/checkout");
+
   };
 
   const goToHome = () => {
+
     navigate("/home");
+
   };
 
   const logout = () => {
@@ -153,6 +173,7 @@ export default function Profile() {
   };
 
   return (
+
     <>
 
       <Header />
@@ -163,44 +184,50 @@ export default function Profile() {
 
         <div className={styles.sidebar}>
 
-          <p
+          <div
             className={styles.menu}
             onClick={goToHome}
           >
-            Home
-          </p>
+            <FaHome className={styles.icon} />
+            <span>Home</span>
+          </div>
 
-          <p
+          <div
             className={styles.menu}
             onClick={goToOrders}
           >
-            My Orders
-          </p>
+            <FaShoppingBag className={styles.icon} />
+            <span>Orders</span>
+          </div>
 
-          <p
+          <div
             className={styles.menu}
             onClick={goToCart}
           >
-            My Cart
-          </p>
+            <FaShoppingCart className={styles.icon} />
+            <span>Cart</span>
+          </div>
 
-          <p
+          <div
             className={styles.menu}
             onClick={goToCheckout}
           >
-            Checkout
-          </p>
+            <FaCreditCard className={styles.icon} />
+            <span>Checkout</span>
+          </div>
 
-          <p className={styles.active}>
-            My Profile
-          </p>
+          <div className={styles.active}>
+            <FaUser className={styles.icon} />
+            <span>Profile</span>
+          </div>
 
-          <p
+          <div
             className={styles.logout}
             onClick={logout}
           >
-            Logout
-          </p>
+            <FaSignOutAlt className={styles.icon} />
+            <span>Logout</span>
+          </div>
 
         </div>
 
@@ -208,33 +235,15 @@ export default function Profile() {
 
         <div className={styles.content}>
 
-          <div className={styles.top}>
-
-            <div>
-
-              <h2>
-                My Profile
-              </h2>
-
-              <p>
-                Manage your personal information
-              </p>
-
-            </div>
-
-            <button
-              className={styles.editBtn}
-              onClick={handleEditToggle}
-            >
-              {isEditing ? "Save Profile" : "Edit Profile"}
-            </button>
-
-          </div>
+          <h2>
+            My Profile
+          </h2>
 
           <div className={styles.form}>
 
             <div className={styles.field}>
-              <label>Full Name</label>
+
+              <label>Name</label>
 
               <input
                 type="text"
@@ -243,20 +252,24 @@ export default function Profile() {
                 onChange={handleChange}
                 disabled={!isEditing}
               />
+
             </div>
 
             <div className={styles.field}>
-              <label>Email Address</label>
+
+              <label>Email</label>
 
               <input
-                type="email"
+                type="text"
                 value={user.email}
                 disabled
               />
+
             </div>
 
             <div className={styles.field}>
-              <label>Phone Number</label>
+
+              <label>Phone</label>
 
               <input
                 type="text"
@@ -265,33 +278,25 @@ export default function Profile() {
                 onChange={handleChange}
                 disabled={!isEditing}
               />
+
             </div>
 
             <div className={styles.field}>
-              <label>Alternate Phone</label>
 
-              <input
-                type="text"
-                name="altPhone"
-                value={user.altPhone}
-                onChange={handleChange}
-                disabled={!isEditing}
-              />
-            </div>
-
-            <div className={`${styles.field} ${styles.full}`}>
               <label>Address</label>
 
               <textarea
-                rows="4"
-                name="address"
-                value={user.address}
-                onChange={handleChange}
-                disabled={!isEditing}
-              ></textarea>
+  name="address"
+  rows="4"
+  value={user.address}
+  onChange={handleChange}
+  disabled={!isEditing}
+/>
+
             </div>
 
             <div className={styles.field}>
+
               <label>City</label>
 
               <input
@@ -301,9 +306,11 @@ export default function Profile() {
                 onChange={handleChange}
                 disabled={!isEditing}
               />
+
             </div>
 
             <div className={styles.field}>
+
               <label>State</label>
 
               <input
@@ -313,9 +320,11 @@ export default function Profile() {
                 onChange={handleChange}
                 disabled={!isEditing}
               />
+
             </div>
 
             <div className={styles.field}>
+
               <label>Pincode</label>
 
               <input
@@ -325,9 +334,25 @@ export default function Profile() {
                 onChange={handleChange}
                 disabled={!isEditing}
               />
+
             </div>
 
             <div className={styles.field}>
+
+              <label>Alternate Phone</label>
+
+              <input
+                type="text"
+                name="altPhone"
+                value={user.altPhone}
+                onChange={handleChange}
+                disabled={!isEditing}
+              />
+
+            </div>
+
+            <div className={styles.field}>
+
               <label>Landmark</label>
 
               <input
@@ -337,9 +362,17 @@ export default function Profile() {
                 onChange={handleChange}
                 disabled={!isEditing}
               />
+
             </div>
 
           </div>
+
+          <button
+            className={styles.editBtn}
+            onClick={handleEditToggle}
+          >
+            {isEditing ? "Save Profile" : "Edit Profile"}
+          </button>
 
         </div>
 
@@ -348,6 +381,7 @@ export default function Profile() {
       <Footer />
 
     </>
+
   );
 
 }
