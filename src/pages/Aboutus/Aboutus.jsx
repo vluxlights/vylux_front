@@ -75,11 +75,29 @@ export default function Aboutus() {
 
   // ================= SEND MESSAGE =================
 
-  const sendMessage = () => {
+ // ================= SEND MESSAGE =================
 
-    const number = "9790051137";
+const sendMessage = () => {
 
-    const text = `
+  // VALIDATION
+
+  if (
+    !form.name ||
+    !form.phone ||
+    !form.email ||
+    !form.subject ||
+    !form.message
+  ) {
+
+    alert("Please fill all fields");
+
+    return;
+
+  }
+
+  const number = "9790051137";
+
+  const text = `
 
 Hello VYLUX,
 
@@ -89,15 +107,14 @@ Email: ${form.email}
 Subject: ${form.subject}
 Message: ${form.message}
 
-    `;
+  `;
 
-    const url =
-      `https://wa.me/91${number}?text=${encodeURIComponent(text)}`;
+  const url =
+    `https://wa.me/91${number}?text=${encodeURIComponent(text)}`;
 
-    window.open(url, "_blank");
+  window.open(url, "_blank");
 
-  };
-
+};
   return (
 
     <>
