@@ -259,18 +259,29 @@
 
   display:flex;
   flex-direction:column;
-  align-items:flex-end;
-  justify-content:center;
+  /* align-items:flex-end; */
+  /* justify-content:center; */
 
   gap:8px;
 }
 
+.dateIcon{
+
+    font-size: 15px;
+    margin-right: 10px;
+}
+
 .dateBox{
-  text-align:right;
+  text-align:left;
+}
+
+.rightInfo{
+
+    width: 130px;
 }
 
 .dateLabel{
-  font-size:9px;
+  font-size:5px;
   color:#9ca3af;
 }
 
@@ -297,10 +308,17 @@
 .priceValue{
   margin-top:2px;
 
-  font-size:15px;
+  font-size:10px;
   font-weight:800;
 
   color:#16a34a;
+}
+
+.price{
+
+    font-size: 15px;
+    margin-top: 20px;
+    
 }
 
 /* ================= DELIVERY ================= */

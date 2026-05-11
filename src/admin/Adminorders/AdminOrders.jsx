@@ -288,11 +288,13 @@ export default function AdminOrders() {
 
                                                 <div className={styles.dateBox}>
 
-                                                    <FaCalendarAlt
-                                                        className={styles.dateIcon}
-                                                    />
+                                                    
 
                                                     <p>
+
+                                                        <FaCalendarAlt
+                                                        className={styles.dateIcon}
+                                                    />
 
                                                         {
                                                             new Date(
