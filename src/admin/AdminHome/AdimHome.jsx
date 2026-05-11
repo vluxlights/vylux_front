@@ -1,7 +1,8 @@
 import AdminHeader from "../AdminHeader/AdminHeader";
-import styles from "../AdminHome/AdminHome.module.css";
-import BANNER from "../../assests/Home_page/banner.jpeg";
 import AdminSidebar from "../AdminHome/AdminSidebar";
+import styles from "./AdminHome.module.css";
+
+import BANNER from "../../assests/Home_page/banner.jpeg";
 
 import { Helmet } from "react-helmet";
 import { useEffect, useState } from "react";
@@ -9,7 +10,6 @@ import axios from "axios";
 
 export default function AdminHome() {
 
-  // ================= CATEGORY =================
   const [items, setItems] = useState([]);
 
   const [newItem, setNewItem] = useState({
@@ -19,30 +19,39 @@ export default function AdminHome() {
 
   const [newPreview, setNewPreview] = useState("");
 
-  // ================= BANNER =================
   const [banner, setBanner] = useState(null);
+
   const [bannerFile, setBannerFile] = useState(null);
+
   const [tempBannerPreview, setTempBannerPreview] = useState("");
 
   // ================= FETCH CATEGORY =================
+
   const fetchCategories = async () => {
     try {
+
       const res = await axios.get(
         "https://vlux-backend.onrender.com/api/vlux/adminhome/category"
       );
+
       setItems(res.data);
+
     } catch (err) {
       console.log(err);
     }
   };
 
   // ================= FETCH BANNER =================
+
   const fetchBanner = async () => {
     try {
+
       const res = await axios.get(
         "https://vlux-backend.onrender.com/api/vlux/adminhome/banner"
       );
+
       setBanner(res.data);
+
     } catch (err) {
       console.log(err);
     }
@@ -54,27 +63,35 @@ export default function AdminHome() {
   }, []);
 
   // ================= CATEGORY IMAGE =================
+
   const handleNewImage = (e) => {
+
     const file = e.target.files[0];
-    setNewItem({ ...newItem, imageFile: file });
+
+    setNewItem({
+      ...newItem,
+      imageFile: file
+    });
+
     setNewPreview(URL.createObjectURL(file));
   };
 
-  // ================= ADD CATEGORY (STRICT 5 RULE) =================
+  // ================= ADD CATEGORY =================
+
   const handleAddCategory = async () => {
 
-    // empty check
     if (!newItem.category.trim()) {
-      return alert("❌ Enter category name");
+      return alert("Enter category");
     }
 
-    // EXACT LIMIT RULE
     if (items.length >= 5) {
-      return alert("❌ Only 5 categories allowed. Delete one to add new.");
+      return alert("Only 5 categories allowed");
     }
 
     try {
+
       const formData = new FormData();
+
       formData.append("category", newItem.category);
 
       if (newItem.imageFile) {
@@ -84,12 +101,20 @@ export default function AdminHome() {
       await axios.post(
         "https://vlux-backend.onrender.com/api/vlux/adminhome/category",
         formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        }
       );
 
-      alert("✅ Category Added Successfully");
+      alert("Category Added");
 
-      setNewItem({ category: "", imageFile: null });
+      setNewItem({
+        category: "",
+        imageFile: null
+      });
+
       setNewPreview("");
 
       fetchCategories();
@@ -100,13 +125,15 @@ export default function AdminHome() {
   };
 
   // ================= DELETE CATEGORY =================
+
   const handleDelete = async (id) => {
+
     try {
+
       await axios.delete(
         `https://vlux-backend.onrender.com/api/vlux/adminhome/category/${id}`
       );
 
-      alert("🗑 Category Deleted");
       fetchCategories();
 
     } catch (err) {
@@ -115,164 +142,214 @@ export default function AdminHome() {
   };
 
   // ================= BANNER FILE =================
+
   const handleBannerFile = (e) => {
+
     const file = e.target.files[0];
+
     setBannerFile(file);
+
     setTempBannerPreview(URL.createObjectURL(file));
   };
 
-  // ================= BANNER UPDATE =================
+  // ================= UPDATE BANNER =================
+
   const handleBannerUpdate = async () => {
 
     if (!bannerFile) {
-      return alert("❌ Select banner image first");
+      return alert("Select image");
     }
 
     try {
+
       const formData = new FormData();
+
       formData.append("image", bannerFile);
 
       const res = await axios.post(
         "https://vlux-backend.onrender.com/api/vlux/adminhome/banner",
         formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        }
       );
 
       setBanner(res.data);
+
       setBannerFile(null);
+
       setTempBannerPreview("");
 
-      alert("🎉 Banner Updated Successfully");
+      alert("Banner Updated");
 
     } catch (err) {
       console.log(err);
     }
   };
 
-  // ================= FORMAT DATE =================
+  // ================= DATE =================
+
   const formatDate = (date) => {
     return new Date(date).toLocaleString();
   };
 
   return (
     <>
-      <div className={styles.cont}>
+      <Helmet>
+        <title>Admin Home</title>
+      </Helmet>
 
-        <Helmet>
-          <title>Admin Page</title>
-        </Helmet>
+      <AdminHeader />
 
-        <AdminHeader />
+      <div className={styles.layout}>
 
-        <div className={styles.main}>
+        {/* SIDEBAR */}
 
-          {/* LEFT */}
+        <AdminSidebar />
 
-          <AdminSidebar/>
-          
+        {/* RIGHT */}
 
-          {/* RIGHT */}
-          <div className={styles.right}>
+        <div className={styles.right}>
 
-            <h2>Home Page</h2>
+          <h1 className={styles.title}>
+            Home Page
+          </h1>
 
-            {/* ================= BANNER ================= */}
-            <div className={styles.banner}>
-              <h2>Banner</h2>
+          {/* ================= BANNER ================= */}
 
-              <div className={styles.bannerimg}>
-                <img
-                  src={tempBannerPreview || banner?.image || BANNER}
-                  alt="banner"
-                />
-              </div>
+          <div className={styles.card}>
 
-              <div className={styles.bannerbtn}>
-                <input type="file" onChange={handleBannerFile} />
+            <h2>Banner</h2>
 
-                <button onClick={handleBannerUpdate}>
-                  Update
-                </button>
-              </div>
+            <div className={styles.bannerimg}>
+              <img
+                src={tempBannerPreview || banner?.image || BANNER}
+                alt=""
+              />
             </div>
 
-            {/* ================= CATEGORY ================= */}
-            <div className={styles.cat}>
-              <h2>Category Management</h2>
+            <div className={styles.bannerbtn}>
 
-              {items.length !== 5 && (
-                <p style={{ color: "red" }}>
-                  ⚠ You must maintain exactly 5 categories (currently: {items.length})
-                </p>
-              )}
+              <input
+                type="file"
+                onChange={handleBannerFile}
+              />
+
+              <button onClick={handleBannerUpdate}>
+                Update Banner
+              </button>
+
+            </div>
+
+          </div>
+
+          {/* ================= CATEGORY ================= */}
+
+          <div className={styles.card}>
+
+            <h2>Categories</h2>
+
+            <p className={styles.warning}>
+              Current Categories : {items.length}/5
+            </p>
+
+            {/* TABLE */}
+
+            <div className={styles.tableWrapper}>
 
               <table className={styles.table}>
+
                 <thead>
                   <tr>
                     <th>Image</th>
-                    <th>Category</th>
-                    <th>Last Updated</th>
+                    <th>Name</th>
+                    <th>Updated</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
 
                 <tbody>
+
                   {items.map((i) => (
+
                     <tr key={i._id}>
 
                       <td>
-                        <img src={i.image} width="50" />
+                        <img
+                          src={i.image}
+                          alt=""
+                        />
                       </td>
 
                       <td>{i.category}</td>
 
-                      <td>{formatDate(i.updatedAt)}</td>
+                      <td>
+                        {formatDate(i.updatedAt)}
+                      </td>
 
                       <td>
-                        <button onClick={() => handleDelete(i._id)}>
+
+                        <button
+                          className={styles.deleteBtn}
+                          onClick={() => handleDelete(i._id)}
+                        >
                           Delete
                         </button>
+
                       </td>
 
                     </tr>
+
                   ))}
+
                 </tbody>
+
               </table>
 
-              {/* ================= ADD CATEGORY ================= */}
-              <div className={styles.addBox}>
+            </div>
 
-                <input
-                  type="text"
-                  placeholder="Category name"
-                  value={newItem.category}
-                  onChange={(e) =>
-                    setNewItem({
-                      ...newItem,
-                      category: e.target.value
-                    })
-                  }
+            {/* ================= ADD CATEGORY ================= */}
+
+            <div className={styles.addBox}>
+
+              <input
+                type="text"
+                placeholder="Category Name"
+                value={newItem.category}
+                onChange={(e) =>
+                  setNewItem({
+                    ...newItem,
+                    category: e.target.value
+                  })
+                }
+              />
+
+              <input
+                type="file"
+                onChange={handleNewImage}
+              />
+
+              {newPreview && (
+                <img
+                  src={newPreview}
+                  alt=""
                 />
+              )}
 
-                <input type="file" onChange={handleNewImage} />
-
-                {newPreview && (
-                  <img src={newPreview} width="50" />
-                )}
-
-                <button
-                  onClick={handleAddCategory}
-                  disabled={items.length >= 5}
-                >
-                  Add Category
-                </button>
-
-              </div>
+              <button
+                onClick={handleAddCategory}
+              >
+                Add Category
+              </button>
 
             </div>
 
           </div>
+
         </div>
+
       </div>
     </>
   );
