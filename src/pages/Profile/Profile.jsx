@@ -29,7 +29,9 @@ export default function Profile() {
 
   // ================= FETCH PROFILE =================
   const fetchProfile = async () => {
+
     try {
+
       const res = await axios.get(
         "https://vlux-backend.onrender.com/api/vlux/profile",
         {
@@ -55,23 +57,34 @@ export default function Profile() {
       });
 
     } catch (err) {
+
       console.log(err);
+
     }
+
   };
 
   useEffect(() => {
+
     fetchProfile();
+
   }, []);
 
   // ================= HANDLE CHANGE =================
   const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    });
+
   };
 
   // ================= SAVE PROFILE =================
   const handleEditToggle = async () => {
 
     if (isEditing) {
+
       try {
 
         await axios.put(
@@ -96,19 +109,25 @@ export default function Profile() {
         alert("Profile Updated");
 
         if (location.state?.from === "checkout") {
+
           navigate(-1);
+
         }
 
       } catch (err) {
+
         console.log(err);
         alert("Update failed");
+
       }
+
     }
 
     setIsEditing(!isEditing);
+
   };
 
-  // ================= NAVIGATION FUNCTIONS =================
+  // ================= NAVIGATION =================
 
   const goToOrders = () => {
     navigate("/myorders");
@@ -127,43 +146,98 @@ export default function Profile() {
   };
 
   const logout = () => {
+
     localStorage.removeItem("token");
     navigate("/login");
+
   };
 
   return (
     <>
+
       <Header />
 
       <div className={styles.container}>
 
-        {/* LEFT SIDEBAR */}
+        {/* ================= SIDEBAR ================= */}
+
         <div className={styles.sidebar}>
 
-          <p className={styles.menu} onClick={goToHome}>Home</p>
+          <p
+            className={styles.menu}
+            onClick={goToHome}
+          >
+            Home
+          </p>
 
-          <p className={styles.menu} onClick={goToOrders}>My Orders</p>
+          <p
+            className={styles.menu}
+            onClick={goToOrders}
+          >
+            My Orders
+          </p>
 
-          <p className={styles.menu} onClick={goToCart}>My Cart</p>
+          <p
+            className={styles.menu}
+            onClick={goToCart}
+          >
+            My Cart
+          </p>
 
-          <p className={styles.menu} onClick={goToCheckout}>My Checkout</p>
+          <p
+            className={styles.menu}
+            onClick={goToCheckout}
+          >
+            Checkout
+          </p>
 
-          <p className={styles.menu}>My Profile</p>
+          <p className={styles.active}>
+            My Profile
+          </p>
 
-          <p className={styles.logout} onClick={logout}>Logout</p>
+          <p
+            className={styles.logout}
+            onClick={logout}
+          >
+            Logout
+          </p>
 
         </div>
 
-        {/* RIGHT CONTENT */}
+        {/* ================= CONTENT ================= */}
+
         <div className={styles.content}>
 
-          <h2>My Profile</h2>
+          <div className={styles.top}>
+
+            <div>
+
+              <h2>
+                My Profile
+              </h2>
+
+              <p>
+                Manage your personal information
+              </p>
+
+            </div>
+
+            <button
+              className={styles.editBtn}
+              onClick={handleEditToggle}
+            >
+              {isEditing ? "Save Profile" : "Edit Profile"}
+            </button>
+
+          </div>
 
           <div className={styles.form}>
 
             <div className={styles.field}>
-              <label>Name</label>
+              <label>Full Name</label>
+
               <input
+                type="text"
                 name="name"
                 value={user.name}
                 onChange={handleChange}
@@ -172,13 +246,20 @@ export default function Profile() {
             </div>
 
             <div className={styles.field}>
-              <label>Email</label>
-              <input value={user.email} disabled />
+              <label>Email Address</label>
+
+              <input
+                type="email"
+                value={user.email}
+                disabled
+              />
             </div>
 
             <div className={styles.field}>
-              <label>Phone</label>
+              <label>Phone Number</label>
+
               <input
+                type="text"
                 name="phone"
                 value={user.phone}
                 onChange={handleChange}
@@ -187,18 +268,34 @@ export default function Profile() {
             </div>
 
             <div className={styles.field}>
-              <label>Address</label>
+              <label>Alternate Phone</label>
+
               <input
-                name="address"
-                value={user.address}
+                type="text"
+                name="altPhone"
+                value={user.altPhone}
                 onChange={handleChange}
                 disabled={!isEditing}
               />
             </div>
 
+            <div className={`${styles.field} ${styles.full}`}>
+              <label>Address</label>
+
+              <textarea
+                rows="4"
+                name="address"
+                value={user.address}
+                onChange={handleChange}
+                disabled={!isEditing}
+              ></textarea>
+            </div>
+
             <div className={styles.field}>
               <label>City</label>
+
               <input
+                type="text"
                 name="city"
                 value={user.city}
                 onChange={handleChange}
@@ -208,7 +305,9 @@ export default function Profile() {
 
             <div className={styles.field}>
               <label>State</label>
+
               <input
+                type="text"
                 name="state"
                 value={user.state}
                 onChange={handleChange}
@@ -218,7 +317,9 @@ export default function Profile() {
 
             <div className={styles.field}>
               <label>Pincode</label>
+
               <input
+                type="text"
                 name="pincode"
                 value={user.pincode}
                 onChange={handleChange}
@@ -227,18 +328,10 @@ export default function Profile() {
             </div>
 
             <div className={styles.field}>
-              <label>Alternate Phone</label>
-              <input
-                name="altPhone"
-                value={user.altPhone}
-                onChange={handleChange}
-                disabled={!isEditing}
-              />
-            </div>
-
-            <div className={styles.field}>
               <label>Landmark</label>
+
               <input
+                type="text"
                 name="landmark"
                 value={user.landmark}
                 onChange={handleChange}
@@ -248,15 +341,13 @@ export default function Profile() {
 
           </div>
 
-          <button className={styles.editBtn} onClick={handleEditToggle}>
-            {isEditing ? "Save" : "Edit"}
-          </button>
-
         </div>
 
       </div>
 
       <Footer />
+
     </>
   );
+
 }
