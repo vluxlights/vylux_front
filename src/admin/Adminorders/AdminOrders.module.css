@@ -7,9 +7,15 @@
 html,
 body{
   width:100%;
+  min-height:100%;
   overflow-x:hidden;
   scroll-behavior:smooth;
   background:#f4f7fb;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  overflow-y:auto;
 }
 
 .cont{
@@ -29,6 +35,7 @@ body{
 
 .left{
   width:270px;
+  min-width:270px;
   flex-shrink:0;
 }
 
@@ -43,7 +50,7 @@ body{
 
   padding:16px;
 
-  min-height:calc(100vh - 85px);
+  min-height:100vh;
 
   overflow:visible;
 }
@@ -88,7 +95,7 @@ body{
   box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* SEARCH */
+/* ================= SEARCH ================= */
 
 .searchBox{
   flex:1;
@@ -129,7 +136,7 @@ body{
   color:#9ca3af;
 }
 
-/* SELECT */
+/* ================= SELECT ================= */
 
 .select{
   width:150px;
@@ -148,7 +155,7 @@ body{
   background:#fff;
 }
 
-/* BUTTONS */
+/* ================= BUTTONS ================= */
 
 .btnRow{
   display:flex;
@@ -241,7 +248,7 @@ body{
   border-bottom:1px solid #f1f1f1;
 }
 
-/* IMAGE */
+/* ================= IMAGE ================= */
 
 .productRow img{
   width:68px;
@@ -292,12 +299,12 @@ body{
   flex-direction:column;
   align-items:flex-end;
 
-  gap:10px;
+  gap:8px;
 
   flex-shrink:0;
 }
 
-/* DATE */
+/* ================= DATE ================= */
 
 .dateBox p{
   display:flex;
@@ -306,7 +313,7 @@ body{
 
   gap:4px;
 
-  font-size:9px;
+  font-size:8px;
   font-weight:600;
 
   color:#6b7280;
@@ -316,14 +323,14 @@ body{
 }
 
 .dateIcon{
-  font-size:10px;
+  font-size:9px;
   color:#6d28d9;
 }
 
-/* PRICE */
+/* ================= PRICE ================= */
 
 .price{
-  font-size:13px;
+  font-size:12px;
   font-weight:800;
 
   color:#16a34a;
@@ -415,7 +422,7 @@ body{
   color:#111827;
 }
 
-/* TOTAL */
+/* ================= TOTAL ================= */
 
 .totalBox{
   margin-top:10px;
@@ -434,7 +441,7 @@ body{
 
 .pagination{
   margin-top:20px;
-  margin-bottom:30px;
+  margin-bottom:40px;
 
   display:flex;
   align-items:center;
@@ -478,8 +485,13 @@ body{
 
 @media(max-width:992px){
 
+  .main{
+    flex-direction:column;
+  }
+
   .left{
-    width:0;
+    width:100%;
+    min-width:100%;
   }
 
   .right{
@@ -495,10 +507,21 @@ body{
   html,
   body{
     overflow-x:hidden;
+    overflow-y:auto;
+  }
+
+  .cont{
+    overflow:visible;
   }
 
   .main{
     flex-direction:column;
+    width:100%;
+  }
+
+  .left{
+    width:100%;
+    min-width:100%;
   }
 
   .right{
@@ -509,7 +532,9 @@ body{
 
     padding:10px;
 
-    overflow-y:visible;
+    min-height:auto;
+
+    overflow:visible;
   }
 
   .top h1{
@@ -574,20 +599,20 @@ body{
   }
 
   .rightInfo{
-    width:78px;
-    gap:8px;
+    width:76px;
+    gap:6px;
   }
 
   .dateBox p{
-    font-size:8px;
+    font-size:7px;
   }
 
   .dateIcon{
-    font-size:9px;
+    font-size:8px;
   }
 
   .price{
-    font-size:11px;
+    font-size:10px;
   }
 
   .deliveryHead{
@@ -616,7 +641,7 @@ body{
   }
 
   .pagination{
-    margin-bottom:90px;
+    margin-bottom:100px;
   }
 }
 
@@ -655,15 +680,19 @@ body{
   }
 
   .rightInfo{
-    width:68px;
+    width:64px;
   }
 
   .dateBox p{
+    font-size:6px;
+  }
+
+  .dateIcon{
     font-size:7px;
   }
 
   .price{
-    font-size:10px;
+    font-size:9px;
   }
 
   .deliveryHead{

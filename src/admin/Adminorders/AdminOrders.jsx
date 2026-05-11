@@ -17,11 +17,14 @@ import {
 export default function AdminOrders() {
 
     const [orders, setOrders] = useState([]);
+    const [originalOrders, setOriginalOrders] = useState([]);
+
     const [search, setSearch] = useState("");
     const [sortOrder, setSortOrder] = useState("newest");
     const [currentPage, setCurrentPage] = useState(1);
 
     const [openDetails, setOpenDetails] = useState({});
+    const [editMode, setEditMode] = useState(false);
 
     const itemsPerPage = 3;
 
@@ -43,6 +46,7 @@ export default function AdminOrders() {
             );
 
             setOrders(res.data || []);
+            setOriginalOrders(res.data || []);
 
         } catch (err) {
 
@@ -103,6 +107,15 @@ export default function AdminOrders() {
             ...prev,
             [id]: !prev[id]
         }));
+
+    };
+
+    /* ================= CANCEL EDIT ================= */
+
+    const handleCancel = () => {
+
+        setOrders(originalOrders);
+        setEditMode(false);
 
     };
 
@@ -217,6 +230,32 @@ export default function AdminOrders() {
 
                     </div>
 
+                    {/* ================= EDIT / CANCEL BUTTON ================= */}
+
+                    <div className={styles.editSection}>
+
+                        {!editMode ? (
+
+                            <button
+                                className={styles.editBtn}
+                                onClick={() => setEditMode(true)}
+                            >
+                                Edit Orders
+                            </button>
+
+                        ) : (
+
+                            <button
+                                className={styles.cancelBtn}
+                                onClick={handleCancel}
+                            >
+                                Cancel
+                            </button>
+
+                        )}
+
+                    </div>
+
                     {/* ================= ORDER LIST ================= */}
 
                     <div className={styles.orderList}>
@@ -288,13 +327,11 @@ export default function AdminOrders() {
 
                                                 <div className={styles.dateBox}>
 
-                                                    
-
                                                     <p>
 
                                                         <FaCalendarAlt
-                                                        className={styles.dateIcon}
-                                                    />
+                                                            className={styles.dateIcon}
+                                                        />
 
                                                         {
                                                             new Date(
