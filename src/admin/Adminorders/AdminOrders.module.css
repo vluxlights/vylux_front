@@ -1,447 +1,608 @@
-/* ================= MAIN LAYOUT ================= */
-
-.cont {
-  width: 100%;
-  min-height: 100vh;
-  background: #f4f6f9;
-  overflow-x: hidden;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-.main {
-  display: flex;
-  width: 100%;
+.cont{
+  width:100%;
+  min-height:100vh;
+  background:#f4f7fb;
 }
 
-/* ================= RIGHT SECTION ================= */
+/* ================= MAIN ================= */
 
-.right {
-  flex: 1;
-  margin-top: 90px;
-  margin-left: 290px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+.main{
+  display:flex;
+  width:100%;
 }
 
-.right h2 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 15px;
+/* ================= RIGHT ================= */
+
+.right{
+  flex:1;
+  margin-left:290px;
+  margin-top:90px;
+  padding:20px;
+}
+
+.right h2{
+  font-size:30px;
+  font-weight:800;
+  color:#111827;
 }
 
 /* ================= FILTER TOP ================= */
 
-.rtop {
-  background: white;
-  border-radius: 14px;
-  padding: 18px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+.rtop{
+  margin-top:18px;
+
+  background:#fff;
+
+  border-radius:18px;
+
+  padding:18px;
+
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+
+  gap:20px;
+  flex-wrap:wrap;
+
+  border:1px solid #ececec;
+
+  box-shadow:0 4px 16px rgba(0,0,0,0.06);
 }
 
 .rsearch,
-.rcat {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.rcat{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
 }
 
 .rsearch p,
-.rcat p {
-  font-size: 13px;
-  font-weight: 600;
-  color: #334155;
+.rcat p{
+  font-size:12px;
+  font-weight:700;
+  color:#374151;
 }
 
 .rsearch input,
-.rcat select {
-  width: 220px;
-  height: 42px;
-  border: 1px solid #dbe1e8;
-  border-radius: 10px;
-  padding: 0 12px;
-  font-size: 14px;
-  outline: none;
-  background: #fff;
+.rcat select{
+  width:230px;
+  height:42px;
+
+  border-radius:12px;
+  border:1px solid #dbe1ea;
+
+  padding:0 14px;
+
+  font-size:13px;
+
+  outline:none;
+
+  background:#fff;
+  color:#111827;
+
+  transition:0.2s;
 }
 
 .rsearch input:focus,
-.rcat select:focus {
-  border-color: #0f766e;
+.rcat select:focus{
+  border-color:#7c3aed;
+  box-shadow:0 0 0 3px rgba(124,58,237,0.12);
 }
 
-.rbtn {
-  display: flex;
-  gap: 12px;
+.rbtn{
+  display:flex;
+  gap:12px;
 }
 
-.rbtns {
-  width: 110px;
-  height: 42px;
-  border: none;
-  border-radius: 10px;
-  background: #166534;
-  color: white;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
+.rbtns{
+  width:110px;
+  height:42px;
+
+  border:none;
+  border-radius:12px;
+
+  background:#6d28d9;
+  color:#fff;
+
+  font-size:13px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:0.3s;
 }
 
-.rbtns:hover {
-  background: #14532d;
+.rbtns:hover{
+  background:#5b21b6;
+  transform:translateY(-1px);
 }
 
 /* ================= ORDER CONTAINER ================= */
 
-.orderContainer {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+.orderContainer{
+  margin-top:20px;
+
+  display:flex;
+  flex-direction:column;
+  gap:18px;
 }
 
 /* ================= ORDER CARD ================= */
 
-.orderCard {
-  width: 100%;
-  background: white;
-  border-radius: 16px;
-  padding: 18px;
-  display: flex;
-  gap: 18px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+.orderCard{
+  width:100%;
+
+  background:#fff;
+
+  border-radius:22px;
+
+  padding:18px;
+
+  border:1px solid #ececec;
+
+  box-shadow:0 4px 18px rgba(0,0,0,0.06);
+
+  display:flex;
+  gap:18px;
+
+  transition:0.3s;
 }
 
-/* ================= LEFT PRODUCT SIDE ================= */
-
-.cardLeft {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+.orderCard:hover{
+  transform:translateY(-2px);
 }
 
-.productRow {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #f1f5f9;
+/* ================= LEFT ================= */
+
+.cardLeft{
+  flex:1.4;
+
+  display:flex;
+  flex-direction:column;
+  gap:14px;
 }
 
-.productRow:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+/* ================= PRODUCT ROW ================= */
+
+.productRow{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  padding-bottom:12px;
+
+  border-bottom:1px solid #f1f1f1;
 }
 
-.productRow img {
-  width: 75px;
-  height: 75px;
-  object-fit: cover;
-  border-radius: 10px;
-  border: 1px solid #eee;
+.productRow:last-child{
+  border-bottom:none;
+  padding-bottom:0;
 }
 
-.pname {
-  font-size: 15px;
-  font-weight: 700;
-  color: #111827;
+.productRow img{
+  width:85px;
+  height:85px;
+
+  border-radius:16px;
+
+  object-fit:cover;
+
+  background:#f3f4f6;
+  border:1px solid #ececec;
+}
+
+/* ================= PRODUCT DETAILS ================= */
+
+.pname{
+  font-size:15px;
+  font-weight:800;
+
+  color:#111827;
+
+  margin-bottom:5px;
 }
 
 .model,
-.qty {
-  font-size: 12px;
-  color: #64748b;
-  margin-top: 3px;
+.qty{
+  font-size:12px;
+  color:#6b7280;
+
+  margin-bottom:4px;
 }
 
-.price {
-  font-size: 14px;
-  font-weight: 700;
-  color: #166534;
-  margin-top: 5px;
+.price{
+  font-size:16px;
+  font-weight:800;
+
+  color:#6d28d9;
+
+  margin-top:4px;
 }
 
-/* ================= RIGHT DETAILS ================= */
+/* ================= RIGHT SIDE ================= */
 
-.cardRight {
-  flex: 1;
-  border-left: 1px solid #e5e7eb;
-  padding-left: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
+.cardRight{
+  flex:0.9;
+
+  background:#fafbff;
+
+  border-radius:18px;
+
+  padding:16px;
+
+  border:1px solid #edf0f5;
+
+  height:fit-content;
 }
 
-.cardRight b {
-  font-size: 15px;
-  color: #0f172a;
+.userTitle{
+  font-size:15px;
+  font-weight:800;
+
+  color:#111827;
+
+  margin-bottom:14px;
 }
 
-.cardRight p {
-  font-size: 13px;
-  line-height: 1.4;
+/* ================= USER ROW ================= */
+
+.infoRow{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+
+  gap:12px;
+
+  margin-bottom:10px;
 }
 
-.label {
-  font-weight: 700;
-  color: #111827;
-  margin-right: 5px;
+.label{
+  min-width:90px;
+
+  font-size:12px;
+  font-weight:700;
+
+  color:#374151;
 }
 
-.value {
-  color: #475569;
+.value{
+  flex:1;
+
+  font-size:12px;
+  color:#6b7280;
+
+  text-align:right;
+  line-height:1.6;
 }
 
-.cardRight hr {
-  border: none;
-  border-top: 1px solid #e5e7eb;
-  margin: 10px 0;
+/* ================= DROPDOWN ================= */
+
+.addressToggle{
+  margin-top:14px;
+
+  width:100%;
+  height:42px;
+
+  border:none;
+  border-radius:12px;
+
+  background:#ede9fe;
+
+  color:#6d28d9;
+
+  font-size:13px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+
+  transition:0.3s;
 }
 
-.total {
-  font-size: 18px;
-  font-weight: 800;
-  color: #15803d;
+.addressToggle:hover{
+  background:#ddd6fe;
 }
 
-.date {
-  font-size: 12px;
-  color: #64748b;
+/* ================= ADDRESS BOX ================= */
+
+.addressBox{
+  margin-top:14px;
+
+  background:#fff;
+
+  border-radius:14px;
+
+  padding:14px;
+
+  border:1px solid #ececec;
+
+  animation:fadeDown 0.3s ease;
+}
+
+.addressBox p{
+  font-size:12px;
+  color:#4b5563;
+
+  line-height:1.9;
+}
+
+.addressBox span{
+  font-weight:700;
+  color:#111827;
+}
+
+/* ================= TOTAL ================= */
+
+.totalBox{
+  margin-top:16px;
+
+  padding-top:14px;
+
+  border-top:1px solid #ececec;
+}
+
+.total{
+  font-size:22px;
+  font-weight:800;
+
+  color:#16a34a;
+}
+
+.date{
+  margin-top:5px;
+
+  font-size:12px;
+  color:#6b7280;
 }
 
 /* ================= PAGINATION ================= */
 
-.pageno {
-  font-size: 14px;
-  font-weight: 600;
-  padding-top: 10px;
-  color: #0f172a;
+.pagination{
+  margin-top:22px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:12px;
 }
 
-/* ===================================================== */
-/* ================= MOBILE FIRST VIEW ================= */
-/* ===================================================== */
+.pageno{
+  font-size:13px;
+  font-weight:700;
+  color:#374151;
+}
 
-@media (max-width: 768px) {
+/* ================= MOBILE ================= */
 
-  .main {
-    flex-direction: column;
+@media(max-width:768px){
+
+  .main{
+    flex-direction:column;
   }
 
-  .right {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 65px;
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
+  .right{
+    margin-left:0;
+    margin-top:72px;
+
+    padding:10px;
   }
 
-  .right h2 {
-    font-size: 20px;
-    margin-bottom: 12px;
+  .right h2{
+    font-size:22px;
   }
 
-  /* ================= FILTER ================= */
+  /* FILTER */
 
-  .rtop {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-    padding: 14px;
-    border-radius: 12px;
+  .rtop{
+    padding:14px;
+
+    gap:14px;
+
+    border-radius:16px;
   }
 
   .rsearch,
-  .rcat {
-    width: 100%;
+  .rcat{
+    width:100%;
   }
 
   .rsearch input,
-  .rcat select {
-    width: 100%;
-    height: 40px;
-    font-size: 13px;
+  .rcat select{
+    width:100%;
+    height:44px;
+
+    font-size:13px;
   }
 
-  .rbtn {
-    width: 100%;
-    gap: 10px;
+  .rbtn{
+    width:100%;
+    gap:10px;
   }
 
-  .rbtns {
-    flex: 1;
-    width: 100%;
-    height: 40px;
-    font-size: 12px;
+  .rbtns{
+    flex:1;
+    width:100%;
+    height:42px;
+
+    font-size:12px;
   }
 
-  /* ================= ORDER CARD ================= */
+  /* ORDER CARD */
 
-  .orderCard {
-    flex-direction: column;
-    padding: 12px;
-    border-radius: 14px;
-    gap: 14px;
+  .orderCard{
+    flex-direction:column;
+
+    padding:14px;
+
+    border-radius:18px;
+
+    gap:14px;
   }
 
-  /* ================= PRODUCTS ================= */
-
-  .cardLeft {
-    width: 100%;
-    gap: 10px;
+  .cardLeft{
+    width:100%;
   }
 
-  .productRow {
-    gap: 10px;
-    align-items: flex-start;
-    padding-bottom: 10px;
+  .productRow{
+    align-items:flex-start;
+    gap:10px;
   }
 
-  .productRow img {
-    width: 58px;
-    height: 58px;
-    border-radius: 8px;
+  .productRow img{
+    width:70px;
+    height:70px;
+
+    border-radius:14px;
   }
 
-  .pname {
-    font-size: 13px;
-    line-height: 1.3;
+  .pname{
+    font-size:13px;
+    line-height:1.5;
   }
 
   .model,
-  .qty {
-    font-size: 11px;
+  .qty{
+    font-size:11px;
   }
 
-  .price {
-    font-size: 13px;
+  .price{
+    font-size:15px;
   }
 
-  /* ================= DETAILS ================= */
+  /* RIGHT */
 
-  .cardRight {
-    width: 100%;
-    border-left: none;
-    border-top: 1px solid #e5e7eb;
-    padding-left: 0;
-    padding-top: 12px;
-    gap: 5px;
+  .cardRight{
+    width:100%;
+
+    padding:14px;
+
+    border-radius:16px;
   }
 
-  .cardRight p {
-    font-size: 12px;
-    line-height: 1.5;
-    word-break: break-word;
+  .userTitle{
+    font-size:14px;
+    margin-bottom:12px;
   }
 
-  .label {
-    font-size: 12px;
+  .infoRow{
+    gap:10px;
+    margin-bottom:8px;
   }
 
-  .value {
-    font-size: 12px;
+  .label{
+    min-width:72px;
+    font-size:11px;
   }
 
-  .total {
-    font-size: 16px;
+  .value{
+    font-size:11px;
   }
 
-  .date {
-    font-size: 11px;
+  /* ADDRESS */
+
+  .addressToggle{
+    height:40px;
+    font-size:12px;
+    border-radius:10px;
   }
 
-  /* ================= PAGINATION ================= */
-
-  .pageno {
-    font-size: 12px;
-    padding-top: 12px;
+  .addressBox{
+    padding:12px;
+    border-radius:12px;
   }
 
-  /* ================= NO HORIZONTAL SCROLL ================= */
+  .addressBox p{
+    font-size:11px;
+    line-height:1.8;
+  }
 
-  body,
-  html {
-    overflow-x: hidden;
+  /* TOTAL */
+
+  .total{
+    font-size:18px;
+  }
+
+  .date{
+    font-size:11px;
+  }
+
+  /* PAGINATION */
+
+  .pagination{
+    gap:10px;
+    margin-bottom:20px;
+  }
+
+  .pageno{
+    font-size:12px;
+  }
+
+  body{
+    overflow-x:hidden;
   }
 }
 
 /* ================= SMALL MOBILE ================= */
 
-@media (max-width: 480px) {
+@media(max-width:480px){
 
-  .right {
-    padding: 8px;
-    margin-top: 60px;
+  .right{
+    padding:8px;
   }
 
-  .right h2 {
-    font-size: 18px;
+  .rtop{
+    padding:12px;
   }
 
-  .rtop {
-    padding: 12px;
+  .orderCard{
+    padding:12px;
   }
 
-  .rsearch input,
-  .rcat select {
-    font-size: 12px;
-    height: 38px;
+  .productRow img{
+    width:62px;
+    height:62px;
   }
 
-  .rbtns {
-    height: 38px;
-    font-size: 11px;
+  .pname{
+    font-size:12px;
   }
 
-  .orderCard {
-    padding: 10px;
-    gap: 12px;
+  .price{
+    font-size:14px;
   }
 
-  .productRow img {
-    width: 52px;
-    height: 52px;
+  .cardRight{
+    padding:12px;
   }
 
-  .pname {
-    font-size: 12px;
+  .total{
+    font-size:17px;
+  }
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeDown{
+
+  from{
+    opacity:0;
+    transform:translateY(-8px);
   }
 
-  .model,
-  .qty {
-    font-size: 10px;
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
 
-  .price {
-    font-size: 12px;
-  }
-
-  .cardRight p {
-    font-size: 11px;
-  }
-
-  .label,
-  .value {
-    font-size: 11px;
-  }
-
-  .total {
-    font-size: 15px;
-  }
-
-  .date {
-    font-size: 10px;
-  }
-
-  .pageno {
-    font-size: 11px;
-  }
 }

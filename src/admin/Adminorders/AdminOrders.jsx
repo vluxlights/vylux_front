@@ -5,6 +5,15 @@ import { Helmet } from "react-helmet";
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
+import {
+    FaSearch,
+    FaChevronRight,
+    FaChevronDown,
+    FaCalendarAlt,
+    FaMapMarkerAlt,
+    FaSyncAlt
+} from "react-icons/fa";
+
 export default function AdminOrders() {
 
     const [orders, setOrders] = useState([]);
@@ -12,12 +21,18 @@ export default function AdminOrders() {
     const [sortOrder, setSortOrder] = useState("newest");
     const [currentPage, setCurrentPage] = useState(1);
 
+    const [openDetails, setOpenDetails] = useState({});
+
     const itemsPerPage = 3;
+
     const token = localStorage.getItem("token");
 
     /* ================= FETCH ORDERS ================= */
+
     const fetchOrders = async () => {
+
         try {
+
             const res = await axios.get(
                 "https://vlux-backend.onrender.com/api/vlux/order/my",
                 {
@@ -30,39 +45,69 @@ export default function AdminOrders() {
             setOrders(res.data || []);
 
         } catch (err) {
+
             console.log(err);
+
         }
+
     };
 
     useEffect(() => {
+
         fetchOrders();
+
     }, []);
 
     /* ================= FILTER + SORT ================= */
+
     const filteredOrders = useMemo(() => {
 
         return orders
             .filter((order) =>
-                order.address?.name?.toLowerCase().includes(search.toLowerCase()) ||
+
+                order.address?.name
+                    ?.toLowerCase()
+                    .includes(search.toLowerCase())
+
+                ||
+
                 order.address?.phone?.includes(search)
+
             )
             .sort((a, b) =>
+
                 sortOrder === "newest"
                     ? new Date(b.createdAt) - new Date(a.createdAt)
                     : new Date(a.createdAt) - new Date(b.createdAt)
+
             );
 
     }, [orders, search, sortOrder]);
 
     /* ================= PAGINATION ================= */
-    const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
+
+    const totalPages = Math.ceil(
+        filteredOrders.length / itemsPerPage
+    );
 
     const currentOrders = filteredOrders.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
 
+    /* ================= TOGGLE DETAILS ================= */
+
+    const toggleDetails = (id) => {
+
+        setOpenDetails((prev) => ({
+            ...prev,
+            [id]: !prev[id]
+        }));
+
+    };
+
     return (
+
         <div className={styles.cont}>
 
             <Helmet>
@@ -79,154 +124,322 @@ export default function AdminOrders() {
 
                 <div className={styles.right}>
 
-                    <h2>User Orders</h2>
+                    {/* ================= TOP ================= */}
+
+                    <div className={styles.top}>
+
+                        <h1>User Orders</h1>
+
+                        <p>
+                            View and manage all customer orders
+                        </p>
+
+                    </div>
 
                     {/* ================= FILTER ================= */}
-                    <div className={styles.rtop}>
 
-                        <div className={styles.rsearch}>
-                            <p>Search Order</p>
+                    <div className={styles.filterBox}>
+
+                        {/* SEARCH */}
+
+                        <div className={styles.searchBox}>
+
+                            <FaSearch className={styles.searchIcon} />
+
                             <input
                                 type="text"
-                                placeholder="Search by name or phone"
+                                placeholder="Search by customer name or phone"
                                 value={search}
                                 onChange={(e) => {
+
                                     setSearch(e.target.value);
                                     setCurrentPage(1);
+
                                 }}
                             />
+
                         </div>
 
-                        <div className={styles.rcat}>
-                            <p>Sort by Date</p>
-                            <select
-                                value={sortOrder}
-                                onChange={(e) => {
-                                    setSortOrder(e.target.value);
-                                    setCurrentPage(1);
-                                }}
-                            >
-                                <option value="newest">Newest</option>
-                                <option value="oldest">Oldest</option>
-                            </select>
-                        </div>
+                        {/* SORT */}
 
-                        <div className={styles.rbtn}>
+                        <select
+                            className={styles.select}
+                            value={sortOrder}
+                            onChange={(e) => {
+
+                                setSortOrder(e.target.value);
+                                setCurrentPage(1);
+
+                            }}
+                        >
+
+                            <option value="newest">
+                                Newest First
+                            </option>
+
+                            <option value="oldest">
+                                Oldest First
+                            </option>
+
+                        </select>
+
+                        {/* BUTTONS */}
+
+                        <div className={styles.btnRow}>
+
                             <button
-                                className={styles.rbtns}
+                                className={styles.actionBtn}
                                 onClick={fetchOrders}
                             >
+
+                                <FaSyncAlt />
+
                                 Refresh
+
                             </button>
 
                             <button
-                                className={styles.rbtns}
+                                className={styles.actionBtn}
                                 onClick={() => {
+
                                     setSearch("");
                                     setSortOrder("newest");
                                     setCurrentPage(1);
+
                                 }}
                             >
+
                                 Reset
+
                             </button>
+
                         </div>
 
                     </div>
 
-                    {/* ================= ORDERS ================= */}
-                    <div className={styles.orderContainer}>
+                    {/* ================= ORDER LIST ================= */}
+
+                    <div className={styles.orderList}>
 
                         {currentOrders.map((order) => (
 
-                            <div key={order._id} className={styles.orderCard}>
+                            <div
+                                key={order._id}
+                                className={styles.card}
+                            >
 
-                                {/* LEFT - PRODUCTS */}
-                                <div className={styles.cardLeft}>
+                                {/* ================= CARD TOP ================= */}
 
-                                    {order.items.map((item, i) => (
+                                <div className={styles.cardTop}>
 
-                                        <div key={i} className={styles.productRow}>
+                                    <div className={styles.orderId}>
+
+                                        Order ID:
+                                        {" "}
+                                        #{order._id.slice(-8).toUpperCase()}
+
+                                    </div>
+
+                                </div>
+
+                                {/* ================= PRODUCTS ================= */}
+
+                                {
+
+                                    order.items.map((item, i) => (
+
+                                        <div
+                                            className={styles.productRow}
+                                            key={i}
+                                        >
+
+                                            {/* IMAGE */}
 
                                             <img
                                                 src={item.productId?.images?.[0]?.url}
                                                 alt=""
                                             />
 
-                                            <div>
-                                                <p className={styles.pname}>
+                                            {/* CONTENT */}
+
+                                            <div className={styles.productContent}>
+
+                                                <h2>
                                                     {item.productId?.name}
+                                                </h2>
+
+                                                <p>
+                                                    Model:
+                                                    {" "}
+                                                    {item.productId?.modelNumber}
                                                 </p>
 
-                                                <p className={styles.model}>
-                                                    Model: {item.productId?.modelNumber}
+                                                <p>
+                                                    Qty:
+                                                    {" "}
+                                                    {item.quantity}
                                                 </p>
 
-                                                <p className={styles.qty}>
-                                                    Qty: {item.quantity}
-                                                </p>
-
-                                                <p className={styles.price}>
+                                                <h3>
                                                     ₹{item.price * item.quantity}
-                                                </p>
+                                                </h3>
+
                                             </div>
 
                                         </div>
 
-                                    ))}
+                                    ))
+
+                                }
+
+                                {/* ================= DETAILS ================= */}
+
+                                <div className={styles.detailsRow}>
+
+                                    {/* DATE */}
+
+                                    <div className={styles.detailBox}>
+
+                                        <FaCalendarAlt
+                                            className={styles.detailIcon}
+                                        />
+
+                                        <div>
+
+                                            <p className={styles.label}>
+                                                Order Date
+                                            </p>
+
+                                            <h4>
+
+                                                {
+
+                                                    new Date(
+                                                        order.createdAt
+                                                    ).toLocaleString()
+
+                                                }
+
+                                            </h4>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div className={styles.vertical}></div>
+
+                                    {/* TOTAL */}
+
+                                    <div className={styles.detailBox}>
+
+                                        <div>
+
+                                            <p className={styles.label}>
+                                                Total Amount
+                                            </p>
+
+                                            <h4 className={styles.amount}>
+                                                ₹{order.total}
+                                            </h4>
+
+                                        </div>
+
+                                    </div>
 
                                 </div>
 
-                                {/* RIGHT - USER DETAILS (LABEL HIGHLIGHT FIXED) */}
-                                <div className={styles.cardRight}>
+                                {/* ================= DELIVERY TOGGLE ================= */}
 
-                                    <p><b>User Details</b></p>
+                                <div
+                                    className={styles.deliveryHead}
+                                    onClick={() =>
+                                        toggleDetails(order._id)
+                                    }
+                                >
 
-                                    <p>
-                                        <span className={styles.label}>Name :</span>
-                                        <span className={styles.value}>{order.address?.name}</span>
-                                    </p>
+                                    <div className={styles.deliveryLeft}>
 
-                                    <p>
-                                        <span className={styles.label}>Phone :</span>
-                                        <span className={styles.value}>{order.address?.phone}</span>
-                                    </p>
+                                        <FaMapMarkerAlt />
 
-                                    <p>
-                                        <span className={styles.label}>Address :</span>
-                                        <span className={styles.value}>{order.address?.address}</span>
-                                    </p>
+                                        <span>
+                                            Delivery Details
+                                        </span>
 
-                                    <p>
-                                        <span className={styles.label}>City :</span>
-                                        <span className={styles.value}>{order.address?.city}</span>
-                                    </p>
+                                    </div>
 
-                                    <p>
-                                        <span className={styles.label}>State :</span>
-                                        <span className={styles.value}>{order.address?.state}</span>
-                                    </p>
+                                    <div className={styles.deliveryRight}>
 
-                                    <p>
-                                        <span className={styles.label}>Pincode :</span>
-                                        <span className={styles.value}>{order.address?.pincode}</span>
-                                    </p>
+                                        <span>
+                                            View Details
+                                        </span>
 
-                                    <p>
-                                        <span className={styles.label}>Landmark :</span>
-                                        <span className={styles.value}>{order.address?.landmark}</span>
-                                    </p>
+                                        <FaChevronDown
+                                            className={
+                                                openDetails[order._id]
+                                                    ? styles.rotate
+                                                    : ""
+                                            }
+                                        />
 
-                                    <hr />
-
-                                    <p className={styles.total}>
-                                        Total : ₹{order.total}
-                                    </p>
-
-                                    <p className={styles.date}>
-                                        {new Date(order.createdAt).toLocaleString()}
-                                    </p>
+                                    </div>
 
                                 </div>
+
+                                {/* ================= DELIVERY DETAILS ================= */}
+
+                                {
+
+                                    openDetails[order._id] && (
+
+                                        <div className={styles.deliveryBox}>
+
+                                            <p>
+                                                <span>Name:</span>
+                                                {" "}
+                                                {order.address?.name}
+                                            </p>
+
+                                            <p>
+                                                <span>Phone:</span>
+                                                {" "}
+                                                {order.address?.phone}
+                                            </p>
+
+                                            <p>
+                                                <span>Address:</span>
+                                                {" "}
+                                                {order.address?.address}
+                                            </p>
+
+                                            <p>
+                                                <span>City:</span>
+                                                {" "}
+                                                {order.address?.city}
+                                            </p>
+
+                                            <p>
+                                                <span>State:</span>
+                                                {" "}
+                                                {order.address?.state}
+                                            </p>
+
+                                            <p>
+                                                <span>Pincode:</span>
+                                                {" "}
+                                                {order.address?.pincode}
+                                            </p>
+
+                                            <p>
+                                                <span>Landmark:</span>
+                                                {" "}
+                                                {order.address?.landmark}
+                                            </p>
+
+                                        </div>
+
+                                    )
+
+                                }
 
                             </div>
 
@@ -235,31 +448,45 @@ export default function AdminOrders() {
                     </div>
 
                     {/* ================= PAGINATION ================= */}
-                    <div style={{
-                        display: "flex",
-                        gap: "10px",
-                        marginTop: "20px",
-                        justifyContent: "center"
-                    }}>
+
+                    <div className={styles.pagination}>
+
+                        {/* PREV */}
 
                         <button
-                            className={styles.rbtns}
+                            onClick={() =>
+                                setCurrentPage((prev) =>
+                                    Math.max(prev - 1, 1)
+                                )
+                            }
                             disabled={currentPage === 1}
-                            onClick={() => setCurrentPage(currentPage - 1)}
                         >
-                            Prev
+
+                            ←
+
                         </button>
 
-                        <p className={styles.pageno}>
+                        {/* PAGE */}
+
+                        <p>
+
                             Page {currentPage} of {totalPages || 1}
+
                         </p>
 
+                        {/* NEXT */}
+
                         <button
-                            className={styles.rbtns}
+                            onClick={() =>
+                                setCurrentPage((prev) =>
+                                    Math.min(prev + 1, totalPages)
+                                )
+                            }
                             disabled={currentPage === totalPages}
-                            onClick={() => setCurrentPage(currentPage + 1)}
                         >
-                            Next
+
+                            <FaChevronRight />
+
                         </button>
 
                     </div>
@@ -269,5 +496,7 @@ export default function AdminOrders() {
             </div>
 
         </div>
+
     );
+
 }
