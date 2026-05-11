@@ -1,325 +1,360 @@
-/* =====================================================
-   🌍 GLOBAL RESET
-===================================================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", system-ui, sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Inter",sans-serif;
 }
 
-/* =====================================================
-   🖼️ BANNER
-===================================================== */
-.banner img {
-  width: 100%;
-  height: 440px;
-  object-fit: cover;
+.cont{
+  width:100%;
+  min-height:100vh;
+  background:#f5f7fb;
+  margin-top:72px;
 }
 
-/* =====================================================
-   MAIN SECTION
-===================================================== */
-.main {
-  margin: 20px;
+/* ================= BANNER ================= */
+
+.banner{
+  width:100%;
 }
 
-.main h2 {
-  color: rgb(3, 3, 24);
-  text-align: center;
+.banner img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  display:block;
 }
 
-.main span {
-  color: green;
+/* ================= MAIN ================= */
+
+.main{
+  width:100%;
+  padding:14px;
 }
 
-hr {
-  width: 10%;
-  margin: 10px auto;
+/* ================= HEAD ================= */
+
+.head{
+  text-align:center;
+  margin-bottom:18px;
 }
 
-/* =====================================================
-   CARDS SECTION
-===================================================== */
-.cards {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  margin-left: 90px;
-  margin-right: 90px;
-
-  border-radius: 10px;
-  border: 1px solid rgb(230, 217, 217);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+.head h2{
+  font-size:22px;
+  font-weight:800;
+  color:#111827;
 }
 
-.card {
-  flex: 1;
-  min-width: 180px;
-
-  border: 1px solid rgb(235, 223, 223);
-  padding: 15px;
-  text-align: center;
+.head span{
+  color:#16a34a;
 }
 
-.icon {
-  color: rgb(5, 63, 5);
-  font-size: 30px;
-  margin-top: 10px;
+.head p{
+  margin-top:6px;
+  font-size:12px;
+  color:#6b7280;
 }
 
-.cardname {
-  margin-top: 15px;
-  font-weight: 900;
+/* ================= CARDS ================= */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
 
-.cardsub {
-  margin-top: 10px;
-  font-size: 14px;
-  color: rgb(2, 3, 37);
+.card{
+  background:#fff;
+  border-radius:16px;
+  padding:16px 12px;
+  text-align:center;
+  border:1px solid #ececec;
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
 }
 
-/* =====================================================
-   MISSION SECTION
-===================================================== */
-.mission {
-  border: 1px solid rgb(238, 211, 211);
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-
-  margin: 20px auto;
-  display: flex;
-  align-items: center;
-
-  width: 600px;
-  padding: 10px;
-  gap: 30px;
-
-  background-color: aqua;
+.icon{
+  font-size:26px;
+  color:#16a34a;
+  margin-bottom:10px;
 }
 
-.faicon {
-  font-size: 90px;
-  color: rgb(2, 2, 19);
+.cardname{
+  font-size:11px;
+  font-weight:800;
+  color:#111827;
+  line-height:1.4;
 }
 
-.mname {
-  font-size: 20px;
-  font-weight: 900;
-  text-align: center;
+.cardsub{
+  margin-top:6px;
+  font-size:10px;
+  line-height:1.6;
+  color:#6b7280;
 }
 
-.msub {
-  font-size: 15px;
-  margin-top: 10px;
+/* ================= MISSION ================= */
+
+.mission{
+  margin-top:18px;
+  background:#fff;
+  border-radius:18px;
+  padding:18px;
+  border:1px solid #ececec;
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
 }
 
-.mcont {
-  text-align: center;
-  width: 100%;
+.faicon{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#dcfce7;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:12px;
 }
 
-.mhr {
-  width: 20%;
-  margin: 10px auto;
+.aicon{
+  font-size:28px;
+  color:#15803d;
 }
 
-/* =====================================================
-   CONTACT SECTION
-===================================================== */
-.touch {
-  margin: 40px 80px;
-  display: flex;
-  gap: 30px;
-
-  border: 1px solid rgb(243, 219, 219);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  padding: 20px;
-  border-radius: 20px;
+.mname{
+  font-size:18px;
+  font-weight:800;
+  color:#111827;
 }
 
-/* LEFT SIDE */
-.ltouch {
-  flex: 1;
+.msub{
+  margin-top:8px;
+  font-size:12px;
+  line-height:1.8;
+  color:#4b5563;
 }
 
-/* CONTACT CARD */
-.tcard {
-  display: flex;
-  margin-top: 20px;
-  gap: 15px;
-  align-items: center;
+/* ================= CONTACT SECTION ================= */
+
+.touch{
+  margin-top:18px;
+
+  display:flex;
+  flex-direction:column;
+  gap:16px;
 }
 
-.fa {
-  border: 1px solid rgb(177, 136, 136);
-  background-color: aqua;
-  border-radius: 5px;
-  padding: 6px;
-  font-size: 25px;
+/* ================= LEFT ================= */
+
+.ltouch{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
-.lhead {
-  font-weight: 900;
+.tcard{
+  background:#fff;
+  border-radius:16px;
+  padding:14px;
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  border:1px solid #ececec;
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
 }
 
-.lsub {
-  font-size: 14px;
-  margin-top: 5px;
+.iconBox{
+  width:44px;
+  height:44px;
+
+  border-radius:12px;
+  background:#dcfce7;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-/* MAP */
-.map {
-  margin-top: 20px;
-  width: 100%;
-  height: 200px;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid #ddd;
+.fa{
+  font-size:18px;
+  color:#15803d;
 }
 
-.map iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
+.lhead{
+  font-size:13px;
+  font-weight:800;
+  color:#111827;
 }
 
-/* =====================================================
-   RIGHT FORM
-===================================================== */
-.rtouch {
-  flex: 1;
-  padding: 20px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.lsub{
+  margin-top:4px;
+  font-size:11px;
+  line-height:1.6;
+  color:#6b7280;
 }
 
-.rtouch h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #2e7d32;
+/* ================= MAP ================= */
+
+.map{
+  width:100%;
+  height:220px;
+
+  overflow:hidden;
+  border-radius:18px;
+
+  border:1px solid #ececec;
 }
 
-/* ROW */
-.row {
-  display: flex;
-  gap: 10px;
+.map iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
+
+/* ================= FORM ================= */
+
+.rtouch{
+  background:#fff;
+  border-radius:18px;
+  padding:16px;
+
+  border:1px solid #ececec;
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
+}
+
+.rtouch h2{
+  text-align:center;
+  font-size:20px;
+  font-weight:800;
+  color:#111827;
+  margin-bottom:16px;
+}
+
+.row{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 
 .rtouch input,
-.rtouch textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
+.rtouch textarea{
+  width:100%;
 
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  border:none;
+  outline:none;
 
-  outline: none;
-  font-size: 14px;
+  background:#f8fafc;
+
+  border-radius:14px;
+
+  padding:14px;
+
+  margin-bottom:12px;
+
+  font-size:13px;
+  color:#111827;
+
+  border:1px solid #e5e7eb;
 }
 
-/* TEXTAREA */
-.rtouch textarea {
-  height: 120px;
-  resize: none;
+.rtouch textarea{
+  height:120px;
+  resize:none;
 }
 
-/* BUTTON */
-.rtouch button {
-  width: 100%;
-  padding: 10px;
+.rtouch button{
+  width:100%;
+  height:46px;
 
-  background: #2e7d32;
-  color: #fff;
+  border:none;
+  border-radius:14px;
 
-  border: none;
-  border-radius: 6px;
+  background:#16a34a;
+  color:#fff;
 
-  cursor: pointer;
-  font-size: 15px;
+  font-size:14px;
+  font-weight:700;
+
+  cursor:pointer;
 }
 
-.rtouch button:hover {
-  background: #1b5e20;
-}
+/* ================= DESKTOP ================= */
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-@media (max-width: 900px) {
+@media(min-width:768px){
 
-  .cards {
-    margin: 10px;
+  .banner img{
+    height:420px;
   }
 
-  /* banner */
-  .banner img {
-    height: 230px;
-    width:100% ;
+  .main{
+    width:95%;
+    margin:auto;
+    padding:24px 0;
   }
 
-  .mission {
-    width: 90%;
-    flex-direction: column;
-    text-align: center;
+  .head h2{
+    font-size:36px;
   }
 
-  .touch {
-    flex-direction: column;
-    margin: 20px;
+  .head p{
+    font-size:15px;
   }
 
-  .row {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 600px) {
-
-  .banner img {
-    height: 150px;
-    object-fit: cover;
+  .cards{
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
   }
 
-  .cats,
-  .news {
-    padding: 10px;
-    gap: 10px;
+  .card{
+    padding:24px 18px;
   }
 
-  .catitem {
-    width: 140px;
+  .icon{
+    font-size:34px;
   }
 
-  .newitem {
-    width: 150px;
+  .cardname{
+    font-size:14px;
   }
 
-  .catitem img {
-    height: 90px;
+  .cardsub{
+    font-size:13px;
   }
 
-  .newitem img {
-    height: 100px;
+  .mission{
+    flex-direction:row;
+    text-align:left;
+    gap:20px;
+    padding:24px;
   }
 
-  button {
-    height: 35px;
-    font-size: 10px;
+  .touch{
+    flex-direction:row;
+    align-items:flex-start;
   }
 
-  .assu {
-    width: 95%;
-    padding: 10px;
+  .ltouch{
+    flex:1;
   }
 
-  .divider {
-    display: none;
+  .rtouch{
+    flex:1;
   }
 
-  
+  .row{
+    flex-direction:row;
+  }
+
+  .rtouch input,
+  .rtouch textarea{
+    font-size:14px;
+  }
+
 }
