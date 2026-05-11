@@ -1,5 +1,5 @@
 /* =========================================================
-   ADMIN VIEW PRODUCT - MOBILE FIRST
+   ADMIN VIEW PRODUCT - FULL MOBILE FIRST CSS
 ========================================================= */
 
 *{
@@ -21,7 +21,7 @@
 }
 
 /* =========================================================
-   RIGHT
+   RIGHT SECTION
 ========================================================= */
 
 .right{
@@ -32,21 +32,26 @@
 }
 
 .right h2{
-  font-size: 20px;
-  color: #081f4d;
-  margin-bottom: 14px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 15px;
 }
 
 /* =========================================================
-   FILTER
+   FILTER BOX
 ========================================================= */
 
 .rtop{
   width: 100%;
-  background: white;
-  border-radius: 14px;
-  padding: 12px;
-  border: 1px solid #e5e7eb;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  border: 1px solid #e2e8f0;
+
+  padding: 14px;
 
   display: flex;
   flex-direction: column;
@@ -83,12 +88,19 @@
 
   outline: none;
 
-  font-size: 13px;
   background: #fff;
+
+  font-size: 13px;
+  color: #111827;
+}
+
+.rsearch input:focus,
+.rcat select:focus{
+  border-color: #2563eb;
 }
 
 /* =========================================================
-   BUTTONS
+   FILTER BUTTONS
 ========================================================= */
 
 .rbtn{
@@ -100,6 +112,7 @@
 
 .rbtns{
   flex: 1;
+
   height: 42px;
 
   border: none;
@@ -112,10 +125,12 @@
   font-weight: 700;
 
   cursor: pointer;
+
+  transition: 0.2s ease;
 }
 
 .rbtns:hover{
-  background: #134e4a;
+  background: #115e59;
 }
 
 /* =========================================================
@@ -123,13 +138,13 @@
 ========================================================= */
 
 .addCategoryBox{
-  margin-top: 14px;
+  margin-top: 15px;
 
-  background: white;
+  background: #ffffff;
 
-  border-radius: 14px;
+  border-radius: 16px;
 
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e2e8f0;
 
   padding: 14px;
 
@@ -169,7 +184,14 @@
 
   outline: none;
 
+  background: #fff;
+
   font-size: 13px;
+}
+
+.categoryRow input:focus,
+.categoryRow select:focus{
+  border-color: #2563eb;
 }
 
 .addbtn{
@@ -179,25 +201,29 @@
   border: none;
   border-radius: 10px;
 
-  background: #1d4ed8;
+  background: #2563eb;
   color: white;
 
   font-size: 13px;
   font-weight: 700;
 
   cursor: pointer;
+
+  transition: 0.2s ease;
 }
 
 .addbtn:hover{
-  background: #1e40af;
+  background: #1d4ed8;
 }
 
 /* =========================================================
-   POPUP
+   POPUP MESSAGE
 ========================================================= */
 
 .popupMsg{
   margin-top: 14px;
+
+  width: fit-content;
 
   background: #15803d;
   color: white;
@@ -208,51 +234,66 @@
 
   font-size: 12px;
   font-weight: 600;
+}
 
-  width: fit-content;
+/* =========================================================
+   TABLE CONTAINER
+========================================================= */
+
+.tableContainer{
+  margin-top: 18px;
+
+  width: 100%;
+
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  border: 1px solid #e2e8f0;
+
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* SCROLLBAR */
+
+.tableContainer::-webkit-scrollbar{
+  height: 5px;
+}
+
+.tableContainer::-webkit-scrollbar-thumb{
+  background: #cbd5e1;
+  border-radius: 20px;
 }
 
 /* =========================================================
    TABLE
 ========================================================= */
 
-.tableContainer{
-  margin-top: 16px;
-
-  width: 100%;
-
-  overflow-x: auto;
-
-  background: white;
-
-  border-radius: 14px;
-
-  border: 1px solid #e5e7eb;
-
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.tableContainer::-webkit-scrollbar{
-  height: 6px;
-}
-
 .table{
   width: 100%;
-  min-width: 760px;
+  min-width: 560px;
 
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  background: white;
 }
+
+/* HEADER */
 
 .table thead{
   background: #0f172a;
 }
 
 .table th{
-  padding: 12px 10px;
+  padding: 10px 5px;
 
   color: white;
 
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
 
   text-align: center;
@@ -260,30 +301,52 @@
   white-space: nowrap;
 }
 
+.table th:first-child{
+  border-top-left-radius: 14px;
+}
+
+.table th:last-child{
+  border-top-right-radius: 14px;
+}
+
+/* BODY */
+
 .table td{
-  padding: 10px;
+  padding: 8px 5px;
 
-  border-bottom: 1px solid #e5e7eb;
-
-  font-size: 12px;
-  color: #374151;
+  border-bottom: 1px solid #f1f5f9;
 
   text-align: center;
 
+  font-size: 10px;
+  font-weight: 500;
+
+  color: #374151;
+
   white-space: nowrap;
+}
+
+.table tbody tr{
+  transition: 0.2s ease;
 }
 
 .table tbody tr:hover{
   background: #f8fafc;
 }
 
+/* =========================================================
+   IMAGE
+========================================================= */
+
 .pimg{
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
 
   object-fit: cover;
 
   border-radius: 8px;
+
+  border: 1px solid #e5e7eb;
 }
 
 /* =========================================================
@@ -292,36 +355,42 @@
 
 .editBtn{
   border: none;
+  outline: none;
 
   background: #2563eb;
   color: white;
 
-  padding: 6px 10px;
+  padding: 5px 7px;
 
-  border-radius: 8px;
+  border-radius: 7px;
 
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 700;
 
-  margin-right: 6px;
+  margin-right: 4px;
 
   cursor: pointer;
+
+  transition: 0.2s ease;
 }
 
 .deleteBtn{
   border: none;
+  outline: none;
 
   background: #dc2626;
   color: white;
 
-  padding: 6px 10px;
+  padding: 5px 7px;
 
-  border-radius: 8px;
+  border-radius: 7px;
 
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 700;
 
   cursor: pointer;
+
+  transition: 0.2s ease;
 }
 
 .editBtn:hover{
@@ -337,7 +406,7 @@
 ========================================================= */
 
 .pagination{
-  margin-top: 18px;
+  margin-top: 20px;
 
   display: flex;
   justify-content: center;
@@ -360,6 +429,8 @@
   font-weight: 700;
 
   cursor: pointer;
+
+  transition: 0.2s ease;
 }
 
 .prevbtn:hover{
@@ -378,7 +449,7 @@
 }
 
 /* =========================================================
-   TABLET
+   TABLET VIEW
 ========================================================= */
 
 @media (min-width: 768px){
@@ -392,6 +463,8 @@
   .right h2{
     font-size: 28px;
   }
+
+  /* FILTER */
 
   .rtop{
     flex-direction: row;
@@ -415,8 +488,10 @@
     width: 120px;
   }
 
+  /* CATEGORY */
+
   .categoryRow{
-    gap: 20px;
+    gap: 18px;
   }
 
   .cataddbtn,
@@ -434,22 +509,36 @@
     width: 110px;
   }
 
+  /* TABLE */
+
+  .table{
+    min-width: 100%;
+  }
+
   .table th{
-    font-size: 13px;
+    font-size: 12px;
+    padding: 12px 8px;
   }
 
   .table td{
-    font-size: 13px;
+    font-size: 12px;
+    padding: 10px 8px;
   }
 
   .pimg{
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .editBtn,
+  .deleteBtn{
+    font-size: 11px;
+    padding: 6px 10px;
   }
 }
 
 /* =========================================================
-   DESKTOP
+   DESKTOP VIEW
 ========================================================= */
 
 @media (min-width: 1024px){
@@ -469,7 +558,11 @@
     align-items: center;
   }
 
-  .table{
-    min-width: 100%;
+  .table th{
+    font-size: 13px;
+  }
+
+  .table td{
+    font-size: 13px;
   }
 }
