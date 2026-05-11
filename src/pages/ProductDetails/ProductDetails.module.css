@@ -1,234 +1,252 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* =========================================================
+   MOBILE FIRST PRODUCT DETAILS
+========================================================= */
 
-/* ================= MOBILE FIRST ================= */
+/* ================= MAIN ================= */
 
-.productWrapper{
-    padding: 12px;
+.productview{
     display: flex;
     flex-direction: column;
-    gap: 15px;
-}
-
-/* ================= IMAGE ================= */
-
-.imageSection{
-    background: white;
-    border-radius: 14px;
-    padding: 12px;
-    border: 1px solid #ececec;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
-
-.mainImageBox{
-    width: 100%;
-    height: 280px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mainImage{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.thumbnailRow{
-    margin-top: 12px;
-
-    display: flex;
     gap: 10px;
-
-    overflow-x: auto;
+    padding: 10px;
+    width: 100%;
+    overflow-x: hidden;
 }
 
-.thumbnailRow::-webkit-scrollbar{
+/* ================= THUMBNAILS ================= */
+
+.left{
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+
+    padding: 6px;
+
+    border-radius: 10px;
+    background: #fff;
+
+    border: 1px solid #ececec;
+}
+
+.left::-webkit-scrollbar{
     display: none;
 }
 
-.thumb{
-    min-width: 70px;
-    height: 70px;
-
-    border: 1px solid #e8e8e8;
-    border-radius: 10px;
-
-    padding: 5px;
+.img{
+    flex-shrink: 0;
     cursor: pointer;
 }
 
-.thumb img{
-    width: 100%;
-    height: 100%;
+.left img{
+    width: 58px;
+    height: 58px;
     object-fit: cover;
+
+    border-radius: 8px;
+    border: 1px solid #eee;
 }
 
-/* ================= DETAILS ================= */
+/* ================= MAIN IMAGE ================= */
 
-.details{
-    background: white;
-    border-radius: 14px;
-    padding: 16px;
+.center{
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+
+    background: #fff;
+    border: 1px solid #ececec;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+}
+
+.center img{
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+}
+
+/* ================= RIGHT ================= */
+
+.right{
+    width: 100%;
+
+    background: #fff;
+    border-radius: 12px;
 
     border: 1px solid #ececec;
 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 12px;
 }
 
-.details h1{
-    font-size: 22px;
-    color: #0f172a;
+/* title */
+
+.right h2{
+    font-size: 18px;
+    line-height: 1.4;
+    color: #081c15;
 }
 
-.color{
-    margin-top: 6px;
-    font-size: 14px;
-    color: #16a34a;
+/* type */
+
+.type{
+    margin-top: 4px;
+    font-size: 12px;
+    color: #555;
 }
 
 /* ================= PRICE ================= */
 
-.priceSection{
-    margin-top: 18px;
-
+.pricelist{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+
+    gap: 8px;
+
+    margin-top: 12px;
 }
 
 .price{
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 800;
-    color: #111827;
+    color: #0f172a;
 }
 
-.oldPrice{
-    font-size: 16px;
+.orprice{
+    font-size: 13px;
     text-decoration: line-through;
-    color: #888;
+    color: #777;
 }
 
 .discount{
     background: #dcfce7;
     color: #166534;
 
-    padding: 5px 10px;
-    border-radius: 20px;
-
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
+
+    padding: 4px 8px;
+    border-radius: 20px;
 }
 
 /* ================= FEATURES ================= */
 
-.features{
-    margin-top: 20px;
+.desc{
+    margin-top: 14px;
 
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
+    display: flex;
+    justify-content: space-between;
 
-    gap: 10px;
+    gap: 6px;
+
+    background: #fafafa;
+    border-radius: 10px;
+
+    padding: 8px;
 }
 
-.feature{
-    border: 1px solid #ebebeb;
-    border-radius: 12px;
+.descs{
+    flex: 1;
 
-    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
 
     text-align: center;
 
-    background: #fafafa;
+    font-size: 10px;
+    color: #222;
 }
 
-.feature svg{
-    font-size: 18px;
+.descs svg{
+    font-size: 15px;
     color: #15803d;
-}
-
-.feature p{
-    margin-top: 6px;
-    font-size: 11px;
-    color: #444;
 }
 
 /* ================= QUANTITY ================= */
 
-.quantitySection{
-    margin-top: 20px;
+.quantity{
+    margin-top: 14px;
 
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 }
 
-.quantitySection p{
-    font-size: 15px;
+.quantity p{
+    font-size: 13px;
     font-weight: 600;
 }
 
-.qtyBox{
+/* controls */
+
+.controls{
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
 }
 
-.qtyBox button{
-    width: 34px;
-    height: 34px;
+.controls button{
+    width: 28px;
+    height: 28px;
 
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
 
     background: #15803d;
     color: white;
 
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: 700;
+
     cursor: pointer;
 }
 
-.qtyBox span{
-    font-size: 18px;
-    font-weight: 700;
+.controls span{
     min-width: 20px;
     text-align: center;
+
+    font-size: 14px;
+    font-weight: 700;
 }
 
 /* ================= BUTTONS ================= */
 
 .buttons{
-    margin-top: 22px;
+    margin-top: 16px;
 
     display: flex;
     flex-direction: column;
 
-    gap: 12px;
+    gap: 10px;
 }
 
 .buttons button{
-    height: 48px;
+    width: 100%;
+    height: 42px;
 
     border: none;
     border-radius: 10px;
 
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
 
     cursor: pointer;
 }
 
-.cartBtn{
+.cart{
     background: #1d4ed8;
     color: white;
 }
 
-.buyBtn{
+.buy{
     background: #15803d;
     color: white;
 }
@@ -236,146 +254,179 @@
 /* ================= SPECS ================= */
 
 .specs{
-    margin: 12px;
+    margin: 10px;
 
-    background: white;
+    border-radius: 12px;
 
-    border-radius: 14px;
-    padding: 15px;
-
+    background: #fff;
     border: 1px solid #ececec;
 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 12px;
 }
 
 .specs h2{
-    font-size: 20px;
-    margin-bottom: 15px;
+    font-size: 16px;
+    margin-bottom: 12px;
     color: #111827;
 }
 
-.specGrid{
+/* table */
+
+.spectable{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
 }
 
-.specRow{
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
+.row{
+    display: grid;
+    grid-template-columns: 42% 58%;
 
-    padding: 12px;
+    gap: 8px;
 
-    border-radius: 10px;
-    background: #f9fafb;
+    padding: 8px;
+
+    border-radius: 8px;
+
+    background: #fafafa;
+    border: 1px solid #f1f1f1;
 }
 
-.specKey{
-    font-size: 13px;
+.key{
+    font-size: 10px;
     font-weight: 700;
+
     color: #374151;
+
+    text-transform: capitalize;
 }
 
-.specValue{
-    font-size: 13px;
-    color: #4b5563;
-    text-align: right;
+.value{
+    font-size: 10px;
+    color: #444;
+
+    word-break: break-word;
 }
 
 /* ================= RELATED ================= */
 
-.related{
-    margin: 12px;
+.relatedp{
+    margin: 10px;
 
-    background: white;
-
-    border-radius: 14px;
-    padding: 15px;
-
+    background: #fff;
     border: 1px solid #ececec;
 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border-radius: 12px;
+
+    padding: 12px;
 }
 
-.related h2{
-    font-size: 20px;
+.relatedp h2{
+    font-size: 16px;
     color: #111827;
 }
 
-.relatedRow{
-    margin-top: 15px;
+/* cards row */
 
+.repr{
     display: flex;
-    gap: 12px;
+    gap: 10px;
 
     overflow-x: auto;
+
+    margin-top: 12px;
 }
 
-.relatedRow::-webkit-scrollbar{
+.repr::-webkit-scrollbar{
     display: none;
 }
 
-.relatedCard{
-    min-width: 160px;
+/* card */
+
+.reprs{
+    min-width: 120px;
+
+    border-radius: 10px;
 
     border: 1px solid #ececec;
-    border-radius: 12px;
 
-    padding: 10px;
-
-    cursor: pointer;
+    padding: 8px;
 
     background: white;
+
+    flex-shrink: 0;
 }
 
-.relatedCard img{
+.reprs img{
     width: 100%;
-    height: 120px;
+    height: 90px;
+
     object-fit: contain;
 }
 
-.relatedName{
-    margin-top: 10px;
+/* related text */
 
-    font-size: 14px;
+.rname{
+    margin-top: 6px;
+
+    font-size: 11px;
     font-weight: 700;
 
     color: #111827;
+
+    line-height: 1.4;
 }
 
-.relatedColor{
-    margin-top: 5px;
+.rtype{
+    margin-top: 2px;
+
+    font-size: 10px;
+    color: #666;
+}
+
+.rprice{
+    margin-top: 6px;
+
     font-size: 12px;
-    color: #6b7280;
-}
-
-.relatedPrice{
-    margin-top: 8px;
-
-    font-size: 16px;
     font-weight: 800;
 
     color: #15803d;
 }
 
-/* ================= TABLET ================= */
+/* =========================================================
+   TABLET
+========================================================= */
 
-@media(min-width:768px){
+@media (min-width: 768px){
 
-    .productWrapper{
+    .productview{
         flex-direction: row;
         align-items: flex-start;
     }
 
-    .imageSection{
-        width: 48%;
-        position: sticky;
-        top: 10px;
+    .left{
+        width: 12%;
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 500px;
     }
 
-    .details{
-        width: 52%;
+    .left img{
+        width: 90px;
+        height: 90px;
+    }
+
+    .center{
+        width: 40%;
+    }
+
+    .center img{
+        max-height: 420px;
+    }
+
+    .right{
+        width: 48%;
     }
 
     .buttons{
@@ -383,46 +434,29 @@
     }
 
     .buttons button{
-        flex: 1;
+        width: 180px;
     }
 
-    .specGrid{
+    .spectable{
         display: grid;
-        grid-template-columns: repeat(2,1fr);
-    }
-}
-
-/* ================= DESKTOP ================= */
-
-@media(min-width:1024px){
-
-    .productWrapper{
-        padding: 20px 30px;
-        gap: 25px;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
     }
 
-    .mainImageBox{
-        height: 450px;
+    .row{
+        grid-template-columns: 40% 60%;
     }
 
-    .details h1{
-        font-size: 32px;
-    }
-
-    .price{
-        font-size: 34px;
-    }
-
-    .feature p{
-        font-size: 13px;
-    }
-
-    .relatedRow{
+    .repr{
         overflow: visible;
         flex-wrap: wrap;
     }
 
-    .relatedCard{
-        width: 190px;
+    .reprs{
+        min-width: 180px;
+    }
+
+    .reprs img{
+        height: 140px;
     }
 }
