@@ -1,6 +1,6 @@
-/* ======================================================
-   ADMIN DASHBOARD - MODERN MOBILE FIRST
-====================================================== */
+/* =========================================================
+   ADMIN DASHBOARD - MOBILE FIRST
+========================================================= */
 
 *{
   margin: 0;
@@ -9,46 +9,54 @@
 }
 
 body{
-  background: #f1f5f9;
-  font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  background: #f4f7fb;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ======================================================
+/* =========================================================
    MAIN LAYOUT
-====================================================== */
+========================================================= */
 
 .container{
   width: 100%;
+  min-height: 100vh;
+  background: #f4f7fb;
 }
 
-/* ======================================================
+/* =========================================================
    RIGHT CONTENT
-====================================================== */
+========================================================= */
 
 .right{
-  padding:
-  75px 12px 90px 12px;
+  width: 100%;
+
+  padding: 12px;
+
+  padding-top: 75px;
+  padding-bottom: 90px;
 }
 
-/* ======================================================
+/* =========================================================
    TITLE
-====================================================== */
+========================================================= */
 
 .right h2{
-  font-size: 22px;
+  font-size: 20px;
+  color: #111827;
   font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 18px;
+
+  margin-bottom: 16px;
 }
 
-/* ======================================================
+/* =========================================================
    FILTER BUTTONS
-====================================================== */
+========================================================= */
 
 .filterBox{
   display: flex;
   gap: 10px;
+
   margin-bottom: 18px;
 }
 
@@ -58,18 +66,13 @@ body{
   height: 42px;
 
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
 
-  background: linear-gradient(
-    135deg,
-    #2563eb,
-    #1d4ed8
-  );
-
+  background: #0f172a;
   color: white;
 
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
 
   cursor: pointer;
 
@@ -77,190 +80,192 @@ body{
 }
 
 .mbtn:hover{
-  transform: translateY(-2px);
+  opacity: 0.9;
+  transform: scale(1.02);
 }
 
-/* ======================================================
-   CARDS
-====================================================== */
+/* =========================================================
+   TOP CARDS
+========================================================= */
 
 .cardRow{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
+  grid-template-columns: 1fr 1fr;
 
-/* CARD */
+  gap: 10px;
+}
 
 .card{
   background: white;
 
-  border-radius: 16px;
+  border-radius: 14px;
 
   padding: 14px;
 
-  box-shadow:
-  0 4px 15px rgba(0,0,0,0.08);
-
   border: 1px solid #e5e7eb;
-}
 
-/* CARD TITLE */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
 
 .card h4{
   font-size: 12px;
-  color: #64748b;
+  color: #6b7280;
+
   margin-bottom: 10px;
+
   font-weight: 600;
 }
 
-/* CARD VALUE */
-
 .card p{
-  font-size: 22px;
-  font-weight: 700;
-  color: #0f172a;
+  font-size: 18px;
+  font-weight: 800;
+
+  color: #111827;
 }
 
-/* ======================================================
+/* =========================================================
    CHARTS
-====================================================== */
+========================================================= */
 
 .chartRow{
   margin-top: 18px;
 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
 
-  gap: 12px;
+  gap: 14px;
 }
-
-/* CHART BOX */
 
 .chartBox{
   background: white;
 
-  border-radius: 16px;
+  border-radius: 14px;
+
+  border: 1px solid #e5e7eb;
 
   padding: 12px;
 
   height: 260px;
 
-  border: 1px solid #e5e7eb;
-
-  box-shadow:
-  0 4px 15px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .chartBox h4{
-  font-size: 13px;
-  color: #0f172a;
+  font-size: 14px;
+  color: #111827;
+
   margin-bottom: 10px;
 }
 
-/* PIE CHART FULL WIDTH */
-
-.chartBox:last-child{
-  grid-column: span 2;
-}
-
-/* ======================================================
-   TABLE SECTION
-====================================================== */
+/* =========================================================
+   TABLES
+========================================================= */
 
 .tableRow{
   margin-top: 18px;
 
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
 
-  gap: 15px;
+  gap: 14px;
 }
-
-/* TABLE BOX */
 
 .tableBox{
   background: white;
 
-  border-radius: 16px;
-
-  padding: 12px;
+  border-radius: 14px;
 
   border: 1px solid #e5e7eb;
 
-  box-shadow:
-  0 4px 15px rgba(0,0,0,0.08);
+  padding: 12px;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .tableBox h4{
   font-size: 14px;
-  color: #0f172a;
-  margin-bottom: 10px;
+  color: #111827;
+
+  margin-bottom: 12px;
 }
 
-/* ======================================================
-   TABLE
-====================================================== */
+/* =========================================================
+   TABLE SCROLL
+========================================================= */
 
 .tableScroll{
   width: 100%;
+
   overflow-x: auto;
 }
+
+.tableScroll::-webkit-scrollbar{
+  height: 5px;
+}
+
+.tableScroll::-webkit-scrollbar-thumb{
+  background: #cbd5e1;
+  border-radius: 20px;
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
 
 .table{
   width: 100%;
   min-width: 500px;
+
   border-collapse: collapse;
 }
 
-/* HEADER */
-
 .table th{
-  background: #0f172a;
-  color: white;
+  background: #f8fafc;
+
+  color: #374151;
+
+  font-size: 11px;
+  font-weight: 700;
 
   padding: 10px;
 
-  font-size: 12px;
-  font-weight: 600;
-
-  white-space: nowrap;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-/* BODY */
-
 .table td{
-  padding: 10px;
-  font-size: 12px;
-  color: #334155;
-  border-bottom: 1px solid #eee;
+  font-size: 11px;
+  color: #4b5563;
 
-  white-space: nowrap;
+  padding: 10px;
+
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .table tr:last-child td{
   border-bottom: none;
 }
 
-/* ======================================================
-   TABLET
-====================================================== */
+/* =========================================================
+   TABLET VIEW
+========================================================= */
 
 @media (min-width: 768px){
 
   .right{
-    padding:
-    90px 20px 30px 100px;
+    padding: 20px;
+
+    padding-top: 90px;
+    padding-left: 110px;
   }
 
   .right h2{
-    font-size: 30px;
+    font-size: 28px;
   }
 
   /* FILTER */
 
   .filterBox{
-    width: 320px;
+    width: 300px;
   }
 
   .mbtn{
@@ -272,86 +277,81 @@ body{
 
   .cardRow{
     grid-template-columns: repeat(4, 1fr);
+
+    gap: 16px;
   }
 
   .card{
-    padding: 18px;
+    padding: 20px;
   }
 
   .card h4{
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .card p{
-    font-size: 28px;
+    font-size: 26px;
   }
 
   /* CHARTS */
 
   .chartRow{
-    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
 
   .chartBox{
     height: 320px;
-    padding: 16px;
+
+    padding: 18px;
   }
 
   .chartBox h4{
-    font-size: 15px;
+    font-size: 18px;
   }
 
-  .chartBox:last-child{
-    grid-column: span 2;
+  /* TABLES */
+
+  .tableRow{
+    gap: 18px;
   }
 
-  /* TABLE */
+  .tableBox{
+    padding: 18px;
+  }
+
+  .tableBox h4{
+    font-size: 18px;
+  }
 
   .table th{
     font-size: 13px;
+    padding: 12px;
   }
 
   .table td{
     font-size: 13px;
+    padding: 12px;
   }
 }
 
-/* ======================================================
-   DESKTOP
-====================================================== */
+/* =========================================================
+   DESKTOP VIEW
+========================================================= */
 
-@media (min-width: 1024px){
-
-  .container{
-    display: flex;
-  }
+@media (min-width: 1200px){
 
   .right{
-    width: calc(100% - 90px);
+    margin-left: 260px;
 
-    margin-left: 90px;
-
-    padding:
-    90px 20px 30px 20px;
-  }
-
-  /* CHARTS */
-
-  .chartRow{
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .chartBox:last-child{
-    grid-column: auto;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   .chartBox{
     height: 340px;
   }
 
-  /* TABLES */
-
-  .tableRow{
-    grid-template-columns: repeat(2, 1fr);
+  .table{
+    min-width: 100%;
   }
 }
