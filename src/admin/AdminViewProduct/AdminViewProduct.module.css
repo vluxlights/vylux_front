@@ -1,465 +1,475 @@
-.right {
-    margin-top: 100px;
-    margin-left: 290px;
-    margin-right: 20px;
+/* =========================================================
+   ADMIN VIEW PRODUCT - MOBILE FIRST
+========================================================= */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.right h2 {
-    font-size: 30px;
-    color: rgb(12, 12, 59);
+.cont{
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f7fb;
 }
 
-/* ================= FILTER TOP ================= */
-.rtop {
-    border: 1px solid rgb(219, 210, 210);
-    padding: 15px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+.main{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.rsearch, .rcat {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+/* =========================================================
+   RIGHT
+========================================================= */
+
+.right{
+  width: 100%;
+  padding: 10px;
+  margin-top: 70px;
+  margin-bottom: 90px;
+}
+
+.right h2{
+  font-size: 20px;
+  color: #081f4d;
+  margin-bottom: 14px;
+}
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.rtop{
+  width: 100%;
+  background: white;
+  border-radius: 14px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.rsearch,
+.rcat{
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rsearch p,
+.rcat p{
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
 }
 
 .rsearch input,
-.rcat select {
-    padding: 8px;
-    width: 200px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+.rcat select{
+  width: 100%;
+  height: 42px;
+
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+
+  padding: 0 12px;
+
+  outline: none;
+
+  font-size: 13px;
+  background: #fff;
 }
 
-.rbtn {
-    display: flex;
-    gap: 20px;
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.rbtn{
+  width: 100%;
+
+  display: flex;
+  gap: 10px;
 }
 
-.rbtns {
-    width: 100px;
-    padding: 8px;
-    border-radius: 10px;
-    border: none;
-    background-color: darkgreen;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s ease;
+.rbtns{
+  flex: 1;
+  height: 42px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #0f766e;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
 }
 
-.rbtns:hover {
-    background-color: grey;
+.rbtns:hover{
+  background: #134e4a;
 }
 
-/* ================= TABLE ================= */
-.tableContainer {
-    margin-top: 30px;
-    overflow-x: auto;
+/* =========================================================
+   CATEGORY BOX
+========================================================= */
+
+.addCategoryBox{
+  margin-top: 14px;
+
+  background: white;
+
+  border-radius: 14px;
+
+  border: 1px solid #e5e7eb;
+
+  padding: 14px;
+
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    overflow: hidden;
+.addCategoryBox p{
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+
+  margin-bottom: 14px;
 }
 
-.table thead {
-    background-color: darkgreen;
-    color: white;
+.categoryRow{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.table th, .table td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-.pimg {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 6px;
-}
-
-/* ================= ACTION BUTTONS ================= */
-.editBtn {
-    background-color: blue;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    margin-right: 5px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.deleteBtn {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.editBtn:hover,
-.deleteBtn:hover {
-    background-color: #444;
-}
-
-/* ================= CATEGORY BOX ================= */
-.addCategoryBox {
-    margin-top: 15px;
-    padding: 15px;
-    
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
-}
-
-.addCategoryBox p {
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: rgb(12, 12, 59);
-}
-
-/* ================= CATEGORY ROW ================= */
-.categoryRow {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    flex-wrap: wrap;
-}
-
-.cataddbtn{
-
-    display: flex;
-    
-    
-    gap: 30px;
-}
-
+.cataddbtn,
 .catdelbtn{
-
-    display: flex;
-    
-    
-    gap: 30px;
-}
-
-.addbtn{
-
-    width: 100px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .categoryRow input,
-.categoryRow select {
-    padding: 8px;
-    width: 200px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    outline: none;
+.categoryRow select{
+  width: 100%;
+  height: 42px;
+
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+
+  padding: 0 12px;
+
+  outline: none;
+
+  font-size: 13px;
 }
 
-/* ADD / DELETE BUTTONS */
-.addCategoryBtn,
-.deleteCategoryBtn {
-    padding: 6px 12px;
-    font-size: 12px;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.2s ease;
+.addbtn{
+  width: 100%;
+  height: 42px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #1d4ed8;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
 }
 
-.addCategoryBtn {
-    background-color: darkgreen;
+.addbtn:hover{
+  background: #1e40af;
 }
 
-.deleteCategoryBtn {
-    background-color: darkred;
+/* =========================================================
+   POPUP
+========================================================= */
+
+.popupMsg{
+  margin-top: 14px;
+
+  background: #15803d;
+  color: white;
+
+  padding: 10px 14px;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  width: fit-content;
 }
 
-.addCategoryBtn:hover,
-.deleteCategoryBtn:hover {
-    background-color: grey;
+/* =========================================================
+   TABLE
+========================================================= */
+
+.tableContainer{
+  margin-top: 16px;
+
+  width: 100%;
+
+  overflow-x: auto;
+
+  background: white;
+
+  border-radius: 14px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* ================= POPUP MESSAGE ================= */
-.popupMsg {
-    margin-top: 15px;
-    padding: 10px;
-    width: fit-content;
-    background-color: darkgreen;
-    color: white;
-    border-radius: 6px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
-    animation: fadeIn 0.3s ease;
+.tableContainer::-webkit-scrollbar{
+  height: 6px;
 }
 
-/* ================= PAGINATION ================= */
-.pagination {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+.table{
+  width: 100%;
+  min-width: 760px;
+
+  border-collapse: collapse;
 }
 
-.pagination button {
-    padding: 6px 12px;
-    font-size: 13px;
-    border: none;
-    border-radius: 6px;
-    background: darkgreen;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s ease;
+.table thead{
+  background: #0f172a;
 }
 
-.pagination button:hover {
-    background: grey;
+.table th{
+  padding: 12px 10px;
+
+  color: white;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-align: center;
+
+  white-space: nowrap;
 }
 
-.pagination button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
+.table td{
+  padding: 10px;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  font-size: 12px;
+  color: #374151;
+
+  text-align: center;
+
+  white-space: nowrap;
 }
 
-.pagination span {
-    font-size: 14px;
-    font-weight: 500;
-    color: rgb(12, 12, 59);
+.table tbody tr:hover{
+  background: #f8fafc;
+}
+
+.pimg{
+  width: 42px;
+  height: 42px;
+
+  object-fit: cover;
+
+  border-radius: 8px;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.editBtn{
+  border: none;
+
+  background: #2563eb;
+  color: white;
+
+  padding: 6px 10px;
+
+  border-radius: 8px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  margin-right: 6px;
+
+  cursor: pointer;
+}
+
+.deleteBtn{
+  border: none;
+
+  background: #dc2626;
+  color: white;
+
+  padding: 6px 10px;
+
+  border-radius: 8px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.editBtn:hover{
+  background: #1d4ed8;
+}
+
+.deleteBtn:hover{
+  background: #b91c1c;
+}
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.pagination{
+  margin-top: 18px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
 }
 
 .prevbtn{
+  width: 90px;
+  height: 40px;
 
-    width: 70px;
-    margin-bottom: 20px;
+  border: none;
+  border-radius: 10px;
+
+  background: #0f766e;
+  color: white;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
 }
 
-/* ================= ANIMATION ================= */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.prevbtn:hover{
+  background: #115e59;
 }
- /* ================= TABLET VIEW ================= */
 
-@media (max-width: 768px) {
+.prevbtn:disabled{
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
 
-  .right {
-    margin-left: 0;
-    margin-right: 10px;
-    margin-top: 80px;
-    padding: 10px;
+.pagination span{
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 768px){
+
+  .right{
+    padding: 20px;
+    margin-top: 90px;
+    margin-left: 90px;
   }
 
-  .right h2 {
-    font-size: 22px;
+  .right h2{
+    font-size: 28px;
   }
 
-  /* ===== FILTER BOX ===== */
-  .rtop {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px;
-  }
-
-  .rsearch input,
-  .rcat select {
-    width: 100%;
-    font-size: 13px;
-  }
-
-  .rbtn {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .rbtns {
-    width: 48%;
-    font-size: 13px;
-    padding: 7px;
-  }
-
-  /* ===== CATEGORY BOX ===== */
-  .categoryRow {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .categoryRow input,
-  .categoryRow select {
-    width: 100%;
-    font-size: 13px;
-  }
-
-  .addCategoryBtn,
-  .deleteCategoryBtn {
-    width: 100%;
-    font-size: 12px;
-  }
-
-  /* ===== TABLE ===== */
-  .table {
-    font-size: 12px;
-  }
-
-  .table th,
-  .table td {
-    padding: 8px;
-  }
-
-  .pimg {
-    width: 40px;
-    height: 40px;
-  }
-
-  .editBtn,
-  .deleteBtn {
-    font-size: 12px;
-    padding: 5px 8px;
-  }
-
-  /* ===== PAGINATION ===== */
-  .pagination {
+  .rtop{
+    flex-direction: row;
+    align-items: end;
     flex-wrap: wrap;
-    gap: 10px;
   }
 
-  .pagination button {
-    font-size: 12px;
-    padding: 6px 10px;
+  .rsearch{
+    flex: 2;
   }
 
-  .popupMsg {
-    font-size: 12px;
-  }
-}
-
-
-/* ================= MOBILE VIEW ================= */
-
-@media (max-width: 480px) {
-
-  .right {
-    margin: 60px 5px 0 5px;
-    padding: 8px;
+  .rcat{
+    flex: 1;
   }
 
-  .right h2 {
-    font-size: 18px;
+  .rbtn{
+    width: auto;
   }
 
-  /* ===== FILTER ===== */
-  .rtop {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+  .rbtns{
+    width: 120px;
   }
 
-  .rsearch input,
-  .rcat select {
-    width: 100%;
-    font-size: 12px;
-    padding: 6px;
+  .categoryRow{
+    gap: 20px;
   }
 
-  .rbtn {
-    flex-direction: column;
-    width: 100%;
-    gap: 8px;
-  }
-
-  .rbtns {
-    width: 100%;
-    font-size: 12px;
-    padding: 6px;
-  }
-
-  /* ===== CATEGORY ===== */
-  .categoryRow {
-    flex-direction: column;
-    gap: 8px;
+  .cataddbtn,
+  .catdelbtn{
+    flex-direction: row;
+    align-items: center;
   }
 
   .categoryRow input,
-  .categoryRow select {
-    width: 100%;
-    font-size: 12px;
-    padding: 6px;
+  .categoryRow select{
+    width: 250px;
   }
 
-  .addCategoryBtn,
-  .deleteCategoryBtn {
-    width: 100%;
-    font-size: 11px;
-    padding: 6px;
+  .addbtn{
+    width: 110px;
   }
 
-  /* ===== TABLE ===== */
-  .tableContainer {
-    overflow-x: auto;
+  .table th{
+    font-size: 13px;
   }
 
-  .table {
-    min-width: 650px;
-    font-size: 11px;
+  .table td{
+    font-size: 13px;
   }
 
-  .table th,
-  .table td {
-    padding: 6px;
+  .pimg{
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1024px){
+
+  .main{
+    flex-direction: row;
   }
 
-  .pimg {
-    width: 35px;
-    height: 35px;
+  .right{
+    margin-left: 280px;
+    margin-right: 20px;
   }
 
-  .editBtn,
-  .deleteBtn {
-    font-size: 11px;
-    padding: 4px 6px;
-  }
-
-  /* ===== PAGINATION ===== */
-  .pagination {
-    flex-direction: column;
+  .categoryRow{
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;
   }
 
-  .pagination button {
-    width: 100%;
-    font-size: 12px;
-    padding: 6px;
-  }
-
-  .pagination span {
-    font-size: 12px;
-  }
-
-  /* ===== POPUP ===== */
-  .popupMsg {
-    font-size: 11px;
-    padding: 8px;
+  .table{
+    min-width: 100%;
   }
 }
