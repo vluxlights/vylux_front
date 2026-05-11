@@ -229,11 +229,11 @@ export default function Products() {
             >
 
               <option value="low">
-                Price Low to High
+                Low to High
               </option>
 
               <option value="high">
-                Price High to Low
+                High to Low
               </option>
 
             </select>
