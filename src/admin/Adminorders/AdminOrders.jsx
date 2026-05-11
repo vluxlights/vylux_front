@@ -228,7 +228,7 @@ export default function AdminOrders() {
                                 className={styles.card}
                             >
 
-                                {/* ================= CARD TOP ================= */}
+                                {/* ================= ORDER TOP ================= */}
 
                                 <div className={styles.cardTop}>
 
@@ -260,7 +260,7 @@ export default function AdminOrders() {
                                                 alt=""
                                             />
 
-                                            {/* CONTENT */}
+                                            {/* CENTER PRODUCT DETAILS */}
 
                                             <div className={styles.productContent}>
 
@@ -280,8 +280,34 @@ export default function AdminOrders() {
                                                     {item.quantity}
                                                 </p>
 
-                                                <h3>
+                                            </div>
+
+                                            {/* RIGHT DATE + PRICE */}
+
+                                            <div className={styles.rightInfo}>
+
+                                                <div className={styles.dateBox}>
+
+                                                    <FaCalendarAlt
+                                                        className={styles.dateIcon}
+                                                    />
+
+                                                    <p>
+
+                                                        {
+                                                            new Date(
+                                                                order.createdAt
+                                                            ).toLocaleDateString()
+                                                        }
+
+                                                    </p>
+
+                                                </div>
+
+                                                <h3 className={styles.price}>
+
                                                     ₹{item.price * item.quantity}
+
                                                 </h3>
 
                                             </div>
@@ -292,63 +318,7 @@ export default function AdminOrders() {
 
                                 }
 
-                                {/* ================= DETAILS ================= */}
-
-                                <div className={styles.detailsRow}>
-
-                                    {/* DATE */}
-
-                                    <div className={styles.detailBox}>
-
-                                        <FaCalendarAlt
-                                            className={styles.detailIcon}
-                                        />
-
-                                        <div>
-
-                                            <p className={styles.label}>
-                                                Order Date
-                                            </p>
-
-                                            <h4>
-
-                                                {
-
-                                                    new Date(
-                                                        order.createdAt
-                                                    ).toLocaleString()
-
-                                                }
-
-                                            </h4>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div className={styles.vertical}></div>
-
-                                    {/* TOTAL */}
-
-                                    <div className={styles.detailBox}>
-
-                                        <div>
-
-                                            <p className={styles.label}>
-                                                Total Amount
-                                            </p>
-
-                                            <h4 className={styles.amount}>
-                                                ₹{order.total}
-                                            </h4>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                {/* ================= DELIVERY TOGGLE ================= */}
+                                {/* ================= DELIVERY BUTTON ================= */}
 
                                 <div
                                     className={styles.deliveryHead}
@@ -434,6 +404,16 @@ export default function AdminOrders() {
                                                 {" "}
                                                 {order.address?.landmark}
                                             </p>
+
+                                            <div className={styles.totalBox}>
+
+                                                <h2>
+                                                    Total :
+                                                    {" "}
+                                                    ₹{order.total}
+                                                </h2>
+
+                                            </div>
 
                                         </div>
 

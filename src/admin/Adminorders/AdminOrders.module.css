@@ -175,6 +175,12 @@
   border:1px solid #ececec;
 
   box-shadow:0 4px 18px rgba(0,0,0,0.05);
+
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-2px);
 }
 
 /* ================= CARD TOP ================= */
@@ -193,11 +199,11 @@
 
 .productRow{
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   gap:14px;
 
-  padding-bottom:14px;
-  margin-bottom:14px;
+  padding-bottom:16px;
+  margin-bottom:16px;
 
   border-bottom:1px solid #f1f1f1;
 }
@@ -219,15 +225,28 @@
   background:#f3f4f6;
 
   border:1px solid #ececec;
+
+  flex-shrink:0;
 }
 
-/* PRODUCT CONTENT */
+/* ================= RIGHT SIDE OF IMAGE ================= */
 
 .productContent{
   flex:1;
+
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
 }
 
-.productContent h2{
+/* LEFT CONTENT */
+
+.productLeft{
+  flex:1;
+}
+
+.productLeft h2{
   font-size:16px;
   font-weight:800;
 
@@ -238,89 +257,84 @@
   line-height:1.5;
 }
 
-.productContent p{
+.productLeft p{
   font-size:12px;
   color:#6b7280;
 
   margin-bottom:5px;
 }
 
-.productContent h3{
-  margin-top:6px;
+/* RIGHT CONTENT */
 
-  font-size:18px;
-  font-weight:800;
-
-  color:#6d28d9;
-}
-
-/* ================= DETAILS ================= */
-
-.detailsRow{
-  margin-top:10px;
+.productRight{
+  min-width:150px;
 
   display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:18px;
-
-  border-top:1px solid #f1f1f1;
-  border-bottom:1px solid #f1f1f1;
-
-  padding:16px 0;
+  flex-direction:column;
+  align-items:flex-end;
 }
 
-.detailBox{
-  flex:1;
-
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.detailIcon{
-  font-size:18px;
-  color:#6d28d9;
-}
-
-.label{
-  font-size:11px;
-  color:#9ca3af;
-}
-
-.detailBox h4{
-  margin-top:4px;
-
-  font-size:13px;
+.dateLabel{
+  font-size:10px;
   font-weight:700;
+  color:#9ca3af;
 
+  margin-bottom:5px;
+}
+
+.orderDate{
+  font-size:12px;
+  font-weight:700;
   color:#111827;
 
+  text-align:right;
   line-height:1.5;
 }
 
-.amount{
-  font-size:20px !important;
-  color:#16a34a !important;
+.priceBox{
+  margin-top:14px;
 }
 
-.vertical{
-  width:1px;
-  height:42px;
-  background:#ececec;
+.priceLabel{
+  font-size:10px;
+  font-weight:700;
+  color:#9ca3af;
+
+  margin-bottom:5px;
 }
 
-/* ================= DELIVERY ================= */
+.price{
+  font-size:22px;
+  font-weight:800;
+  color:#16a34a;
+}
+
+/* ================= DELIVERY BUTTON ================= */
 
 .deliveryHead{
-  margin-top:16px;
+  margin-top:14px;
+
+  width:100%;
+  height:48px;
+
+  background:#f8f5ff;
+
+  border:1px solid #e9ddff;
+  border-radius:14px;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
 
+  padding:0 16px;
+
   cursor:pointer;
+
+  transition:0.3s;
+}
+
+.deliveryHead:hover{
+  background:#f3ecff;
 }
 
 .deliveryLeft{
@@ -331,7 +345,7 @@
   font-size:13px;
   font-weight:700;
 
-  color:#374151;
+  color:#6d28d9;
 }
 
 .deliveryRight{
@@ -495,7 +509,6 @@
 
   .productRow{
     gap:10px;
-    align-items:flex-start;
   }
 
   .productRow img{
@@ -504,46 +517,53 @@
     border-radius:14px;
   }
 
-  .productContent h2{
+  /* CONTENT */
+
+  .productContent{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .productLeft h2{
     font-size:13px;
   }
 
-  .productContent p{
+  .productLeft p{
     font-size:11px;
   }
 
-  .productContent h3{
-    font-size:15px;
+  .productRight{
+    width:100%;
+    min-width:100%;
+
+    align-items:flex-start;
+
+    padding-top:6px;
+
+    border-top:1px dashed #ececec;
   }
 
-  /* DETAILS */
-
-  .detailsRow{
-    gap:10px;
-    padding:12px 0;
+  .dateLabel,
+  .priceLabel{
+    font-size:9px;
   }
 
-  .detailIcon{
-    font-size:15px;
-  }
-
-  .label{
-    font-size:10px;
-  }
-
-  .detailBox h4{
+  .orderDate{
     font-size:11px;
+    text-align:left;
   }
 
-  .amount{
-    font-size:16px !important;
-  }
-
-  .vertical{
-    height:36px;
+  .price{
+    font-size:17px;
   }
 
   /* DELIVERY */
+
+  .deliveryHead{
+    height:auto;
+    padding:12px;
+    border-radius:12px;
+  }
 
   .deliveryLeft{
     font-size:12px;
@@ -604,34 +624,20 @@
     height:60px;
   }
 
-  .productContent h2{
+  .productLeft h2{
     font-size:12px;
   }
 
-  .productContent h3{
-    font-size:14px;
+  .productLeft p{
+    font-size:10px;
   }
 
-  .detailsRow{
-    flex-direction:column;
-    align-items:flex-start;
+  .price{
+    font-size:15px;
   }
 
-  .vertical{
-    display:none;
-  }
-
-  .detailBox{
-    width:100%;
-  }
-
-  .amount{
-    font-size:15px !important;
-  }
-
-  .deliveryHead{
-    align-items:flex-start;
-    gap:10px;
+  .orderDate{
+    font-size:10px;
   }
 
   .deliveryRight{
