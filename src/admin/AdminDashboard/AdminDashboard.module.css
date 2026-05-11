@@ -1,272 +1,277 @@
-/* ================= MAIN LAYOUT ================= */
-.container {
-  display: flex;
-  min-height: 100vh;
-  background: #f4f6f9;
+/* ======================================================
+   ADMIN DASHBOARD - MOBILE FIRST
+====================================================== */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* RIGHT PANEL */
-.right {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  height: 100vh;
-  box-sizing: border-box;
-  margin-top: 130px;
-  margin-left: 290px;
-  margin-right: 20px;
+body{
+  background: #f4f7fb;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ======================================================
+   LAYOUT
+====================================================== */
+
+.container{
+  width: 100%;
+}
+
+/* ======================================================
+   RIGHT SECTION
+====================================================== */
+
+.right{
+  padding:
+  75px 10px 90px 10px;
+}
+
+/* ======================================================
+   TITLE
+====================================================== */
+
+.right h2{
+  font-size: 20px;
+  color: #111827;
+  margin-bottom: 15px;
+}
+
+/* ======================================================
+   FILTER
+====================================================== */
+
+.filterBox{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 .mbtn{
+  flex: 1;
+  height: 40px;
 
-  width: 200px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  
-}
-
-/* ================= TITLE ================= */
-.title {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-/* ================= FILTER ================= */
-.filterBox {
-  display: flex;
-  gap: 10px;
-  margin: 10px 0;
-  flex-wrap: wrap;
-}
-
-.filterBox button {
-  padding: 6px 12px;
   border: none;
-  background: #2196f3;
+  border-radius: 10px;
+
+  background: #0f172a;
   color: white;
-  border-radius: 5px;
+
+  font-size: 13px;
+  font-weight: 600;
+
   cursor: pointer;
 }
 
-/* ================= CARDS ================= */
-.cardRow {
+/* ======================================================
+   CARDS
+====================================================== */
+
+.cardRow{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  margin-top: 10px;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
-.card {
+.card{
   background: white;
-  padding: 18px;
-  border-radius: 10px;
-  text-align: center;
-   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.36);
-  transition: 0.2s ease;
-}
-
-/* ================= CHARTS ================= */
-.chartRow {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.chartBox {
-  background: white;
+  border-radius: 14px;
   padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.36);
-  transition: 0.2s ease;
 
-  /* IMPORTANT FIX */
-  height: 280px;
-  display: flex;
-  flex-direction: column;
+  border: 1px solid #e5e7eb;
 }
 
-/* Recharts fix */
-.chartBox .recharts-wrapper {
-  flex: 1;
-}
-
-/* ================= TABLES ================= */
-.tableRow {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  margin-top: 20px;
-  
-}
-
-.tableBox {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  overflow: hidden;
-   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.36);
-  transition: 0.2s ease;
-}
-
-/* TABLE SCROLL FIX */
-.tableScroll {
-  max-height: 320px;
-  overflow: auto;
-}
-
-/* TABLE STYLE */
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 500px;
-}
-
-.table th,
-.table td {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-  text-align: center;
+.card h4{
   font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 10px;
 }
 
-/* LEFT ALIGN FIRST COLUMN */
-.table th:first-child,
-.table td:first-child {
-  text-align: left;
+.card p{
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
 }
-@media (max-width: 1024px) {
 
-  .cardRow {
-    grid-template-columns: repeat(2, 1fr);
+/* ======================================================
+   CHARTS
+====================================================== */
+
+.chartRow{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+
+  margin-top: 15px;
+}
+
+.chartBox{
+  background: white;
+
+  border-radius: 14px;
+
+  padding: 12px;
+
+  border: 1px solid #e5e7eb;
+
+  height: 260px;
+}
+
+.chartBox h4{
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+/* ======================================================
+   TABLES
+====================================================== */
+
+.tableRow{
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 15px;
+
+  margin-top: 15px;
+}
+
+.tableBox{
+  background: white;
+
+  border-radius: 14px;
+
+  padding: 12px;
+
+  border: 1px solid #e5e7eb;
+}
+
+.tableBox h4{
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+/* ======================================================
+   TABLE
+====================================================== */
+
+.tableScroll{
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table{
+  width: 100%;
+  min-width: 500px;
+  border-collapse: collapse;
+}
+
+.table th{
+  background: #0f172a;
+  color: white;
+
+  padding: 10px;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.table td{
+  padding: 10px;
+  font-size: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.table tr:last-child td{
+  border-bottom: none;
+}
+
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media (min-width: 768px){
+
+  .right{
+    padding:
+    90px 20px 30px 100px;
   }
 
-  
-.mbtn{
-
-  width: 200px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  
-}
-
-  .chartRow {
-    grid-template-columns: 1fr;
-  }
-
-  .tableRow {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ================= MOBILE FIX (IMPORTANT) ================= */
-@media (max-width: 768px) {
-
-  .container {
-    flex-direction: column;
-  }
-  
-.mbtn{
-
-  width: 200px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  
-}
-
-  .right {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    margin-top: 80px; /* adjust header space */
-    height: auto;
-    padding: 10px;
+  .right h2{
+    font-size: 28px;
   }
 
   /* FILTER */
-  .filterBox {
-    flex-direction: column;
-  }
 
-  .filterBox button {
-    width: 100%;
+  .filterBox{
+    width: 300px;
   }
 
   /* CARDS */
-  .cardRow {
-    grid-template-columns: 1fr;
-    gap: 10px;
+
+  .cardRow{
+    grid-template-columns: repeat(2, 1fr);
   }
 
   /* CHARTS */
-  .chartRow {
-    grid-template-columns: 1fr;
-    gap: 10px;
+
+  .chartBox{
+    height: 300px;
   }
 
-  .chartBox {
-    height: 260px;
-    padding: 10px;
+  /* TABLE */
+
+  .table th{
+    font-size: 13px;
+  }
+
+  .table td{
+    font-size: 13px;
+  }
+}
+
+/* ======================================================
+   DESKTOP
+====================================================== */
+
+@media (min-width: 1024px){
+
+  .container{
+    display: flex;
+  }
+
+  .right{
+    margin-left: 90px;
+    width: calc(100% - 90px);
+
+    padding:
+    90px 20px 30px 20px;
+  }
+
+  /* CARDS */
+
+  .cardRow{
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* CHARTS */
+
+  .chartRow{
+    grid-template-columns: repeat(3, 1fr);
   }
 
   /* TABLES */
-  .tableRow {
-    grid-template-columns: 1fr;
-    gap: 10px;
+
+  .tableRow{
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .tableBox {
-    overflow-x: auto;
-    padding: 10px;
-  }
-
-  .tableScroll {
-    max-height: 300px;
-    overflow-x: auto;
-  }
-
-  .table {
-    min-width: 100%;
-  }
-
-  .table th,
-  .table td {
-    font-size: 12px;
-    padding: 8px;
-  }
-}
-
-/* ================= SMALL MOBILE FIX ================= */
-@media (max-width: 480px) {
-
-  
-.mbtn{
-
-  width: 200px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  
-}
-
-  .right {
-    margin-top: 70px;
-    padding: 8px;
-  }
-
-  .title {
-    font-size: 18px;
-  }
-
-  .card {
-    padding: 12px;
-  }
-
-  .chartBox {
-    height: 230px;
-  }
-
-  .table th,
-  .table td {
-    font-size: 11px;
-    padding: 6px;
+  .chartBox{
+    height: 320px;
   }
 }
