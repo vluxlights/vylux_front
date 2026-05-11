@@ -39,20 +39,29 @@ export default function Checkout() {
   });
 
   // ================= FETCH SETTINGS =================
+
   const fetchSettings = async () => {
     try {
+
       const res = await axios.get(
         "https://vlux-backend.onrender.com/api/vlux/settings"
       );
+
       setSettings(res.data);
+
     } catch (err) {
+
       console.log(err);
+
     }
   };
 
   // ================= FETCH PROFILE =================
+
   const fetchProfile = async () => {
+
     try {
+
       const res = await axios.get(
         "https://vlux-backend.onrender.com/api/vlux/profile",
         {
@@ -65,6 +74,7 @@ export default function Checkout() {
       const profile = res.data.profile;
 
       if (profile && profile.address) {
+
         setForm({
           name: profile.name || "",
           phone: profile.phone || "",
@@ -76,39 +86,63 @@ export default function Checkout() {
         });
 
         setIsProfileLoaded(true);
+
       }
 
     } catch (err) {
+
       console.log(err);
+
     }
+
   };
 
   useEffect(() => {
+
     fetchSettings();
     fetchProfile();
+
   }, []);
 
   const handleChange = (e) => {
+
     if (isProfileLoaded) return;
-    setForm({ ...form, [e.target.name]: e.target.value });
+
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+
   };
 
   // ================= CALCULATIONS =================
+
   const gst = subtotal * (settings.gst / 100);
-  const delivery = subtotal > 0 ? settings.deliveryFee : 0;
+
+  const delivery = subtotal > 0
+    ? settings.deliveryFee
+    : 0;
+
   const total = subtotal + gst + delivery;
 
-  // ================= NAVIGATE PROFILE =================
+  // ================= UPDATE ADDRESS =================
+
   const handleUpdateAddress = () => {
+
     navigate("/profile");
+
   };
 
   // ================= WHATSAPP MESSAGE =================
+
   const buildMessage = () => {
+
     const products = cart.map((item, index) =>
+
       `${index + 1}. ${item.productId.name}
 Qty: ${item.quantity}
 Price: ₹${item.productId.price * item.quantity}`
+
     ).join("\n\n");
 
     return `🧾 ORDER CONFIRMATION
@@ -140,10 +174,13 @@ Landmark : ${form.landmark}
 
 ━━━━━━━━━━━━━━━━━━
 Thank you for your order!`;
+
   };
 
   // ================= PLACE ORDER =================
+
   const handlePlaceOrder = async () => {
+
     try {
 
       if (
@@ -154,18 +191,24 @@ Thank you for your order!`;
         !form.state.trim() ||
         !form.pincode.trim()
       ) {
+
         alert("All fields are required");
         return;
+
       }
 
       if (!/^[0-9]{10}$/.test(form.phone)) {
+
         alert("Phone must be 10 digits");
         return;
+
       }
 
       if (!/^[0-9]{6}$/.test(form.pincode)) {
+
         alert("Pincode must be 6 digits");
         return;
+
       }
 
       await axios.post(
@@ -186,8 +229,12 @@ Thank you for your order!`;
       );
 
       const message = buildMessage();
+
       const phoneNumber = "919790051137";
-      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+      const url =
+        `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
       window.open(url, "_blank");
 
       setCart([]);
@@ -195,12 +242,17 @@ Thank you for your order!`;
       navigate("/success", { replace: true });
 
     } catch (err) {
+
       console.log(err);
+
       alert("Order failed");
+
     }
+
   };
 
   return (
+
     <>
       <div className={styles.cont}>
 
@@ -212,152 +264,193 @@ Thank you for your order!`;
 
         <div className={styles.main}>
 
-          {/* LEFT */}
+          {/* ================= LEFT ================= */}
+
           <div className={styles.left}>
 
-            <h2 className={styles.lhead}>Checkout</h2>
+            <h2 className={styles.lhead}>
+              Checkout
+            </h2>
 
             <div className={styles.lmain}>
 
-              <p>
+              <div className={styles.title}>
+
                 <FaLocationDot className={styles.loc} />
-                Delivery Details
-              </p>
 
-              <div className={styles.basic}>
+                <p>Delivery Details</p>
 
-                <div className={styles.name}>
+              </div>
+
+              <div className={styles.formGrid}>
+
+                <div className={styles.inputBox}>
                   <label>Full Name</label>
+
                   <input
                     type="text"
                     name="name"
                     value={form.name}
                     onChange={handleChange}
                     readOnly={isProfileLoaded}
+                    placeholder="Enter your name"
                   />
                 </div>
 
-                <div className={styles.phone}>
+                <div className={styles.inputBox}>
                   <label>Phone Number</label>
+
                   <input
                     type="text"
                     name="phone"
                     value={form.phone}
                     onChange={handleChange}
                     readOnly={isProfileLoaded}
+                    placeholder="Enter phone number"
                   />
                 </div>
 
               </div>
 
-              <div className={styles.address}>
+              <div className={styles.fullBox}>
+
                 <label>Address</label>
+
                 <textarea
-                rows="5"
-                cols="50"
+                  rows="5"
                   name="address"
                   value={form.address}
                   onChange={handleChange}
                   readOnly={isProfileLoaded}
+                  placeholder="Enter full address"
                 />
+
               </div>
 
-              <div className={styles.location}>
+              <div className={styles.formGrid}>
 
-                <div className={styles.name}>
+                <div className={styles.inputBox}>
                   <label>City</label>
+
                   <input
                     type="text"
                     name="city"
                     value={form.city}
                     onChange={handleChange}
                     readOnly={isProfileLoaded}
+                    placeholder="City"
                   />
                 </div>
 
-                <div className={styles.phone}>
+                <div className={styles.inputBox}>
                   <label>State</label>
+
                   <input
                     type="text"
                     name="state"
                     value={form.state}
                     onChange={handleChange}
                     readOnly={isProfileLoaded}
+                    placeholder="State"
                   />
                 </div>
 
               </div>
 
-              <div className={styles.landmark}>
+              <div className={styles.formGrid}>
 
-                <div className={styles.name}>
+                <div className={styles.inputBox}>
                   <label>Pincode</label>
+
                   <input
                     type="text"
                     name="pincode"
                     value={form.pincode}
                     onChange={handleChange}
                     readOnly={isProfileLoaded}
+                    placeholder="Pincode"
                   />
                 </div>
 
-                <div className={styles.phone}>
+                <div className={styles.inputBox}>
                   <label>Landmark</label>
+
                   <input
                     type="text"
                     name="landmark"
                     value={form.landmark}
                     onChange={handleChange}
                     readOnly={isProfileLoaded}
+                    placeholder="Landmark"
                   />
                 </div>
 
               </div>
 
-              {/* ✅ BUTTON BELOW FORM (CORRECT POSITION) */}
-              <div className={styles.cbtn}>
-              
-                              <button
-                              className={styles.checkout}
-                              style={{ marginTop: "15px" }}
-                              onClick={handleUpdateAddress}
-                            >
-                              Update Address
-                            </button>
-                            </div>
+              <button
+                className={styles.updateBtn}
+                onClick={handleUpdateAddress}
+              >
+                Update Address
+              </button>
 
             </div>
+
           </div>
 
-          {/* RIGHT (UNCHANGED) */}
+          {/* ================= RIGHT ================= */}
+
           <div className={styles.right}>
 
-            <h2 className={styles.rhead}>Order Summary</h2>
+            <h2 className={styles.rhead}>
+              Order Summary
+            </h2>
 
             <div className={styles.placepro}>
-              {cart.map((item) => (
-                <div className={styles.pros} key={item.productId._id}>
-                  <div>
-                    <img src={item.productId.images?.[0]?.url || BULB} alt="" />
-                  </div>
 
-                  <div className={styles.proscen}>
-                    <p className={styles.proshead}>{item.productId.name}</p>
-                    <p className={styles.proquant}>Qty: {item.quantity}</p>
-                  </div>
+              {
+                cart.map((item) => (
 
-                  <div className={styles.prosright}>
+                  <div
+                    className={styles.pros}
+                    key={item.productId._id}
+                  >
+
+                    <img
+                      src={
+                        item.productId.images?.[0]?.url
+                        || BULB
+                      }
+                      alt=""
+                    />
+
+                    <div className={styles.proscen}>
+
+                      <p className={styles.proshead}>
+                        {item.productId.name}
+                      </p>
+
+                      <p className={styles.proquant}>
+                        Qty : {item.quantity}
+                      </p>
+
+                    </div>
+
                     <p className={styles.prosprice}>
                       ₹{item.productId.price * item.quantity}
                     </p>
+
                   </div>
-                </div>
-              ))}
+
+                ))
+              }
+
             </div>
 
-            <div className={styles.rmain}>
+            <div className={styles.bill}>
+
               <div className={styles.rsub}>
-                <p>Subtotal ({cart.length})</p>
+                <p>Subtotal</p>
                 <p>₹{subtotal}</p>
               </div>
 
@@ -370,15 +463,23 @@ Thank you for your order!`;
                 <p>Delivery</p>
                 <p>₹{delivery}</p>
               </div>
+
+              <div className={styles.total}>
+                <p>Total Amount</p>
+                <p>₹{total.toFixed(0)}</p>
+              </div>
+
             </div>
 
-            <div className={styles.rsub}>
-              <p className={styles.subtotal}>Total Amount</p>
-              <p>₹{total.toFixed(0)}</p>
-            </div>
+            <button
+              className={styles.checkout}
+              onClick={handlePlaceOrder}
+            >
 
-            <button className={styles.checkout} onClick={handlePlaceOrder}>
-              <FaLock /> Place Your Order
+              <FaLock />
+
+              Place Your Order
+
             </button>
 
           </div>
@@ -389,5 +490,7 @@ Thank you for your order!`;
 
       </div>
     </>
+
   );
+
 }
