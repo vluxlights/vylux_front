@@ -1,649 +1,558 @@
-/* =========================================================
-   PRODUCT DETAILS PAGE - MOBILE FIRST
-========================================================= */
-
-/* ===== GLOBAL ===== */
+/* ======================================================
+   GLOBAL
+====================================================== */
 
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body{
-    overflow-x: hidden;
-    background: #f8fafc;
-    font-family: Arial, Helvetica, sans-serif;
+  overflow-x:hidden;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f5f7fb;
 }
 
-/* =========================================================
-   PRODUCT VIEW
-========================================================= */
+/* ======================================================
+   PRODUCT WRAPPER
+====================================================== */
 
-.productview{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 75px;
-
-    width: 100%;
-
-    padding: 10px;
+.productWrapper{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding:10px;
 }
 
-/* =========================================================
-   LEFT THUMBNAILS
-========================================================= */
+/* ======================================================
+   IMAGE SECTION
+====================================================== */
 
-.left{
-    width: 100%;
-
-    display: flex;
-    gap: 10px;
-
-    overflow-x: auto;
-
-    padding: 8px;
-
-    background: white;
-
-    border-radius: 12px;
-
-    border: 1px solid #e5e7eb;
+.imageSection{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 
-.left::-webkit-scrollbar{
-    display: none;
+/* ======================================================
+   MAIN IMAGE
+====================================================== */
+
+.mainImageBox{
+  width:100%;
+  background:white;
+  border-radius:12px;
+  padding:10px;
+  border:1px solid #e5e7eb;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-.img{
-    flex-shrink: 0;
-    cursor: pointer;
+.mainImage{
+  width:100%;
+  max-height:220px;
+  object-fit:contain;
 }
 
-.left img{
-    width: 65px;
-    height: 65px;
+/* ======================================================
+   THUMBNAILS
+====================================================== */
 
-    object-fit: cover;
-
-    border-radius: 8px;
-
-    border: 1px solid #eee;
-
-    padding: 2px;
+.thumbnailRow{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
 }
 
-/* =========================================================
-   CENTER IMAGE
-========================================================= */
-
-.center{
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: white;
-
-    border-radius: 14px;
-
-    border: 1px solid #e5e7eb;
-
-    padding: 12px;
+.thumbnailRow::-webkit-scrollbar{
+  display:none;
 }
 
-.center img{
-    width: 100%;
-    max-height: 240px;
+.thumb{
+  min-width:60px;
+  height:60px;
 
-    object-fit: contain;
+  border:1px solid #ddd;
+  border-radius:8px;
+
+  background:white;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  cursor:pointer;
 }
 
-/* =========================================================
-   RIGHT CONTENT
-========================================================= */
-
-.right{
-    width: 100%;
-
-    background: white;
-
-    border-radius: 14px;
-
-    border: 1px solid #e5e7eb;
-
-    padding: 14px;
+.thumb img{
+  width:55px;
+  height:55px;
+  object-fit:contain;
 }
 
-/* title */
+/* ======================================================
+   DETAILS
+====================================================== */
 
-.right h2{
-    font-size: 18px;
-    line-height: 1.5;
-
-    color: #0f172a;
+.details{
+  background:white;
+  border-radius:12px;
+  padding:12px;
+  border:1px solid #e5e7eb;
 }
 
-/* color */
-
-.type{
-    margin-top: 5px;
-
-    font-size: 12px;
-
-    color: #6b7280;
+.details h1{
+  font-size:18px;
+  color:#111827;
+  line-height:1.4;
 }
 
-/* =========================================================
-   PRICE SECTION
-========================================================= */
+.color{
+  margin-top:5px;
+  font-size:12px;
+  color:#6b7280;
+}
 
-.pricelist{
-    margin-top: 14px;
+/* ======================================================
+   PRICE
+====================================================== */
 
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+.priceSection{
+  margin-top:14px;
 
-    gap: 10px;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+
+  gap:10px;
 }
 
 .price{
-    font-size: 22px;
-    font-weight: 800;
-
-    color: #111827;
+  font-size:22px;
+  font-weight:800;
+  color:#111827;
 }
 
-.orprice{
-    font-size: 13px;
-
-    text-decoration: line-through;
-
-    color: #6b7280;
+.oldPrice{
+  font-size:13px;
+  text-decoration:line-through;
+  color:#9ca3af;
 }
 
 .discount{
-    background: #dcfce7;
+  background:#dcfce7;
+  color:#166534;
 
-    color: #166534;
+  padding:4px 10px;
+  border-radius:30px;
 
-    border-radius: 30px;
-
-    padding: 4px 10px;
-
-    font-size: 11px;
-    font-weight: 700;
+  font-size:11px;
+  font-weight:700;
 }
 
-/* =========================================================
-   ASSURANCE FEATURES
-========================================================= */
+/* ======================================================
+   FEATURES
+====================================================== */
 
-.desc{
-    margin-top: 16px;
+.features{
+  margin-top:16px;
 
-    display: flex;
-    justify-content: space-between;
+  display:flex;
+  justify-content:space-between;
 
-    gap: 6px;
+  background:#f9fafb;
+  border:1px solid #eee;
 
-    background: #f9fafb;
+  border-radius:10px;
 
-    border: 1px solid #eee;
-
-    border-radius: 12px;
-
-    padding: 10px;
+  padding:10px;
 }
 
-.descs{
-    flex: 1;
+.feature{
+  flex:1;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 
-    text-align: center;
+  text-align:center;
 
-    gap: 5px;
+  gap:5px;
 
-    position: relative;
+  position:relative;
 }
 
-.descs svg{
-    font-size: 16px;
-    color: #15803d;
+.feature svg{
+  font-size:16px;
+  color:#15803d;
 }
 
-.descs p{
-    font-size: 10px;
-    color: #111827;
+.feature p{
+  font-size:10px;
+  color:#111827;
 }
 
-.descs:not(:last-child)::after{
-    content: "";
+.feature:not(:last-child)::after{
+  content:"";
 
-    position: absolute;
+  position:absolute;
 
-    right: 0;
-    top: 10%;
-    bottom: 10%;
+  right:0;
+  top:10%;
+  bottom:10%;
 
-    width: 1px;
-
-    background: #d1d5db;
+  width:1px;
+  background:#ddd;
 }
 
-/* =========================================================
+/* ======================================================
    QUANTITY
-========================================================= */
+====================================================== */
 
-.quantity{
-    margin-top: 18px;
+.quantitySection{
+  margin-top:18px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.quantity p{
-    font-size: 13px;
-    font-weight: 700;
-
-    color: #111827;
+.quantitySection p{
+  font-size:13px;
+  font-weight:700;
 }
 
-/* controls */
-
-.controls{
-    display: flex;
-    align-items: center;
-
-    gap: 8px;
+.qtyBox{
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
 
-.controls button{
-    width: 30px;
-    height: 30px;
+.qtyBox button{
+  width:28px;
+  height:28px;
 
-    border: none;
-    border-radius: 7px;
+  border:none;
+  border-radius:6px;
 
-    background: #15803d;
+  background:#15803d;
+  color:white;
 
-    color: white;
-
-    font-size: 16px;
-    font-weight: 700;
-
-    cursor: pointer;
+  font-size:16px;
+  cursor:pointer;
 }
 
-.controls span{
-    min-width: 20px;
+.qtyBox span{
+  min-width:20px;
+  text-align:center;
 
-    text-align: center;
-
-    font-size: 14px;
-    font-weight: 700;
+  font-size:14px;
+  font-weight:700;
 }
 
-/* =========================================================
+/* ======================================================
    BUTTONS
-========================================================= */
+====================================================== */
 
 .buttons{
-    margin-top: 18px;
+  margin-top:18px;
 
-    display: flex;
-    flex-direction: column;
+  display:flex;
+  flex-direction:column;
 
-    gap: 10px;
+  gap:10px;
 }
 
 .buttons button{
-    width: 100%;
-    height: 44px;
+  width:100%;
+  height:42px;
 
-    border: none;
-    border-radius: 10px;
+  border:none;
+  border-radius:10px;
 
-    font-size: 14px;
-    font-weight: 700;
+  font-size:14px;
+  font-weight:700;
 
-    cursor: pointer;
+  cursor:pointer;
 }
 
-.cart{
-    background: #1d4ed8;
-    color: white;
+.cartBtn{
+  background:#2563eb;
+  color:white;
 }
 
-.buy{
-    background: #15803d;
-    color: white;
+.buyBtn{
+  background:#15803d;
+  color:white;
 }
 
-/* =========================================================
-   SPECIFICATIONS
-========================================================= */
+/* ======================================================
+   SPECS
+====================================================== */
 
 .specs{
-    margin: 10px;
+  margin:10px;
 
-    background: white;
+  background:white;
+  border-radius:12px;
 
-    border-radius: 14px;
+  border:1px solid #e5e7eb;
 
-    border: 1px solid #e5e7eb;
-
-    padding: 12px;
+  padding:12px;
 }
 
 .specs h2{
-    font-size: 16px;
-    color: #111827;
-
-    margin-bottom: 12px;
+  font-size:16px;
+  margin-bottom:12px;
 }
 
-/* table */
+/* ======================================================
+   SPEC GRID
+====================================================== */
 
-.spectable{
-    display: flex;
-    flex-direction: column;
-
-    gap: 6px;
+.specGrid{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
 }
 
-/* row */
+.specRow{
+  display:grid;
+  grid-template-columns:40% 60%;
 
-.row{
-    display: grid;
-    grid-template-columns: 40% 60%;
+  gap:8px;
 
-    gap: 8px;
+  padding:8px;
 
-    background: #f9fafb;
+  border-radius:8px;
 
-    border: 1px solid #f1f5f9;
-
-    border-radius: 8px;
-
-    padding: 8px;
+  background:#f9fafb;
+  border:1px solid #f1f5f9;
 }
 
-/* key */
-
-.key{
-    font-size: 10px;
-    font-weight: 700;
-
-    color: #374151;
-
-    text-transform: capitalize;
+.specKey{
+  font-size:10px;
+  font-weight:700;
+  color:#374151;
 }
 
-/* value */
+.specValue{
+  font-size:10px;
+  color:#4b5563;
 
-.value{
-    font-size: 10px;
-
-    color: #4b5563;
-
-    word-break: break-word;
+  word-break:break-word;
 }
 
-/* =========================================================
-   RELATED PRODUCTS
-========================================================= */
+/* ======================================================
+   RELATED
+====================================================== */
 
-.relatedp{
-    margin: 10px;
+.related{
+  margin:10px;
 
-    background: white;
+  background:white;
 
-    border-radius: 14px;
+  border-radius:12px;
 
-    border: 1px solid #e5e7eb;
+  border:1px solid #e5e7eb;
 
-    padding: 12px;
+  padding:12px;
 
-    margin-bottom: 20px;
+  margin-bottom:20px;
 }
 
-.relatedp h2{
-    font-size: 16px;
-    color: #111827;
+.related h2{
+  font-size:16px;
 }
 
-/* cards row */
+/* ======================================================
+   RELATED ROW
+====================================================== */
 
-.repr{
-    margin-top: 12px;
+.relatedRow{
+  margin-top:12px;
 
-    display: flex;
-    gap: 10px;
+  display:flex;
+  gap:10px;
 
-    overflow-x: auto;
+  overflow-x:auto;
 }
 
-.repr::-webkit-scrollbar{
-    display: none;
+.relatedRow::-webkit-scrollbar{
+  display:none;
 }
 
-/* card */
+/* ======================================================
+   RELATED CARD
+====================================================== */
 
-.reprs{
-    min-width: 130px;
+.relatedCard{
+  min-width:130px;
 
-    background: white;
+  background:white;
 
-    border-radius: 12px;
+  border-radius:10px;
 
-    border: 1px solid #e5e7eb;
+  border:1px solid #e5e7eb;
 
-    padding: 8px;
+  padding:8px;
 
-    flex-shrink: 0;
+  cursor:pointer;
 }
 
-.reprs img{
-    width: 100%;
-    height: 90px;
-
-    object-fit: contain;
+.relatedCard img{
+  width:100%;
+  height:90px;
+  object-fit:contain;
 }
 
-/* text */
+.relatedName{
+  margin-top:8px;
 
-.rname{
-    margin-top: 8px;
+  font-size:11px;
+  font-weight:700;
 
-    font-size: 11px;
-    font-weight: 700;
-
-    line-height: 1.4;
-
-    color: #111827;
+  color:#111827;
 }
 
-.rtype{
-    margin-top: 3px;
+.relatedColor{
+  margin-top:4px;
 
-    font-size: 10px;
-
-    color: #6b7280;
+  font-size:10px;
+  color:#6b7280;
 }
 
-.rprice{
-    margin-top: 6px;
+.relatedPrice{
+  margin-top:6px;
 
-    font-size: 12px;
-    font-weight: 800;
+  font-size:12px;
+  font-weight:800;
 
-    color: #15803d;
+  color:#15803d;
 }
 
-/* =========================================================
-   TABLET
-========================================================= */
+/* ======================================================
+   DESKTOP
+====================================================== */
 
-@media (min-width: 768px){
+@media(min-width:768px){
 
-    .productview{
-        flex-direction: row;
-        align-items: flex-start;
+  .productWrapper{
+    flex-direction:row;
+    align-items:flex-start;
 
-        padding: 20px;
-    }
+    padding:20px;
+  }
 
-    /* left */
+  .imageSection{
+    width:45%;
+  }
 
-    .left{
-        width: 12%;
+  .details{
+    width:55%;
+  }
 
-        flex-direction: column;
+  .mainImage{
+    max-height:420px;
+  }
 
-        overflow-y: auto;
-        overflow-x: hidden;
+  .thumbnailRow{
+    flex-wrap:wrap;
+    overflow:visible;
+  }
 
-        max-height: 520px;
-    }
+  .thumb{
+    width:80px;
+    height:80px;
+  }
 
-    .left img{
-        width: 90px;
-        height: 90px;
-    }
+  .thumb img{
+    width:70px;
+    height:70px;
+  }
 
-    /* center */
+  .details h1{
+    font-size:28px;
+  }
 
-    .center{
-        width: 40%;
-    }
+  .color{
+    font-size:15px;
+  }
 
-    .center img{
-        max-height: 420px;
-    }
+  .price{
+    font-size:30px;
+  }
 
-    /* right */
+  .oldPrice{
+    font-size:18px;
+  }
 
-    .right{
-        width: 48%;
-    }
+  .discount{
+    font-size:14px;
+  }
 
-    .right h2{
-        font-size: 28px;
-    }
+  .feature p{
+    font-size:13px;
+  }
 
-    .type{
-        font-size: 15px;
-    }
+  .buttons{
+    flex-direction:row;
+  }
 
-    .price{
-        font-size: 30px;
-    }
+  .buttons button{
+    width:180px;
+    height:46px;
+  }
 
-    .orprice{
-        font-size: 18px;
-    }
+  .specs{
+    margin:20px;
+    padding:20px;
+  }
 
-    .discount{
-        font-size: 14px;
-    }
+  .specGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
 
-    .descs p{
-        font-size: 13px;
-    }
+  .specKey{
+    font-size:13px;
+  }
 
-    .quantity p{
-        font-size: 16px;
-    }
+  .specValue{
+    font-size:13px;
+  }
 
-    .controls button{
-        width: 36px;
-        height: 36px;
+  .related{
+    margin:20px;
+  }
 
-        font-size: 18px;
-    }
+  .relatedRow{
+    flex-wrap:wrap;
+    overflow:visible;
+  }
 
-    .buttons{
-        flex-direction: row;
-    }
+  .relatedCard{
+    min-width:200px;
+  }
 
-    .buttons button{
-        width: 180px;
-        height: 46px;
-    }
+  .relatedCard img{
+    height:150px;
+  }
 
-    /* specs */
+  .relatedName{
+    font-size:15px;
+  }
 
-    .specs{
-        margin: 20px;
-        padding: 20px;
-    }
+  .relatedColor{
+    font-size:13px;
+  }
 
-    .specs h2{
-        font-size: 22px;
-    }
-
-    .spectable{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-
-        gap: 10px;
-    }
-
-    .row{
-        grid-template-columns: 40% 60%;
-
-        padding: 12px;
-    }
-
-    .key{
-        font-size: 13px;
-    }
-
-    .value{
-        font-size: 13px;
-    }
-
-    /* related */
-
-    .relatedp{
-        margin: 20px;
-    }
-
-    .relatedp h2{
-        font-size: 22px;
-    }
-
-    .repr{
-        flex-wrap: wrap;
-        overflow: visible;
-    }
-
-    .reprs{
-        min-width: 200px;
-    }
-
-    .reprs img{
-        height: 150px;
-    }
-
-    .rname{
-        font-size: 16px;
-    }
-
-    .rtype{
-        font-size: 13px;
-    }
-
-    .rprice{
-        font-size: 15px;
-    }
+  .relatedPrice{
+    font-size:15px;
+  }
 }
