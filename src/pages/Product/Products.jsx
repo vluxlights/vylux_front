@@ -215,7 +215,7 @@ export default function Products() {
 
             <FaSortAmountDown className={styles.topIcon} />
 
-            <span>
+            <span className={styles.labels}>
               Sort by:
             </span>
 
