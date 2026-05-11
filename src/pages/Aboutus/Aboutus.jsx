@@ -383,6 +383,7 @@ Message: ${form.message}
                 <input
                   type="text"
                   name="name"
+                  required
                   placeholder="Your Name"
                   value={form.name}
                   onChange={handleChange}
@@ -391,6 +392,7 @@ Message: ${form.message}
                 <input
                   type="text"
                   name="phone"
+                  required
                   placeholder="Phone Number"
                   value={form.phone}
                   onChange={handleChange}
@@ -401,6 +403,7 @@ Message: ${form.message}
               <input
                 type="email"
                 name="email"
+                required
                 placeholder="Email Address"
                 value={form.email}
                 onChange={handleChange}
@@ -409,6 +412,7 @@ Message: ${form.message}
               <input
                 type="text"
                 name="subject"
+                required
                 placeholder="Subject"
                 value={form.subject}
                 onChange={handleChange}
@@ -417,6 +421,7 @@ Message: ${form.message}
               <textarea
                 name="message"
                 placeholder="Your Message"
+                required
                 value={form.message}
                 onChange={handleChange}
               ></textarea>
